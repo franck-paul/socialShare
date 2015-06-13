@@ -1,0 +1,276 @@
+<?php
+# -- BEGIN LICENSE BLOCK ----------------------------------
+# This file is part of socialShare, a plugin for Dotclear 2.
+#
+# Copyright (c) Franck Paul and contributors
+# carnet.franck.paul@gmail.com
+#
+# Licensed under the GPL version 2.0 license.
+# A copy of this license is available in LICENSE file or at
+# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+# -- END LICENSE BLOCK ------------------------------------
+
+if (!defined('DC_RC_PATH')) { return; }
+
+$core->addBehavior('publicHeadContent', array('dcSocialShare','publicHeadContent'));
+
+$core->addBehavior('publicEntryBeforeContent', array('dcSocialShare','publicEntryBeforeContent'));
+$core->addBehavior('publicEntryAfterContent', array('dcSocialShare','publicEntryAfterContent'));
+
+$core->tpl->addValue('SocialShare',array('dcSocialShare','tplSocialShare'));
+
+class dcSocialShare
+{
+	public static function publicEntryBeforeContent($core,$_ctx)
+	{
+		$ret = '';
+		if ($core->blog->settings->socialShare->active) {
+			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
+				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
+			{
+				if (!$_ctx->$core->url->type != 'post' &&
+					!$_ctx->$core->url->type != 'page' &&
+					!$core->blog->settings->socialShare->on_single_only)
+				{
+					if ($core->blog->settings->socialShare->before_content) {
+						echo self::socialShare(
+							$_ctx->posts->getURL(),
+							$_ctx->posts->post_title,
+							($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
+							$core->blog->name,
+							$core->blog->settings->socialShare->prefix);
+					}
+				}
+			}
+		}
+	}
+
+	public static function publicEntryAfterContent($core,$_ctx)
+	{
+		$ret = '';
+		if ($core->blog->settings->socialShare->active) {
+			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
+				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
+			{
+				if (!$_ctx->$core->url->type != 'post' &&
+					!$_ctx->$core->url->type != 'page' &&
+					!$core->blog->settings->socialShare->on_single_only)
+				{
+					if ($core->blog->settings->socialShare->after_content) {
+						echo self::socialShare(
+							$_ctx->posts->getURL(),
+							$_ctx->posts->post_title,
+							($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
+							$core->blog->name,
+							$core->blog->settings->socialShare->prefix);
+						$socialShare_style_loaded = true;
+					}
+				}
+			}
+		}
+	}
+
+	public static function tplSocialShare($attr)
+	{
+		global $core,$_ctx;
+
+		$ret = '';
+		if ($core->blog->settings->socialShare->active && $core->blog->settings->socialShare->template_tag)
+		{
+			$f = $this->getFilters($attr);
+			$url = sprintf($f,$_ctx->posts->getURL());
+			$ret = self::socialShare(
+				$url,
+				$_ctx->posts->post_title,
+				($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
+				$core->blog->name,
+				$core->blog->settings->socialShare->prefix);
+			$socialShare_style_loaded = true;
+		}
+		return $ret;
+	}
+
+	public static function publicHeadContent()
+	{
+		global $core;
+
+		$core->blog->settings->addNamespace('socialShare');
+		if (($core->blog->settings->socialShare->active))
+		{
+			echo '<style type="text/css">'."\n".self::customStyle()."</style>\n";
+		}
+	}
+
+	// Helpers
+
+	public static function socialShare($url,$title,$lang,$blogname,$prefix)
+	{
+		$ret = '';
+
+		if ($GLOBALS['core']->blog->settings->socialShare->twitter ||
+			$GLOBALS['core']->blog->settings->socialShare->facebook ||
+			$GLOBALS['core']->blog->settings->socialShare->google ||
+			$GLOBALS['core']->blog->settings->socialShare->mail)
+		{
+			$ret =
+				'<div class="share">'."\n";
+			if ($prefix) {
+				$ret .= '<p class="share-intro">'.$prefix.'</p>'."\n";
+			}
+			$ret .= '<ul class="share-links">'."\n";
+
+			// Twitter link
+			if ($GLOBALS['core']->blog->settings->socialShare->twitter)
+			{
+				$share_url = sprintf('https://twitter.com/share?url=$s&amp;text=$s&amp;via=$s',
+					html::sanitizeURL($url),
+					html::escapeHTML($title),
+					html::escapeHTML($blogname));
+				$ret .=
+					'<li>'."\n".
+					'<a class="share-twitter" target="_blank" rel="nofollow" '.
+						'title="'.__('Share this on Twitter').'" '.
+						'href="'.$share_url.'"'.
+						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700\');return false;">'."\n".
+					__('Twitter')."\n".
+					'</a>'."\n".
+					'</li>'."\n";
+			}
+
+			// Facebook link
+			if ($GLOBALS['core']->blog->settings->socialShare->facebook)
+			{
+				$share_url = sprintf('https://www.facebook.com/sharer.php?u=$s&amp;t=$s',
+					html::sanitizeURL($url),
+					html::escapeHTML($title));
+				$ret .=
+					'<li>'."\n".
+					'<a class="share-fb" target="_blank" rel="nofollow" '.
+						'title="'.__('Share this on Facebook').'" '.
+						'href="'.$share_url.'"'.
+						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;">'."\n".
+					__('Facebook')."\n".
+					'</a>'."\n".
+					'</li>'."\n";
+			}
+
+			// Google+ link
+			if ($GLOBALS['core']->blog->settings->socialShare->google)
+			{
+				$share_url = sprintf('https://plus.google.com/share?url=$s&amp;hl=$s',
+					html::sanitizeURL($url),
+					html::escapeHTML($lang));
+				$ret .=
+					'<li>'."\n".
+					'<a class="share-gp" target="_blank" rel="nofollow" '.
+						'title="'.__('Share this on Google+').'" '.
+						'href="'.$share_url.'"'.
+						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650\');return false;">'."\n".
+					__('Google+')."\n".
+					'</a>'."\n".
+					'</li>'."\n";
+			}
+
+			// Mail link
+			if ($GLOBALS['core']->blog->settings->socialShare->mail)
+			{
+				$share_url = sprintf('mailto:?subject=$s&amp;body=$s',
+					html::escapeHTML($title),
+					html::sanitizeURL($url));
+				$ret .=
+					'<li>'."\n".
+					'<a class="share-gp" target="_blank" rel="nofollow" '.
+						'title="'.__('Share this by mail').'" '.
+						'href="'.$share_url.'"'."\n".
+					__('Mail')."\n".
+					'</a>'."\n".
+					'</li>'."\n";
+			}
+
+			$ret .=
+				'</ul>'."\n".
+				'</div>'."\n";
+
+		}
+		return $ret;
+	}
+
+	public static function customStyle()
+	{
+		$s = $GLOBALS['core']->blog->settings->socialShare->style;
+		if ($s === null)
+		{
+			$ret = <<<EOT
+.share {
+    font-size: 0.875em;
+    margin-top: 1.5em;
+    padding: 0.5em 0px;
+    text-align: right;
+    clear: both;
+}
+
+.share p {
+    padding-right: 1.5em;
+}
+
+.share p, .share ul, .share li {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+
+.share a {
+    padding: 0.25em 0.5em 0.25em 2em;
+    margin-right: 0.5em;
+    background-position: 0.25em center;
+    background-repeat: no-repeat;
+    background-size: 1.5em auto;
+    text-decoration: none;
+}
+
+.share ul li:last-child a {
+    margin-right: 0;
+}
+
+.share a:hover {
+	color: #fff;
+}
+
+.share .share-twitter {
+	background-image: url("pf=socialShare/img/icon-twitter.png");
+    background-image: url("pf=socialShare/img/icon-twitter.svg"), none;
+}
+.share .share-twitter:hover {
+	background-color: #78cbef;
+}
+
+.share .share-fb {
+	background-image: url("pf=socialShare/img/icon-facebook.png");
+    background-image: url("pf=socialShare/img/icon-facebook.svg"), none;
+}
+.share .share-fb:hover {
+	background-color: #547bbc;
+}
+
+.share .share-gp {
+	background-image: url("pf=socialShare/img/icon-gplus.png");
+    background-image: url("pf=socialShare/img/icon-gplus.svg"), none;
+}
+.share .share-gp:hover {
+	background-color: #d30e60;
+}
+
+.share .share-mail {
+	background-image: url("pf=socialShare/img/icon-email.png");
+    background-image: url("pf=socialShare/img/icon-email.svg"), none;
+}
+.share .share-mail {
+	background-color: #99c122;
+}
+EOT;
+			$s = str_replace('pf=socialShare', $GLOBALS['core']->blog->url.$GLOBALS['core']->blog->getQmarkURL().'pf=socialShare', $ret);
+		}
+
+		return $s."\n";
+	}
+}
