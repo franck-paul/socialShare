@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 socialShare module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-13 21:37+0200\n"
+"POT-Creation-Date: 2015-06-13 21:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,10 @@ msgstr ""
 
 #: ../hg-plugins/socialShare/_public.php:185
 msgid "Mail"
+msgstr ""
+
+#: ../hg-plugins/socialShare/index.php:35
+msgid "Share this entry:"
 msgstr ""
 
 #: ../hg-plugins/socialShare/index.php:139

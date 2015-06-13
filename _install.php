@@ -37,7 +37,7 @@ try
 	$core->blog->settings->socialShare->put('after_content',true,'boolean','Display social sharing buttons after content',false,true);
 	$core->blog->settings->socialShare->put('template_tag',false,'boolean','Display social sharing buttons using template tag',false,true);
 
-	$core->blog->settings->socialShare->put('prefix','','string','Social sharing buttons prefix text',false,true);
+	$core->blog->settings->socialShare->put('prefix',__('Share this entry:'),'string','Social sharing buttons prefix text',false,true);
 	$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false,true);
 
 	$core->setVersion('socialShare',$new_version);
