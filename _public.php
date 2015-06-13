@@ -28,8 +28,8 @@ class dcSocialShare
 			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
 				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
 			{
-				if (!$_ctx->$core->url->type != 'post' &&
-					!$_ctx->$core->url->type != 'page' &&
+				if (!$core->url->type != 'post' &&
+					!$core->url->type != 'page' &&
 					!$core->blog->settings->socialShare->on_single_only)
 				{
 					if ($core->blog->settings->socialShare->before_content) {
@@ -52,8 +52,8 @@ class dcSocialShare
 			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
 				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
 			{
-				if (!$_ctx->$core->url->type != 'post' &&
-					!$_ctx->$core->url->type != 'page' &&
+				if (!$core->url->type != 'post' &&
+					!$core->url->type != 'page' &&
 					!$core->blog->settings->socialShare->on_single_only)
 				{
 					if ($core->blog->settings->socialShare->after_content) {
