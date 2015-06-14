@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-13 21:43+0200\n"
+"POT-Creation-Date: 2015-06-14 10:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,9 @@ msgstr "Ajoute les boutons de partage des réseaux sociaux à vos billets et pag
 
 msgid "socialShare"
 msgstr "socialShare"
+
+msgid "Share this entry:"
+msgstr "Partager cette entrée :"
 
 msgid "Share this on Twitter"
 msgstr "Partager ceci sur Twitter"
@@ -45,9 +48,6 @@ msgstr "Partager ceci par email"
 
 msgid "Mail"
 msgstr "email"
-
-msgid "Share this entry:"
-msgstr "Partager cette entrée :"
 
 msgid "Activate socialShare plugin"
 msgstr "Activer le plugin socialShare"
@@ -99,6 +99,12 @@ msgstr "Insérer le texte suivant devant les boutons de partage :"
 
 msgid "This will be inserted before buttons (if not empty)."
 msgstr "Sera inséré devant les boutons si non vide."
+
+msgid "Use CSS styles from blog's theme only."
+msgstr "Utiliser les styles CSS du thème du blog seulement."
+
+msgid "Your theme should include CSS styles (see README.md for HTML markup and CSS sample)."
+msgstr "Votre thème devrait inclure les styles CSS (voir le fichier README.md pour le balisage HTML et l'exemple de CSS)."
 
 msgid "Social sharing buttons CSS style:"
 msgstr "Style(s) CSS à appliquer :"

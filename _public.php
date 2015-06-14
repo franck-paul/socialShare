@@ -91,7 +91,7 @@ class dcSocialShare
 		global $core;
 
 		$core->blog->settings->addNamespace('socialShare');
-		if (($core->blog->settings->socialShare->active))
+		if ($core->blog->settings->socialShare->active && !$core->blog->settings->socialShare->no_style)
 		{
 			echo '<style type="text/css">'."\n".self::customStyle()."</style>\n";
 		}

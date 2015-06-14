@@ -6,6 +6,60 @@ Summary
 
 This plugin adds social share buttons to posts and/or pages, for Twitter, Facebook, Google+ social networks and by mail.
 
+
+Markup
+------
+
+<div class="share">
+    <p class="share-intro"><PREFIX></p>
+    <ul class="share-links">
+        <li>
+            <a  class="share-twitter"
+                target="_blank"
+                title="Share this post on Twitter"
+                href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via=<BLOGNAME>"
+                rel="nofollow"
+                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;">
+                    Twitter
+            </a>
+        </li>
+        <li>
+            <a
+                class="share-fb"
+                target="_blank"
+                title="Share this post on Facebook"
+                href="https://www.facebook.com/sharer.php?u=<URL>&amp;t=<TITRE>"
+                rel="nofollow"
+                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+                    Facebook
+            </a>
+        </li>
+        <li>
+            <a
+                class="share-gp"
+                target="_blank"
+                title="Share this post on Google+"
+                href="https://plus.google.com/share?url=<URL>&amp;hl=<LANGUAGE>"
+                rel="nofollow"
+                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+                    Google+
+            </a>
+        </li>
+        <li>
+            <a
+                class="share-mail"
+                target="_blank"
+                title="Share this post by email"
+                href="mailto:?subject=<TITRE>&amp;body=<URL>"
+                rel="nofollow">
+                    email
+                </a>
+        </li>
+    </ul>
+</div>
+
+
+
 Default style for social share links
 ------------------------------------
 
@@ -78,4 +132,8 @@ Default style for social share links
 }
 
 
-Note: the SVG icons will not be functionnal before Dotclear 2.8
+Notes
+-----
+
+- the SVG icons will not be functionnal before Dotclear 2.8 (rev 3014)
+- the image URLs (png or svg) may vary depending on your configuration

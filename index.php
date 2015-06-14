@@ -33,6 +33,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
 		$core->blog->settings->socialShare->put('template_tag',false,'boolean','Display social sharing buttons using template tag',false);
 
 		$core->blog->settings->socialShare->put('prefix',__('Share this entry:'),'string','Social sharing buttons prefix text',false);
+		$core->blog->settings->socialShare->put('no_style',false,'boolean','Do not inject CSS style in header',false);
 		$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false);
 
 		$core->blog->triggerBlog();
@@ -60,6 +61,7 @@ $ssb_after_content = (boolean) $core->blog->settings->socialShare->after_content
 $ssb_template_tag = (boolean) $core->blog->settings->socialShare->template_tag;
 
 $ssb_prefix = $core->blog->settings->socialShare->prefix;
+$ssb_no_style = (boolean) $core->blog->settings->socialShare->no_style;
 $ssb_style = $core->blog->settings->socialShare->style;
 
 if (!empty($_POST))
@@ -83,6 +85,7 @@ if (!empty($_POST))
 		$ssb_template_tag = !empty($_POST['ssb_template_tag']);
 
 		$ssb_prefix = trim(html::escapeHTML($_POST['ssb_prefix']));
+		$ssb_no_style = !empty($_POST['ssb_no_style']);
 		$ssb_style = trim($_POST['ssb_style']);
 
 		# Everything's fine, save options
@@ -105,6 +108,7 @@ if (!empty($_POST))
 		$core->blog->settings->socialShare->put('template_tag',$ssb_template_tag);
 
 		$core->blog->settings->socialShare->put('prefix',$ssb_prefix);
+		$core->blog->settings->socialShare->put('no_style',$ssb_no_style);
 		$core->blog->settings->socialShare->put('style',$ssb_style);
 
 		$core->blog->triggerBlog();
@@ -173,6 +177,10 @@ echo
 '<p><label for="ssb_prefix">'.__('Social sharing buttons text prefix:').'</label> '.
 form::field('ssb_prefix',30,128,html::escapeHTML($ssb_prefix)).'</p>'.
 '<p class="form-note">'.__('This will be inserted before buttons (if not empty).').'</p>'.
+
+'<p>'.form::checkbox('ssb_no_style',1,$ssb_no_style).' '.
+'<label for="ssb_no_style" class="classic">'.__('Use CSS styles from blog\'s theme only.').'</label></p>'.
+'<p class="form-note">'.__('Your theme should include CSS styles (see README.md for HTML markup and CSS sample).').'</p>'.
 
 '<p class="area"><label for="ssb_style">'.__('Social sharing buttons CSS style:').'</label> '.
 form::textarea('ssb_style',30,8,html::escapeHTML($ssb_style)).'</p>'.
