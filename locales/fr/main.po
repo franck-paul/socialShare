@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-14 10:51+0200\n"
+"POT-Creation-Date: 2015-06-14 17:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,15 @@ msgstr "Partager ceci par email"
 msgid "Mail"
 msgstr "email"
 
+msgid "Use default CSS styles"
+msgstr "Utiliser les styles CSS par défaut"
+
+msgid "Use theme's CSS styles"
+msgstr "Utiliser les styles CSS définis dans le thème du blog"
+
+msgid "Use user-defined styles"
+msgstr "Utiliser des styles CSS personnalisés"
+
 msgid "Activate socialShare plugin"
 msgstr "Activer le plugin socialShare"
 
@@ -88,8 +97,8 @@ msgstr "Insérer automatiquement les boutons de partage après le contenu"
 msgid "Add social sharing buttons using template tag"
 msgstr "Insérer les boutons de partage en utilisant la balise template"
 
-msgid "The &lt;tpl:SocialShare&gt; template tag must be present in your template's file(s)."
-msgstr "La balise &lt;tpl:SocialShare&gt; doit être présente dans vôtre/vos fichier(s) template."
+msgid "The {{tpl:SocialShare}} template tag must be present in your template's file(s)."
+msgstr "La balise {{tpl:SocialShare}} doit être présente dans vôtre/vos fichier(s) template."
 
 msgid "Advanced options"
 msgstr "Options avancées"
@@ -100,14 +109,11 @@ msgstr "Insérer le texte suivant devant les boutons de partage :"
 msgid "This will be inserted before buttons (if not empty)."
 msgstr "Sera inséré devant les boutons si non vide."
 
-msgid "Use CSS styles from blog's theme only."
-msgstr "Utiliser les styles CSS du thème du blog seulement."
+msgid "Social sharing buttons CSS styles"
+msgstr "Styles CSS à appliquer"
 
-msgid "Your theme should include CSS styles (see README.md for HTML markup and CSS sample)."
-msgstr "Votre thème devrait inclure les styles CSS (voir le fichier README.md pour le balisage HTML et l'exemple de CSS)."
+msgid "User defined CSS styles:"
+msgstr "Styles CSS personnalisés :"
 
-msgid "Social sharing buttons CSS style:"
-msgstr "Style(s) CSS à appliquer :"
-
-msgid "Let this textarea empty in order to use the default styles."
-msgstr "Laissez cette zone vide pour utiliser les styles par défaut."
+msgid "See the README.md file for HTML markup and example of CSS styles."
+msgstr "Voir le fichier README.md pour le balisage HTML et un exemple de styles CSS."

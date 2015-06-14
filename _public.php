@@ -74,7 +74,7 @@ class dcSocialShare
 		$ret = '';
 		if ($core->blog->settings->socialShare->active && $core->blog->settings->socialShare->template_tag)
 		{
-			$f = $this->getFilters($attr);
+			$f = $core->tpl->getFilters($attr);
 			$url = sprintf($f,$_ctx->posts->getURL());
 			$ret = self::socialShare(
 				$url,
@@ -91,9 +91,22 @@ class dcSocialShare
 		global $core;
 
 		$core->blog->settings->addNamespace('socialShare');
-		if ($core->blog->settings->socialShare->active && !$core->blog->settings->socialShare->no_style)
+		if ($core->blog->settings->socialShare->active)
 		{
-			echo '<style type="text/css">'."\n".self::customStyle()."</style>\n";
+			switch ($core->blog->settings->socialShare->use_style) {
+				case 0:		// Default CSS styles
+					$ret = self::defaultStyle();
+					break;
+				case 1:		// Blog's theme CSS styles
+					$ret = '';
+					break;
+				case 2:		// User defined CSS styles
+					$ret = self::customStyle();
+					break;
+			}
+			if ($ret != '') {
+				echo '<style type="text/css">'."\n".$ret."\n"."</style>\n";
+			}
 		}
 	}
 
@@ -194,9 +207,12 @@ class dcSocialShare
 	public static function customStyle()
 	{
 		$s = $GLOBALS['core']->blog->settings->socialShare->style;
-		if ($s == null)
-		{
-			$ret = <<<EOT1
+		return $s;
+	}
+
+	public static function defaultStyle()
+	{
+		$ret = <<<EOT1
 .share {
     font-size: 0.875em;
     margin-top: 1.5em;
@@ -261,9 +277,9 @@ class dcSocialShare
 	background-color: #99c122;
 }
 EOT1;
-			if (version_compare($GLOBALS['core']->getVersion('core'),'2.8-r3014','>=')) {
-				$ret .= "\n".'/* Dotclear 2.8 and later specific */'."\n";
-				$ret .= <<<EOT2
+		if (version_compare($GLOBALS['core']->getVersion('core'),'2.8-r3014','>=')) {
+			$ret .= "\n".'/* Dotclear 2.8 and later specific */'."\n";
+			$ret .= <<<EOT2
 .share .share-twitter {
     background-image: url("PF-PATH/icon-twitter.svg"), none;
 }
@@ -277,11 +293,10 @@ EOT1;
     background-image: url("PF-PATH/icon-email.svg"), none;
 }
 EOT2;
-			}
-			$base = html::stripHostURL($GLOBALS['core']->blog->getQmarkURL().'pf=socialShare/img');
-			$s = str_replace('PF-PATH', $base, $ret);
 		}
+		$base = html::stripHostURL($GLOBALS['core']->blog->getQmarkURL().'pf=socialShare/img');
+		$s = str_replace('PF-PATH', $base, $ret);
 
-		return $s."\n";
+		return $s;
 	}
 }
