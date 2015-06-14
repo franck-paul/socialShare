@@ -28,9 +28,8 @@ class dcSocialShare
 			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
 				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
 			{
-				if (!$core->url->type != 'post' &&
-					!$core->url->type != 'page' &&
-					!$core->blog->settings->socialShare->on_single_only)
+				if ((($core->url->type == 'post' || $core->url->type == 'page') && $core->blog->settings->socialShare->on_single_only) ||
+					(!$core->blog->settings->socialShare->on_single_only))
 				{
 					if ($core->blog->settings->socialShare->before_content) {
 						echo self::socialShare(
@@ -52,9 +51,8 @@ class dcSocialShare
 			if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) ||
 				($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page))
 			{
-				if (!$core->url->type != 'post' &&
-					!$core->url->type != 'page' &&
-					!$core->blog->settings->socialShare->on_single_only)
+				if ((($core->url->type == 'post' || $core->url->type == 'page') && $core->blog->settings->socialShare->on_single_only) ||
+					(!$core->blog->settings->socialShare->on_single_only))
 				{
 					if ($core->blog->settings->socialShare->after_content) {
 						echo self::socialShare(
@@ -63,7 +61,6 @@ class dcSocialShare
 							($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
 							$core->blog->name,
 							$core->blog->settings->socialShare->prefix);
-						$socialShare_style_loaded = true;
 					}
 				}
 			}
@@ -85,7 +82,6 @@ class dcSocialShare
 				($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
 				$core->blog->name,
 				$core->blog->settings->socialShare->prefix);
-			$socialShare_style_loaded = true;
 		}
 		return $ret;
 	}
@@ -122,7 +118,7 @@ class dcSocialShare
 			// Twitter link
 			if ($GLOBALS['core']->blog->settings->socialShare->twitter)
 			{
-				$share_url = sprintf('https://twitter.com/share?url=$s&amp;text=$s&amp;via=$s',
+				$share_url = sprintf('https://twitter.com/share?url=%s&amp;text=%s&amp;via=%s',
 					html::sanitizeURL($url),
 					html::escapeHTML($title),
 					html::escapeHTML($blogname));
@@ -140,7 +136,7 @@ class dcSocialShare
 			// Facebook link
 			if ($GLOBALS['core']->blog->settings->socialShare->facebook)
 			{
-				$share_url = sprintf('https://www.facebook.com/sharer.php?u=$s&amp;t=$s',
+				$share_url = sprintf('https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
 					html::sanitizeURL($url),
 					html::escapeHTML($title));
 				$ret .=
@@ -157,7 +153,7 @@ class dcSocialShare
 			// Google+ link
 			if ($GLOBALS['core']->blog->settings->socialShare->google)
 			{
-				$share_url = sprintf('https://plus.google.com/share?url=$s&amp;hl=$s',
+				$share_url = sprintf('https://plus.google.com/share?url=%s&amp;hl=%s',
 					html::sanitizeURL($url),
 					html::escapeHTML($lang));
 				$ret .=
@@ -174,14 +170,14 @@ class dcSocialShare
 			// Mail link
 			if ($GLOBALS['core']->blog->settings->socialShare->mail)
 			{
-				$share_url = sprintf('mailto:?subject=$s&amp;body=$s',
+				$share_url = sprintf('mailto:?subject=%s&amp;body=%s',
 					html::escapeHTML($title),
 					html::sanitizeURL($url));
 				$ret .=
 					'<li>'."\n".
-					'<a class="share-gp" target="_blank" rel="nofollow" '.
+					'<a class="share-mail" target="_blank" rel="nofollow" '.
 						'title="'.__('Share this by mail').'" '.
-						'href="'.$share_url.'"'."\n".
+						'href="'.$share_url.'">'."\n".
 					__('Mail')."\n".
 					'</a>'."\n".
 					'</li>'."\n";
@@ -198,7 +194,7 @@ class dcSocialShare
 	public static function customStyle()
 	{
 		$s = $GLOBALS['core']->blog->settings->socialShare->style;
-		if ($s === null)
+		if ($s == null)
 		{
 			$ret = <<<EOT
 .share {
@@ -209,14 +205,14 @@ class dcSocialShare
     clear: both;
 }
 
-.share p {
-    padding-right: 1.5em;
-}
-
 .share p, .share ul, .share li {
     display: inline-block;
     margin: 0px;
     padding: 0px;
+}
+
+.share p {
+    padding-right: 1.5em;
 }
 
 .share a {
@@ -226,6 +222,7 @@ class dcSocialShare
     background-repeat: no-repeat;
     background-size: 1.5em auto;
     text-decoration: none;
+    border-bottom: none;
 }
 
 .share ul li:last-child a {
@@ -237,38 +234,39 @@ class dcSocialShare
 }
 
 .share .share-twitter {
-	background-image: url("pf=socialShare/img/icon-twitter.png");
-    background-image: url("pf=socialShare/img/icon-twitter.svg"), none;
+	background-image: url("PF-PATH/icon-twitter.png");
+    background-image: url("PF-PATH/icon-twitter.svg"), none;
 }
 .share .share-twitter:hover {
 	background-color: #78cbef;
 }
 
 .share .share-fb {
-	background-image: url("pf=socialShare/img/icon-facebook.png");
-    background-image: url("pf=socialShare/img/icon-facebook.svg"), none;
+	background-image: url("PF-PATH/icon-facebook.png");
+    background-image: url("PF-PATH/icon-facebook.svg"), none;
 }
 .share .share-fb:hover {
 	background-color: #547bbc;
 }
 
 .share .share-gp {
-	background-image: url("pf=socialShare/img/icon-gplus.png");
-    background-image: url("pf=socialShare/img/icon-gplus.svg"), none;
+	background-image: url("PF-PATH/icon-gplus.png");
+    background-image: url("PF-PATH/icon-gplus.svg"), none;
 }
 .share .share-gp:hover {
 	background-color: #d30e60;
 }
 
 .share .share-mail {
-	background-image: url("pf=socialShare/img/icon-email.png");
-    background-image: url("pf=socialShare/img/icon-email.svg"), none;
+	background-image: url("PF-PATH/icon-email.png");
+    background-image: url("PF-PATH/icon-email.svg"), none;
 }
-.share .share-mail {
+.share .share-mail:hover {
 	background-color: #99c122;
 }
 EOT;
-			$s = str_replace('pf=socialShare', $GLOBALS['core']->blog->url.$GLOBALS['core']->blog->getQmarkURL().'pf=socialShare', $ret);
+			$base = html::stripHostURL($GLOBALS['core']->blog->getQmarkURL().'pf=socialShare/img');
+			$s = str_replace('PF-PATH', $base, $ret);
 		}
 
 		return $s."\n";

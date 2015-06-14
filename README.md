@@ -17,14 +17,14 @@ Default style for social share links
     clear: both;
 }
 
-.share p {
-    padding-right: 1.5em;
-}
-
 .share p, .share ul, .share li {
     display: inline-block;
     margin: 0px;
     padding: 0px;
+}
+
+.share p {
+    padding-right: 1.5em;
 }
 
 .share a {
@@ -72,6 +72,6 @@ Default style for social share links
 	background-image: url("index.php?pf=socialShare/img/icon-email.png");
     background-image: url("index.php?pf=socialShare/img/icon-email.svg"), none;
 }
-.share .share-mail {
+.share .share-mail:hover {
 	background-color: #99c122;
 }
