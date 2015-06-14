@@ -196,10 +196,11 @@ class dcSocialShare
 		$s = $GLOBALS['core']->blog->settings->socialShare->style;
 		if ($s == null)
 		{
-			$ret = <<<EOT
+			$ret = <<<EOT1
 .share {
     font-size: 0.875em;
     margin-top: 1.5em;
+    margin-bottom: 1.5em;
     padding: 0.5em 0px;
     text-align: right;
     clear: both;
@@ -235,36 +236,48 @@ class dcSocialShare
 
 .share .share-twitter {
 	background-image: url("PF-PATH/icon-twitter.png");
-    background-image: url("PF-PATH/icon-twitter.svg"), none;
 }
-.share .share-twitter:hover {
-	background-color: #78cbef;
-}
-
 .share .share-fb {
 	background-image: url("PF-PATH/icon-facebook.png");
-    background-image: url("PF-PATH/icon-facebook.svg"), none;
-}
-.share .share-fb:hover {
-	background-color: #547bbc;
 }
 
 .share .share-gp {
 	background-image: url("PF-PATH/icon-gplus.png");
-    background-image: url("PF-PATH/icon-gplus.svg"), none;
+}
+.share .share-mail {
+	background-image: url("PF-PATH/icon-email.png");
+}
+
+.share .share-twitter:hover {
+	background-color: #78cbef;
+}
+.share .share-fb:hover {
+	background-color: #547bbc;
 }
 .share .share-gp:hover {
 	background-color: #d30e60;
 }
-
-.share .share-mail {
-	background-image: url("PF-PATH/icon-email.png");
-    background-image: url("PF-PATH/icon-email.svg"), none;
-}
 .share .share-mail:hover {
 	background-color: #99c122;
 }
-EOT;
+EOT1;
+			if (version_compare($GLOBALS['core']->getVersion('core'),'2.8-r3014','>=')) {
+				$ret .= "\n".'/* Dotclear 2.8 and later specific */'."\n";
+				$ret .= <<<EOT2
+.share .share-twitter {
+    background-image: url("PF-PATH/icon-twitter.svg"), none;
+}
+.share .share-fb {
+    background-image: url("PF-PATH/icon-facebook.svg"), none;
+}
+.share .share-gp {
+    background-image: url("PF-PATH/icon-gplus.svg"), none;
+}
+.share .share-mail {
+    background-image: url("PF-PATH/icon-email.svg"), none;
+}
+EOT2;
+			}
 			$base = html::stripHostURL($GLOBALS['core']->blog->getQmarkURL().'pf=socialShare/img');
 			$s = str_replace('PF-PATH', $base, $ret);
 		}

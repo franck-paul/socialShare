@@ -12,6 +12,7 @@ Default style for social share links
 .share {
     font-size: 0.875em;
     margin-top: 1.5em;
+    margin-bottom: 1.5em;
     padding: 0.5em 0px;
     text-align: right;
     clear: both;
@@ -75,3 +76,6 @@ Default style for social share links
 .share .share-mail:hover {
 	background-color: #99c122;
 }
+
+
+Note: the SVG icons will not be functionnal before Dotclear 2.8
