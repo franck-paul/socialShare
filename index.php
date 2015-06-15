@@ -167,7 +167,7 @@ echo
 '<p>'.form::checkbox('ssb_on_page',1,$ssb_on_page).' '.
 '<label for="ssb_on_page" class="classic">'.__('Add social sharing buttons on pages').'</label></p>'.
 '<p>'.form::checkbox('ssb_on_single_only',1,$ssb_on_single_only).' '.
-'<label for="ssb_on_page" class="classic">'.__('Add social sharing buttons only on single display (post or page)').'</label></p>'.
+'<label for="ssb_on_single_only" class="classic">'.__('Add social sharing buttons only on single display (post or page)').'</label></p>'.
 
 '<h3>'.__('Position').'</h3>'.
 

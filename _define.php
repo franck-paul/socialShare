@@ -14,8 +14,8 @@ if (!defined('DC_RC_PATH')) { return; }
 
 $this->registerModule(
 	/* Name */				"socialShare",
-	/* Description*/		"Add socialS networks sharing buttons to your posts and pages",
-	/* Author */			"Franck Paul",
+	/* Description*/		"Add social networks sharing buttons to your posts and pages",
+	/* Author */			"Franck Paul, Kozlika",
 	/* Version */			'0.1',
 	array(
 		/* Permissions */	'permissions' =>	'admin',
