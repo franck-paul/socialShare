@@ -36,6 +36,8 @@ if (is_null($core->blog->settings->socialShare->active)) {
 		$core->blog->settings->socialShare->put('use_style',0,'integer','CSS style used',false);
 		$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false);
 
+		$core->blog->settings->socialShare->put('twitter_account','','string','Twitter account to use with Twitter button',false);
+
 		$core->blog->triggerBlog();
 		http::redirect($p_url);
 	}
@@ -71,6 +73,8 @@ $ssb_prefix = $core->blog->settings->socialShare->prefix;
 $ssb_use_style = (integer) $core->blog->settings->socialShare->use_style;
 $ssb_style = $core->blog->settings->socialShare->style;
 
+$ssb_twitter_account = $core->blog->settings->socialShare->twitter_account;
+
 if (!empty($_POST))
 {
 	try
@@ -95,6 +99,8 @@ if (!empty($_POST))
 		$ssb_use_style = abs((integer)$_POST['ssb_use_style']);
 		$ssb_style = trim($_POST['ssb_style']);
 
+		$ssb_twitter_account = trim(html::escapeHTML($_POST['ssb_twitter_account']));
+
 		# Everything's fine, save options
 		$core->blog->settings->addNamespace('socialShare');
 
@@ -117,6 +123,8 @@ if (!empty($_POST))
 		$core->blog->settings->socialShare->put('prefix',$ssb_prefix);
 		$core->blog->settings->socialShare->put('use_style',$ssb_use_style);
 		$core->blog->settings->socialShare->put('style',$ssb_style);
+
+		$core->blog->settings->socialShare->put('twitter_account',$ssb_twitter_account);
 
 		$core->blog->triggerBlog();
 
@@ -151,6 +159,8 @@ echo
 
 '<h3>'.__('Buttons').'</h3>'.
 
+'<div class="two-cols">'.
+'<div class="col">'.
 '<p>'.form::checkbox('ssb_twitter',1,$ssb_twitter).' '.
 '<label for="ssb_twitter" class="classic">'.__('Add Twitter sharing button').'</label></p>'.
 '<p>'.form::checkbox('ssb_facebook',1,$ssb_facebook).' '.
@@ -159,6 +169,14 @@ echo
 '<label for="ssb_google" class="classic">'.__('Add Google+ sharing button').'</label></p>'.
 '<p>'.form::checkbox('ssb_mail',1,$ssb_twitter).' '.
 '<label for="ssb_mail" class="classic">'.__('Add Mail sharing button').'</label></p>'.
+'</div>'.
+'<div class="col">'.
+'<p><label for="ssb_twitter_account" class="classic">'.__('Twitter account:').'</label> '.
+form::field('ssb_twitter_account',30,128,html::escapeHTML($ssb_twitter_account)).'</p>'.
+'<p class="form-note">'.__('This will be used as "via" in tweet rather than the blog name (if not empty).').'</p>'.
+'</div>'.
+'</div>'.
+'<br class="clear" />'. //Opera sucks
 
 '<h3>'.__('Options').'</h3>'.
 

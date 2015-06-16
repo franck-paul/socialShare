@@ -41,6 +41,8 @@ try
 	$core->blog->settings->socialShare->put('use_style',0,'integer','CSS styles used',false,true);
 	$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false,true);
 
+	$core->blog->settings->socialShare->put('twitter_account','','string','Twitter account to use with Twitter button',false,true);
+
 	$core->setVersion('socialShare',$new_version);
 
 	return true;
