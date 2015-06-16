@@ -167,7 +167,7 @@ echo
 '<label for="ssb_facebook" class="classic">'.__('Add Facebook sharing button').'</label></p>'.
 '<p>'.form::checkbox('ssb_google',1,$ssb_google).' '.
 '<label for="ssb_google" class="classic">'.__('Add Google+ sharing button').'</label></p>'.
-'<p>'.form::checkbox('ssb_mail',1,$ssb_twitter).' '.
+'<p>'.form::checkbox('ssb_mail',1,$ssb_mail).' '.
 '<label for="ssb_mail" class="classic">'.__('Add Mail sharing button').'</label></p>'.
 '</div>'.
 '<div class="col">'.
@@ -209,7 +209,7 @@ $i = 0;
 foreach ($ssb_use_styles as $k => $v)
 {
 	echo '<p><label for="ssb_use_style_'.$i.'" class="classic">'.
-	form::radio(array('ssb_use_style','ssb_use_style-'.$i),$k,$ssb_use_style == $k).' '.$v.'</label></p>';
+	form::radio(array('ssb_use_style','ssb_use_style_'.$i),$k,$ssb_use_style == $k).' '.$v.'</label></p>';
 	$i++;
 }
 echo

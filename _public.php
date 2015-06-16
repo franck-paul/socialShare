@@ -144,7 +144,7 @@ class dcSocialShare
 						'title="'.__('Share this on Twitter').'" '.
 						'href="'.$share_url.'"'.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700\');return false;">'."\n".
-					__('Twitter')."\n".
+					'<span>'.__('Twitter').'</span>'."\n".
 					'</a>'."\n".
 					'</li>'."\n";
 			}
@@ -161,7 +161,7 @@ class dcSocialShare
 						'title="'.__('Share this on Facebook').'" '.
 						'href="'.$share_url.'"'.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;">'."\n".
-					__('Facebook')."\n".
+					'<span>'.__('Facebook').'</span>'."\n".
 					'</a>'."\n".
 					'</li>'."\n";
 			}
@@ -178,7 +178,7 @@ class dcSocialShare
 						'title="'.__('Share this on Google+').'" '.
 						'href="'.$share_url.'"'.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650\');return false;">'."\n".
-					__('Google+')."\n".
+					'<span>'.__('Google+').'</span>'."\n".
 					'</a>'."\n".
 					'</li>'."\n";
 			}
@@ -194,7 +194,7 @@ class dcSocialShare
 					'<a class="share-mail" target="_blank" rel="nofollow" '.
 						'title="'.__('Share this by mail').'" '.
 						'href="'.$share_url.'">'."\n".
-					__('Mail')."\n".
+					'<span>'.__('Mail').'</span>'."\n".
 					'</a>'."\n".
 					'</li>'."\n";
 			}
