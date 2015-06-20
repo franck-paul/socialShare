@@ -77,14 +77,13 @@ class dcSocialShare
 		if ($core->blog->settings->socialShare->active && $core->blog->settings->socialShare->template_tag)
 		{
 			$f = $core->tpl->getFilters($attr);
-			$url = sprintf($f,$_ctx->posts->getURL());
-			$ret = self::socialShare(
-				$url,
-				$_ctx->posts->post_title,
-				($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
-				$core->blog->name,
-				$core->blog->settings->socialShare->prefix,
-				$core->blog->settings->socialShare->twitter_account);
+			$ret = '<?php echo dcSocialShare::socialShare('.
+				sprintf($f,'$_ctx->posts->getURL()').','.
+				sprintf($f,'$_ctx->posts->post_title').','.
+				sprintf($f,'($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang)').','.
+				'$core->blog->settings->socialShare->prefix'.','.
+				'$core->blog->settings->socialShare->twitter_account'.
+				'); ?>'."\n";
 		}
 		return $ret;
 	}
