@@ -17,7 +17,7 @@ Markup
             <a  class="share-twitter"
                 target="_blank"
                 title="Share this post on Twitter"
-                href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via=<BLOGNAME>/<TWITTER-ACCOUNT>"
+                href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via="<TWITTER-ACCOUNT>"
                 rel="nofollow"
                 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;">
                     Twitter
