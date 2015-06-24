@@ -36,7 +36,6 @@ class dcSocialShare
 							$_ctx->posts->getURL(),
 							$_ctx->posts->post_title,
 							($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
-							$core->blog->name,
 							$core->blog->settings->socialShare->prefix,
 							$core->blog->settings->socialShare->twitter_account);
 					}
@@ -60,7 +59,6 @@ class dcSocialShare
 							$_ctx->posts->getURL(),
 							$_ctx->posts->post_title,
 							($_ctx->posts->post_lang ? $_ctx->posts->post_lang : $core->blog->settings->system->lang),
-							$core->blog->name,
 							$core->blog->settings->socialShare->prefix,
 							$core->blog->settings->socialShare->twitter_account);
 					}
@@ -114,7 +112,7 @@ class dcSocialShare
 
 	// Helpers
 
-	public static function socialShare($url,$title,$lang,$blogname,$prefix,$twitter_account)
+	public static function socialShare($url,$title,$lang,$prefix,$twitter_account)
 	{
 		$ret = '';
 
@@ -133,10 +131,12 @@ class dcSocialShare
 			// Twitter link
 			if ($GLOBALS['core']->blog->settings->socialShare->twitter)
 			{
-				$share_url = sprintf('https://twitter.com/share?url=%s&amp;text=%s&amp;via=%s',
+				$share_url = sprintf('https://twitter.com/share?url=%s&amp;text=%s',
 					html::sanitizeURL($url),
-					html::escapeHTML($title),
-					($twitter_account == '' ? html::escapeHTML($blogname) : html::escapeHTML($twitter_account)));
+					html::escapeHTML($title));
+				if ($twitter_account != '') {
+					$share_url .= '&amp;via='.html::escapeHTML($twitter_account);
+				}
 				$ret .=
 					'<li>'."\n".
 					'<a class="share-twitter" target="_blank" rel="nofollow" '.
