@@ -141,7 +141,7 @@ class dcSocialShare
 					'<li>'."\n".
 					'<a class="share-twitter" target="_blank" rel="nofollow" '.
 						'title="'.__('Share this on Twitter').'" '.
-						'href="'.$share_url.'"'.
+						'href="'.$share_url.'" '.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700\');return false;">'."\n".
 					'<span>'.__('Twitter').'</span>'."\n".
 					'</a>'."\n".
@@ -158,7 +158,7 @@ class dcSocialShare
 					'<li>'."\n".
 					'<a class="share-fb" target="_blank" rel="nofollow" '.
 						'title="'.__('Share this on Facebook').'" '.
-						'href="'.$share_url.'"'.
+						'href="'.$share_url.'" '.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700\');return false;">'."\n".
 					'<span>'.__('Facebook').'</span>'."\n".
 					'</a>'."\n".
@@ -175,7 +175,7 @@ class dcSocialShare
 					'<li>'."\n".
 					'<a class="share-gp" target="_blank" rel="nofollow" '.
 						'title="'.__('Share this on Google+').'" '.
-						'href="'.$share_url.'"'.
+						'href="'.$share_url.'" '.
 						'onclick="javascript:window.open(this.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650\');return false;">'."\n".
 					'<span>'.__('Google+').'</span>'."\n".
 					'</a>'."\n".
