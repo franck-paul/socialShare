@@ -296,8 +296,8 @@ EOT1;
 }
 EOT2;
 		}
-		$base = html::stripHostURL($GLOBALS['core']->blog->getQmarkURL().'pf=socialShare/img');
-		$s = str_replace('PF-PATH', $base, $ret);
+		$base = $GLOBALS['core']->blog->getPF('socialShare/img');
+		$s = str_replace('PF-PATH',$base,$ret);
 
 		return $s;
 	}
