@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 10:17+0200\n"
+"POT-Creation-Date: 2017-02-08 10:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,29 +25,35 @@ msgstr "socialShare"
 msgid "Share this entry:"
 msgstr "Partager cette entrée :"
 
-msgid "Share this on Twitter"
-msgstr "Partager ceci sur Twitter"
-
 msgid "Twitter"
 msgstr "Twitter"
 
-msgid "Share this on Facebook"
-msgstr "Partager ceci sur Facebook"
+msgid "Share this on Twitter"
+msgstr "Partager ceci sur Twitter"
 
 msgid "Facebook"
 msgstr "Facebook"
 
-msgid "Share this on Google+"
-msgstr "Partager ceci sur Google+"
+msgid "Share this on Facebook"
+msgstr "Partager ceci sur Facebook"
 
 msgid "Google+"
 msgstr "Google+"
 
-msgid "Share this by mail"
-msgstr "Partager ceci par email"
+msgid "Share this on Google+"
+msgstr "Partager ceci sur Google+"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Share this on LinkedIn"
+msgstr "Partager ceci sur LinkedIn"
 
 msgid "Mail"
 msgstr "email"
+
+msgid "Share this by mail"
+msgstr "Partager ceci par email"
 
 msgid "Use default CSS styles"
 msgstr "Utiliser les styles CSS par défaut"
@@ -72,6 +78,9 @@ msgstr "Ajoute le bouton de partage vers Facebook"
 
 msgid "Add Google+ sharing button"
 msgstr "Ajoute le bouton de partage vers Google+"
+
+msgid "Add LinkedIn sharing button"
+msgstr "Ajoute le bouton de partage vers LinkedIn"
 
 msgid "Add Mail sharing button"
 msgstr "Ajoute le bouton de partage par email"

@@ -4,7 +4,7 @@ socialShare plugin for Dotclear 2
 Summary
 -------
 
-This plugin adds social share buttons to posts and/or pages, for Twitter, Facebook, Google+ social networks and by mail.
+This plugin adds social share buttons to posts and/or pages, for Twitter, Facebook, Google+, LinkedIn social networks and by mail.
 
 
 Markup
@@ -40,6 +40,17 @@ Markup
                 target="_blank"
                 title="Share this post on Google+"
                 href="https://plus.google.com/share?url=<URL>&amp;hl=<LANGUAGE>"
+                rel="nofollow"
+                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+                    Google+
+            </a>
+        </li>
+        <li>
+            <a
+                class="share-in"
+                target="_blank"
+                title="Share this post on LinkedIn"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&amp;title=<TITRE>"
                 rel="nofollow"
                 onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
                     Google+
@@ -121,6 +132,14 @@ Default style for social share links
 }
 .share .share-gp:hover {
 	background-color: #d30e60;
+}
+
+.share .share-in {
+    background-image: url("index.php?pf=socialShare/img/icon-linkedin.png");
+    background-image: url("index.php?pf=socialShare/img/icon-linkedin.svg"), none;
+}
+.share .share-in:hover {
+    background-color: #1686b0;
 }
 
 .share .share-mail {
