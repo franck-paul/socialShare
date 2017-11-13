@@ -16,7 +16,7 @@ $this->registerModule(
 	/* Name */				"socialShare",
 	/* Description*/		"Add social networks sharing buttons to your posts and pages",
 	/* Author */			"Franck Paul, Kozlika",
-	/* Version */			'0.4.1',
+	/* Version */			'0.4.2',
 	array(
 		/* Dependencies */	'requires' =>		array(array('core','2.9')),
 		/* Permissions */	'permissions' =>	'admin',
