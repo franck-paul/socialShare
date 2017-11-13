@@ -141,7 +141,7 @@ class dcSocialShare
 				$href_text = __('Twitter');
 				$href_title = __('Share this on Twitter');
 				$ret .= <<<TWITTER
-<li><a class="share-twitter" target="_blank" rel="nofollow" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><span>$href_text</span></a></li>
+<li><a class="share-twitter" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><span>$href_text</span></a></li>
 TWITTER;
 			}
 
@@ -154,7 +154,7 @@ TWITTER;
 				$href_text = __('Facebook');
 				$href_title = __('Share this on Facebook');
 				$ret .= <<<FACEBOOK
-<li><a class="share-fb" target="_blank" rel="nofollow" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><span>$href_text</span></a></li>
+<li><a class="share-fb" target="_blank" rel="nofollow noopener noreferrer title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><span>$href_text</span></a></li>
 FACEBOOK;
 			}
 
@@ -167,7 +167,7 @@ FACEBOOK;
 				$href_text = __('Google+');
 				$href_title = __('Share this on Google+');
 				$ret .= <<<GOOGLEPLUS
-<li><a class="share-gp" target="_blank" rel="nofollow" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+<li><a class="share-gp" target="_blank" rel="nofollow noopener noreferrer title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
 GOOGLEPLUS;
 			}
 
@@ -180,7 +180,7 @@ GOOGLEPLUS;
 				$href_text = __('LinkedIn');
 				$href_title = __('Share this on LinkedIn');
 				$ret .= <<<LINKEDIN
-<li><a class="share-in" target="_blank" rel="nofollow" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+<li><a class="share-in" target="_blank" rel="nofollow noopener noreferrer title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
 LINKEDIN;
 			}
 
@@ -193,7 +193,7 @@ LINKEDIN;
 				$href_text = __('Mail');
 				$href_title = __('Share this by mail');
 				$ret .= <<<MAILLINK
-<li><a class="share-mail" target="_blank" rel="nofollow" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-mail" target="_blank" rel="nofollow noopener noreferrer title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 MAILLINK;
 			}
 

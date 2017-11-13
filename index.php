@@ -182,7 +182,6 @@ form::field('ssb_twitter_account',30,128,html::escapeHTML($ssb_twitter_account))
 '<p class="form-note">'.__('This will be used as "via" in tweet rather than the blog name (if not empty).').'</p>'.
 '</div>'.
 '</div>'.
-'<br class="clear" />'. //Opera sucks
 
 '<h3>'.__('Options').'</h3>'.
 
