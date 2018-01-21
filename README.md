@@ -60,17 +60,6 @@ Markup
         </li>
         <li>
             <a
-                class="share-mastodon"
-                target="_blank"
-                title="Share this post on Mastodon"
-                href="<Mastodon-Instance-URL>/share?title=<TITRE>+<URL>"
-                rel="nofollow"
-                onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
-                    Mastodon
-            </a>
-        </li>
-        <li>
-            <a
                 class="share-mail"
                 target="_blank"
                 title="Share this post by email"
@@ -153,14 +142,6 @@ Default style for social share links
 }
 .share .share-in:hover {
     background-color: #1686b0;
-}
-
-.share .share-mastodon {
-    background-image: url("index.php?pf=socialShare/img/icon-mastodon.png");
-    background-image: url("index.php?pf=socialShare/img/icon-mastodon.svg"), none;
-}
-.share .share-mastodon:hover {
-    background-color: #3088d4;
 }
 
 .share .share-mail {

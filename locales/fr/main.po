@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-21 12:50+0100\n"
+"POT-Creation-Date: 2018-01-21 16:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,12 +49,6 @@ msgstr "LinkedIn"
 msgid "Share this on LinkedIn"
 msgstr "Partager ceci sur LinkedIn"
 
-msgid "Mastodon"
-msgstr "Mastodon"
-
-msgid "Share this on Mastodon"
-msgstr "Partager ceci sur Mastodon"
-
 msgid "Mail"
 msgstr "email"
 
@@ -88,9 +82,6 @@ msgstr "Ajoute le bouton de partage vers Google+"
 msgid "Add LinkedIn sharing button"
 msgstr "Ajoute le bouton de partage vers LinkedIn"
 
-msgid "Add Mastodon sharing button"
-msgstr "Ajoute le bouton de partage vers Mastodon"
-
 msgid "Add Mail sharing button"
 msgstr "Ajoute le bouton de partage par email"
 
@@ -99,9 +90,6 @@ msgstr "Compte Twitter :"
 
 msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
 msgstr "Sera utilisé dans le \"via\" du tweet plutôt que le nom du blog (si non vide)."
-
-msgid "Mastodon instance URL:"
-msgstr "URL de l'instance Mastodon :"
 
 msgid "Add social sharing buttons on posts"
 msgstr "Ajoute les boutons de partage pour les billets"

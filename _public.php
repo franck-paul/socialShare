@@ -35,8 +35,7 @@ class dcSocialShare
                             $_ctx->posts->post_title,
                             ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
                             $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account,
-                            $core->blog->settings->socialShare->mastodon_url);
+                            $core->blog->settings->socialShare->twitter_account);
                     }
                 }
             }
@@ -57,8 +56,7 @@ class dcSocialShare
                             $_ctx->posts->post_title,
                             ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
                             $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account,
-                            $core->blog->settings->socialShare->mastodon_url);
+                            $core->blog->settings->socialShare->twitter_account);
                     }
                 }
             }
@@ -77,8 +75,7 @@ class dcSocialShare
             sprintf($f, '$_ctx->posts->post_title') . ',' .
             sprintf($f, '($_ctx->posts->post_lang ?: $core->blog->settings->system->lang)') . ',' .
                 '$core->blog->settings->socialShare->prefix' . ',' .
-                '$core->blog->settings->socialShare->twitter_account' . ',' .
-                '$core->blog->settings->socialShare->mastodon_url' .
+                '$core->blog->settings->socialShare->twitter_account' .
                 '); ?>' . "\n";
         }
         return $ret;
@@ -109,7 +106,7 @@ class dcSocialShare
 
     // Helpers
 
-    public static function socialShare($url, $title, $lang, $prefix, $twitter_account, $mastodon_url)
+    public static function socialShare($url, $title, $lang, $prefix, $twitter_account)
     {
         $ret = '';
 
@@ -117,8 +114,7 @@ class dcSocialShare
             $GLOBALS['core']->blog->settings->socialShare->facebook ||
             $GLOBALS['core']->blog->settings->socialShare->google ||
             $GLOBALS['core']->blog->settings->socialShare->linkedin ||
-            $GLOBALS['core']->blog->settings->socialShare->mail ||
-            $GLOBALS['core']->blog->settings->socialShare->mastodon) {
+            $GLOBALS['core']->blog->settings->socialShare->mail) {
             $ret =
                 '<div class="share">' . "\n";
             if ($prefix) {
@@ -175,20 +171,6 @@ GOOGLEPLUS;
                 $ret .= <<<LINKEDIN
 <li><a class="share-in" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
 LINKEDIN;
-            }
-
-            // Mastodon link
-            if ($GLOBALS['core']->blog->settings->socialShare->mastodon && $mastodon_url != '') {
-                $mastodon_url = rtrim($mastodon_url, '/');
-                $share_url    = sprintf('%s/share?text=%s+%s',
-                    $mastodon_url,
-                    html::escapeHTML($title),
-                    html::sanitizeURL($url));
-                $href_text  = __('Mastodon');
-                $href_title = __('Share this on Mastodon');
-                $ret .= <<<MASTODON
-<li><a class="share-mastodon" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
-MASTODON;
             }
 
             // Mail link
@@ -270,9 +252,6 @@ MAILLINK;
 .share .share-in {
 	background-image: url("$base/icon-linkedin.png");
 }
-.share .share-mastodon {
-	background-image: url("$base/icon-mastodon.png");
-}
 .share .share-mail {
 	background-image: url("$base/icon-email.png");
 }
@@ -288,9 +267,6 @@ MAILLINK;
 }
 .share .share-in:hover {
 	background-color: #1686b0;
-}
-.share .share-mastodon:hover {
-	background-color: #3088d4;
 }
 .share .share-mail:hover {
 	background-color: #99c122;
@@ -310,9 +286,6 @@ EOT1;
 }
 .share .share-in {
     background-image: url("$base/icon-linkedin.svg"), none;
-}
-.share .share-mastodon {
-    background-image: url("$base/icon-mastodon.svg"), none;
 }
 .share .share-mail {
     background-image: url("$base/icon-email.svg"), none;
