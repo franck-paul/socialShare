@@ -22,6 +22,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
 		$core->blog->settings->socialShare->put('facebook',true,'boolean','Add Facebook button',false);
 		$core->blog->settings->socialShare->put('google',true,'boolean','Add Google+ button',false);
 		$core->blog->settings->socialShare->put('linkedin',true,'boolean','Add LinkedIn button',false);
+		$core->blog->settings->socialShare->put('mastodon',true,'boolean','Add Mastodon button',false);
 		$core->blog->settings->socialShare->put('mail',true,'boolean','Add mail button',false);
 
 		$core->blog->settings->socialShare->put('on_post',true,'boolean','Add social sharing buttons on post',false);
@@ -38,6 +39,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
 		$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false);
 
 		$core->blog->settings->socialShare->put('twitter_account','','string','Twitter account to use with Twitter button',false);
+		$core->blog->settings->socialShare->put('mastodon_url','','string','Mastodon instance URL to use with Mastodon button',false);
 
 		$core->blog->triggerBlog();
 		http::redirect($p_url);
@@ -60,6 +62,7 @@ $ssb_twitter = (boolean) $core->blog->settings->socialShare->twitter;
 $ssb_facebook = (boolean) $core->blog->settings->socialShare->facebook;
 $ssb_google = (boolean) $core->blog->settings->socialShare->google;
 $ssb_linkedin = (boolean) $core->blog->settings->socialShare->linkedin;
+$ssb_mastodon = (boolean) $core->blog->settings->socialShare->mastodon;
 $ssb_mail = (boolean) $core->blog->settings->socialShare->mail;
 
 $ssb_on_post = (boolean) $core->blog->settings->socialShare->on_post;
@@ -76,6 +79,7 @@ $ssb_use_style = (integer) $core->blog->settings->socialShare->use_style;
 $ssb_style = $core->blog->settings->socialShare->style;
 
 $ssb_twitter_account = $core->blog->settings->socialShare->twitter_account;
+$ssb_mastodon_url = $core->blog->settings->socialShare->mastodon_url;
 
 if (!empty($_POST))
 {
@@ -87,6 +91,7 @@ if (!empty($_POST))
 		$ssb_facebook = !empty($_POST['ssb_facebook']);
 		$ssb_google = !empty($_POST['ssb_google']);
 		$ssb_linkedin = !empty($_POST['ssb_linkedin']);
+		$ssb_mastodon = !empty($_POST['ssb_mastodon']);
 		$ssb_mail = !empty($_POST['ssb_mail']);
 
 		$ssb_on_post = !empty($_POST['ssb_on_post']);
@@ -103,6 +108,7 @@ if (!empty($_POST))
 		$ssb_style = trim($_POST['ssb_style']);
 
 		$ssb_twitter_account = trim(html::escapeHTML($_POST['ssb_twitter_account']));
+		$ssb_mastodon_url = trim($_POST['ssb_mastodon_url']);
 
 		# Everything's fine, save options
 		$core->blog->settings->addNamespace('socialShare');
@@ -113,6 +119,7 @@ if (!empty($_POST))
 		$core->blog->settings->socialShare->put('facebook',$ssb_facebook);
 		$core->blog->settings->socialShare->put('google',$ssb_google);
 		$core->blog->settings->socialShare->put('linkedin',$ssb_linkedin);
+		$core->blog->settings->socialShare->put('mastodon',$ssb_mastodon);
 		$core->blog->settings->socialShare->put('mail',$ssb_mail);
 
 		$core->blog->settings->socialShare->put('on_post',$ssb_on_post);
@@ -129,6 +136,7 @@ if (!empty($_POST))
 		$core->blog->settings->socialShare->put('style',$ssb_style);
 
 		$core->blog->settings->socialShare->put('twitter_account',$ssb_twitter_account);
+		$core->blog->settings->socialShare->put('mastodon_url',$ssb_mastodon_url);
 
 		$core->blog->triggerBlog();
 
@@ -163,23 +171,27 @@ echo
 
 '<h3>'.__('Buttons').'</h3>'.
 
-'<div class="two-cols">'.
+'<div class="two-cols clearfix">'.
 '<div class="col">'.
-'<p>'.form::checkbox('ssb_twitter',1,$ssb_twitter).' '.
-'<label for="ssb_twitter" class="classic">'.__('Add Twitter sharing button').'</label></p>'.
-'<p>'.form::checkbox('ssb_facebook',1,$ssb_facebook).' '.
-'<label for="ssb_facebook" class="classic">'.__('Add Facebook sharing button').'</label></p>'.
-'<p>'.form::checkbox('ssb_google',1,$ssb_google).' '.
-'<label for="ssb_google" class="classic">'.__('Add Google+ sharing button').'</label></p>'.
-'<p>'.form::checkbox('ssb_linkedin',1,$ssb_linkedin).' '.
-'<label for="ssb_linkedin" class="classic">'.__('Add LinkedIn sharing button').'</label></p>'.
-'<p>'.form::checkbox('ssb_mail',1,$ssb_mail).' '.
-'<label for="ssb_mail" class="classic">'.__('Add Mail sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_twitter',1,$ssb_twitter).' '.
+	'<label for="ssb_twitter" class="classic">'.__('Add Twitter sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_facebook',1,$ssb_facebook).' '.
+	'<label for="ssb_facebook" class="classic">'.__('Add Facebook sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_google',1,$ssb_google).' '.
+	'<label for="ssb_google" class="classic">'.__('Add Google+ sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_linkedin',1,$ssb_linkedin).' '.
+	'<label for="ssb_linkedin" class="classic">'.__('Add LinkedIn sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_mastodon',1,$ssb_mastodon).' '.
+	'<label for="ssb_mastodon" class="classic">'.__('Add Mastodon sharing button').'</label></p>'.
+	'<p>'.form::checkbox('ssb_mail',1,$ssb_mail).' '.
+	'<label for="ssb_mail" class="classic">'.__('Add Mail sharing button').'</label></p>'.
 '</div>'.
 '<div class="col">'.
-'<p><label for="ssb_twitter_account" class="classic">'.__('Twitter account:').'</label> '.
-form::field('ssb_twitter_account',30,128,html::escapeHTML($ssb_twitter_account)).'</p>'.
-'<p class="form-note">'.__('This will be used as "via" in tweet rather than the blog name (if not empty).').'</p>'.
+	'<p><label for="ssb_twitter_account" class="classic">'.__('Twitter account:').'</label> '.
+	form::field('ssb_twitter_account',30,128,html::escapeHTML($ssb_twitter_account)).'</p>'.
+	'<p class="form-note">'.__('This will be used as "via" in tweet rather than the blog name (if not empty).').'</p>'.
+	'<p><label for="ssb_mastodon_url" class="classic">'.__('Mastodon instance URL:').'</label> '.
+	form::field('ssb_mastodon_url',30,255,html::escapeHTML($ssb_mastodon_url)).'</p>'.
 '</div>'.
 '</div>'.
 

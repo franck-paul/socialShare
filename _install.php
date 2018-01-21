@@ -27,6 +27,7 @@ try
 	$core->blog->settings->socialShare->put('facebook',true,'boolean','Add Facebook button',false,true);
 	$core->blog->settings->socialShare->put('google',true,'boolean','Add Google+ button',false,true);
 	$core->blog->settings->socialShare->put('linkedin',true,'boolean','Add LinkedIn button',false,true);
+	$core->blog->settings->socialShare->put('mastodon',true,'boolean','Add Mastodon button',false,true);
 	$core->blog->settings->socialShare->put('mail',true,'boolean','Add mail button',false,true);
 
 	$core->blog->settings->socialShare->put('on_post',true,'boolean','Add social sharing buttons on post',false,true);
@@ -43,6 +44,7 @@ try
 	$core->blog->settings->socialShare->put('style','','string','Social sharing buttons style',false,true);
 
 	$core->blog->settings->socialShare->put('twitter_account','','string','Twitter account to use with Twitter button',false,true);
+	$core->blog->settings->socialShare->put('mastodon_url','','string','Mastodon instance URL to use with Mastodon button',false,true);
 
 	$core->setVersion('socialShare',$new_version);
 

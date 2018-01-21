@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 socialShare module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 10:27+0100\n"
+"POT-Creation-Date: 2018-01-21 12:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,162 +16,178 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../hg-plugins/socialShare/_admin.php:16
+#: ../hg-plugins/socialShare//_admin.php:16
 msgid "Add social networks sharing buttons to your posts and pages"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_admin.php:16
-#: ../hg-plugins/socialShare/_admin.php:18
-#: ../hg-plugins/socialShare/index.php:147
-#: ../hg-plugins/socialShare/index.php:155
+#: ../hg-plugins/socialShare//_admin.php:16
+#: ../hg-plugins/socialShare//_admin.php:18
+#: ../hg-plugins/socialShare//index.php:155
+#: ../hg-plugins/socialShare//index.php:163
 msgid "socialShare"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_install.php:41
-#: ../hg-plugins/socialShare/index.php:36
+#: ../hg-plugins/socialShare//_install.php:41
+#: ../hg-plugins/socialShare//index.php:37
 msgid "Share this entry:"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:141
+#: ../hg-plugins/socialShare//_public.php:137
 msgid "Twitter"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:142
+#: ../hg-plugins/socialShare//_public.php:138
 msgid "Share this on Twitter"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:154
+#: ../hg-plugins/socialShare//_public.php:149
 msgid "Facebook"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:155
+#: ../hg-plugins/socialShare//_public.php:150
 msgid "Share this on Facebook"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:167
+#: ../hg-plugins/socialShare//_public.php:161
 msgid "Google+"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:168
+#: ../hg-plugins/socialShare//_public.php:162
 msgid "Share this on Google+"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:180
+#: ../hg-plugins/socialShare//_public.php:173
 msgid "LinkedIn"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:181
+#: ../hg-plugins/socialShare//_public.php:174
 msgid "Share this on LinkedIn"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:193
+#: ../hg-plugins/socialShare//_public.php:187
+msgid "Mastodon"
+msgstr ""
+
+#: ../hg-plugins/socialShare//_public.php:188
+msgid "Share this on Mastodon"
+msgstr ""
+
+#: ../hg-plugins/socialShare//_public.php:199
 msgid "Mail"
 msgstr ""
 
-#: ../hg-plugins/socialShare/_public.php:194
+#: ../hg-plugins/socialShare//_public.php:200
 msgid "Share this by mail"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:51
+#: ../hg-plugins/socialShare//index.php:53
 msgid "Use default CSS styles"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:52
+#: ../hg-plugins/socialShare//index.php:54
 msgid "Use theme's CSS styles"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:53
+#: ../hg-plugins/socialShare//index.php:55
 msgid "Use user-defined styles"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:162
+#: ../hg-plugins/socialShare//index.php:170
 msgid "Activate socialShare plugin"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:164
+#: ../hg-plugins/socialShare//index.php:172
 msgid "Buttons"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:169
+#: ../hg-plugins/socialShare//index.php:177
 msgid "Add Twitter sharing button"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:171
+#: ../hg-plugins/socialShare//index.php:179
 msgid "Add Facebook sharing button"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:173
+#: ../hg-plugins/socialShare//index.php:181
 msgid "Add Google+ sharing button"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:175
+#: ../hg-plugins/socialShare//index.php:183
 msgid "Add LinkedIn sharing button"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:177
+#: ../hg-plugins/socialShare//index.php:185
+msgid "Add Mastodon sharing button"
+msgstr ""
+
+#: ../hg-plugins/socialShare//index.php:187
 msgid "Add Mail sharing button"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:180
+#: ../hg-plugins/socialShare//index.php:190
 msgid "Twitter account:"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:182
+#: ../hg-plugins/socialShare//index.php:192
 msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:190
+#: ../hg-plugins/socialShare//index.php:193
+msgid "Mastodon instance URL:"
+msgstr ""
+
+#: ../hg-plugins/socialShare//index.php:201
 msgid "Add social sharing buttons on posts"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:192
+#: ../hg-plugins/socialShare//index.php:203
 msgid "Add social sharing buttons on pages"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:194
+#: ../hg-plugins/socialShare//index.php:205
 msgid "Add social sharing buttons only on single display (post or page)"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:196
+#: ../hg-plugins/socialShare//index.php:207
 msgid "Position"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:199
+#: ../hg-plugins/socialShare//index.php:210
 msgid "Automatically add social sharing buttons before content"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:201
+#: ../hg-plugins/socialShare//index.php:212
 msgid "Automatically add social sharing buttons after content"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:203
+#: ../hg-plugins/socialShare//index.php:214
 msgid "Add social sharing buttons using template tag"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:204
+#: ../hg-plugins/socialShare//index.php:215
 msgid "The {{tpl:SocialShare}} template tag must be present in your template's file(s)."
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:206
+#: ../hg-plugins/socialShare//index.php:217
 msgid "Advanced options"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:208
+#: ../hg-plugins/socialShare//index.php:219
 msgid "Social sharing buttons text prefix:"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:210
+#: ../hg-plugins/socialShare//index.php:221
 msgid "This will be inserted before buttons (if not empty)."
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:213
+#: ../hg-plugins/socialShare//index.php:224
 msgid "Social sharing buttons CSS styles"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:222
+#: ../hg-plugins/socialShare//index.php:233
 msgid "User defined CSS styles:"
 msgstr ""
 
-#: ../hg-plugins/socialShare/index.php:224
+#: ../hg-plugins/socialShare//index.php:235
 msgid "See the README.md file for HTML markup and example of CSS styles."
 msgstr ""
