@@ -10,16 +10,16 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 # -- END LICENSE BLOCK ------------------------------------
 
-if (!defined('DC_RC_PATH')) { return; }
+if (!defined('DC_RC_PATH')) {return;}
 
 $this->registerModule(
-	/* Name */				"socialShare",
-	/* Description*/		"Add social networks sharing buttons to your posts and pages",
-	/* Author */			"Franck Paul, Kozlika",
-	/* Version */			'0.6',
-	array(
-		/* Dependencies */	'requires' =>		array(array('core','2.9')),
-		/* Permissions */	'permissions' =>	'admin',
-		/* Type */			'type' =>			'plugin'
-	)
+    "socialShare",                                                 // Name
+    "Add social networks sharing buttons to your posts and pages", // Description
+    "Franck Paul, Kozlika",                                        // Author
+    '0.7',                                                         // Version
+    array(
+        'requires'    => array(array('core', '2.9')), // Dependencies
+        'permissions' => 'admin',                     // Permissions
+        'type'        => 'plugin'                    // Type
+    )
 );

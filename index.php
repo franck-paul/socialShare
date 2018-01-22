@@ -22,6 +22,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
         $core->blog->settings->socialShare->put('facebook', true, 'boolean', 'Add Facebook button', false);
         $core->blog->settings->socialShare->put('google', true, 'boolean', 'Add Google+ button', false);
         $core->blog->settings->socialShare->put('linkedin', true, 'boolean', 'Add LinkedIn button', false);
+        $core->blog->settings->socialShare->put('mastodon', true, 'boolean', 'Add Mastodon button', false);
         $core->blog->settings->socialShare->put('mail', true, 'boolean', 'Add mail button', false);
 
         $core->blog->settings->socialShare->put('on_post', true, 'boolean', 'Add social sharing buttons on post', false);
@@ -58,6 +59,7 @@ $ssb_twitter  = (boolean) $core->blog->settings->socialShare->twitter;
 $ssb_facebook = (boolean) $core->blog->settings->socialShare->facebook;
 $ssb_google   = (boolean) $core->blog->settings->socialShare->google;
 $ssb_linkedin = (boolean) $core->blog->settings->socialShare->linkedin;
+$ssb_mastodon = (boolean) $core->blog->settings->socialShare->mastodon;
 $ssb_mail     = (boolean) $core->blog->settings->socialShare->mail;
 
 $ssb_on_post = (boolean) $core->blog->settings->socialShare->on_post;
@@ -84,6 +86,7 @@ if (!empty($_POST)) {
         $ssb_facebook = !empty($_POST['ssb_facebook']);
         $ssb_google   = !empty($_POST['ssb_google']);
         $ssb_linkedin = !empty($_POST['ssb_linkedin']);
+        $ssb_mastodon = !empty($_POST['ssb_mastodon']);
         $ssb_mail     = !empty($_POST['ssb_mail']);
 
         $ssb_on_post = !empty($_POST['ssb_on_post']);
@@ -110,6 +113,7 @@ if (!empty($_POST)) {
         $core->blog->settings->socialShare->put('facebook', $ssb_facebook);
         $core->blog->settings->socialShare->put('google', $ssb_google);
         $core->blog->settings->socialShare->put('linkedin', $ssb_linkedin);
+        $core->blog->settings->socialShare->put('mastodon', $ssb_mastodon);
         $core->blog->settings->socialShare->put('mail', $ssb_mail);
 
         $core->blog->settings->socialShare->put('on_post', $ssb_on_post);
@@ -168,6 +172,8 @@ echo
 '<label for="ssb_google" class="classic">' . __('Add Google+ sharing button') . '</label></p>' .
 '<p>' . form::checkbox('ssb_linkedin', 1, $ssb_linkedin) . ' ' .
 '<label for="ssb_linkedin" class="classic">' . __('Add LinkedIn sharing button') . '</label></p>' .
+'<p>' . form::checkbox('ssb_mastodon', 1, $ssb_mastodon) . ' ' .
+'<label for="ssb_mastodon" class="classic">' . __('Add Mastodon sharing button') . '</label></p>' .
 '<p>' . form::checkbox('ssb_mail', 1, $ssb_mail) . ' ' .
 '<label for="ssb_mail" class="classic">' . __('Add Mail sharing button') . '</label></p>' .
 '</div>' .

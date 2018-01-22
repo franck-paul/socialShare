@@ -114,6 +114,7 @@ class dcSocialShare
             $GLOBALS['core']->blog->settings->socialShare->facebook ||
             $GLOBALS['core']->blog->settings->socialShare->google ||
             $GLOBALS['core']->blog->settings->socialShare->linkedin ||
+            $GLOBALS['core']->blog->settings->socialShare->mastodon ||
             $GLOBALS['core']->blog->settings->socialShare->mail) {
             $ret =
                 '<div class="share">' . "\n";
@@ -171,6 +172,18 @@ GOOGLEPLUS;
                 $ret .= <<<LINKEDIN
 <li><a class="share-in" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
 LINKEDIN;
+            }
+
+            // Mastodon link
+            if ($GLOBALS['core']->blog->settings->socialShare->mastodon) {
+                $share_url = sprintf('web+mastodon://share?text=%s+%s',
+                    html::escapeHTML($title),
+                    html::sanitizeURL($url));
+                $href_text  = __('Mastodon');
+                $href_title = __('Share this on Mastodon');
+                $ret .= <<<MASTODON
+<li><a class="share-mastodon" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+MASTODON;
             }
 
             // Mail link
@@ -252,6 +265,9 @@ MAILLINK;
 .share .share-in {
 	background-image: url("$base/icon-linkedin.png");
 }
+.share .share-mastodon {
+	background-image: url("$base/icon-mastodon.png");
+}
 .share .share-mail {
 	background-image: url("$base/icon-email.png");
 }
@@ -267,6 +283,9 @@ MAILLINK;
 }
 .share .share-in:hover {
 	background-color: #1686b0;
+}
+.share .share-mastodon:hover {
+	background-color: #3088d4;
 }
 .share .share-mail:hover {
 	background-color: #99c122;
@@ -286,6 +305,9 @@ EOT1;
 }
 .share .share-in {
     background-image: url("$base/icon-linkedin.svg"), none;
+}
+.share .share-mastodon {
+    background-image: url("$base/icon-mastodon.svg"), none;
 }
 .share .share-mail {
     background-image: url("$base/icon-email.svg"), none;
