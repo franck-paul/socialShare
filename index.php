@@ -50,7 +50,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
 $ssb_use_styles = array(
     0 => __('Use default CSS styles'),
     1 => __('Use theme\'s CSS styles'),
-    2 => __('Use user-defined styles'),
+    2 => __('Use user-defined styles')
 );
 
 $ssb_active = (boolean) $core->blog->settings->socialShare->active;
@@ -102,7 +102,7 @@ if (!empty($_POST)) {
         $ssb_use_style = abs((integer) $_POST['ssb_use_style']);
         $ssb_style     = trim($_POST['ssb_style']);
 
-        $ssb_twitter_account = trim(html::escapeHTML($_POST['ssb_twitter_account']));
+        $ssb_twitter_account = trim(ltrim(html::escapeHTML($_POST['ssb_twitter_account']), '@'));
 
         # Everything's fine, save options
         $core->blog->settings->addNamespace('socialShare');
@@ -151,7 +151,7 @@ if (!empty($_POST)) {
 echo dcPage::breadcrumb(
     array(
         html::escapeHTML($core->blog->name) => '',
-        __('socialShare')                   => '',
+        __('socialShare')                   => ''
     ));
 echo dcPage::notices();
 

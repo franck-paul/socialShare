@@ -177,7 +177,7 @@ LINKEDIN;
             // Mastodon link
             if ($GLOBALS['core']->blog->settings->socialShare->mastodon) {
                 $share_url = sprintf('web+mastodon://share?text=%s+%s',
-                    html::escapeHTML($title),
+                    str_replace('&amp;', '%26', html::escapeHTML($title)),
                     html::sanitizeURL($url));
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
