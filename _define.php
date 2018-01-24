@@ -18,8 +18,9 @@ $this->registerModule(
     "Franck Paul, Kozlika",                                        // Author
     '0.7.1',                                                       // Version
     array(
-        'requires'    => array(array('core', '2.9')), // Dependencies
-        'permissions' => 'admin',                     // Permissions
-        'type'        => 'plugin'                    // Type
+        'requires'    => array(array('core', '2.9')),            // Dependencies
+        'permissions' => 'admin',                                // Permissions
+        'support'     => 'https://open-time.net/?q=socialShare', // Support URL
+        'type'        => 'plugin'                               // Type
     )
 );
