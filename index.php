@@ -35,6 +35,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
         $core->blog->settings->socialShare->put('template_tag', false, 'boolean', 'Display social sharing buttons using template tag', false);
 
         $core->blog->settings->socialShare->put('prefix', __('Share this entry:'), 'string', 'Social sharing buttons prefix text', false);
+        $core->blog->settings->socialShare->put('intro', '', 'string', 'Title introduction text', false);
         $core->blog->settings->socialShare->put('use_style', 0, 'integer', 'CSS style used', false);
         $core->blog->settings->socialShare->put('style', '', 'string', 'Social sharing buttons style', false);
 
@@ -72,6 +73,7 @@ $ssb_after_content  = (boolean) $core->blog->settings->socialShare->after_conten
 $ssb_template_tag   = (boolean) $core->blog->settings->socialShare->template_tag;
 
 $ssb_prefix    = $core->blog->settings->socialShare->prefix;
+$ssb_intro     = $core->blog->settings->socialShare->intro;
 $ssb_use_style = (integer) $core->blog->settings->socialShare->use_style;
 $ssb_style     = $core->blog->settings->socialShare->style;
 
@@ -99,6 +101,7 @@ if (!empty($_POST)) {
         $ssb_template_tag   = !empty($_POST['ssb_template_tag']);
 
         $ssb_prefix    = trim(html::escapeHTML($_POST['ssb_prefix']));
+        $ssb_intro     = trim(html::escapeHTML($_POST['ssb_intro']));
         $ssb_use_style = abs((integer) $_POST['ssb_use_style']);
         $ssb_style     = trim($_POST['ssb_style']);
 
@@ -126,6 +129,7 @@ if (!empty($_POST)) {
         $core->blog->settings->socialShare->put('template_tag', $ssb_template_tag);
 
         $core->blog->settings->socialShare->put('prefix', $ssb_prefix);
+        $core->blog->settings->socialShare->put('intro', $ssb_intro);
         $core->blog->settings->socialShare->put('use_style', $ssb_use_style);
         $core->blog->settings->socialShare->put('style', $ssb_style);
 
@@ -207,7 +211,11 @@ form::field('ssb_twitter_account', 30, 128, html::escapeHTML($ssb_twitter_accoun
 
 '<p><label for="ssb_prefix">' . __('Social sharing buttons text prefix:') . '</label> ' .
 form::field('ssb_prefix', 30, 128, html::escapeHTML($ssb_prefix)) . '</p>' .
-'<p class="form-note">' . __('This will be inserted before buttons (if not empty).') . '</p>';
+'<p class="form-note">' . __('This will be inserted before buttons (if not empty).') . '</p>'.
+
+'<p><label for="ssb_intro">' . __('Title introduction text:') . '</label> ' .
+form::field('ssb_intro', 30, 128, html::escapeHTML($ssb_intro)) . '</p>' .
+'<p class="form-note">' . __('This will be inserted before title (if not empty).') . '</p>';
 
 echo
 '<div class="fieldset"><h4>' . __('Social sharing buttons CSS styles') . '</h4>';

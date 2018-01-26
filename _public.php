@@ -35,7 +35,8 @@ class dcSocialShare
                             $_ctx->posts->post_title,
                             ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
                             $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account);
+                            $core->blog->settings->socialShare->twitter_account,
+                            $core->blog->settings->socialShare->intro);
                     }
                 }
             }
@@ -56,7 +57,8 @@ class dcSocialShare
                             $_ctx->posts->post_title,
                             ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
                             $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account);
+                            $core->blog->settings->socialShare->twitter_account,
+                            $core->blog->settings->socialShare->intro);
                     }
                 }
             }
@@ -75,7 +77,8 @@ class dcSocialShare
             sprintf($f, '$_ctx->posts->post_title') . ',' .
             sprintf($f, '($_ctx->posts->post_lang ?: $core->blog->settings->system->lang)') . ',' .
                 '$core->blog->settings->socialShare->prefix' . ',' .
-                '$core->blog->settings->socialShare->twitter_account' .
+                '$core->blog->settings->socialShare->twitter_account' . ',' .
+                '$core->blog->settings->socialShare->intro' .
                 '); ?>' . "\n";
         }
         return $ret;
@@ -106,7 +109,7 @@ class dcSocialShare
 
     // Helpers
 
-    public static function socialShare($url, $title, $lang, $prefix, $twitter_account)
+    public static function socialShare($url, $title, $lang, $prefix, $twitter_account, $intro = '')
     {
         $ret = '';
 
@@ -123,11 +126,14 @@ class dcSocialShare
             }
             $ret .= '<ul class="share-links">' . "\n";
 
+            // Compose text
+            $text = ($intro != '' ? $intro . '%20' : '') . $title;
+
             // Twitter link
             if ($GLOBALS['core']->blog->settings->socialShare->twitter) {
                 $share_url = sprintf('https://twitter.com/share?url=%s&amp;text=%s',
                     html::sanitizeURL($url),
-                    html::escapeHTML($title));
+                    html::escapeHTML($text));
                 if ($twitter_account != '') {
                     $share_url .= '&amp;via=' . html::escapeHTML($twitter_account);
                 }
@@ -142,7 +148,7 @@ TWITTER;
             if ($GLOBALS['core']->blog->settings->socialShare->facebook) {
                 $share_url = sprintf('https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
                     html::sanitizeURL($url),
-                    html::escapeHTML($title));
+                    html::escapeHTML($text));
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
                 $ret .= <<<FACEBOOK
@@ -166,7 +172,7 @@ GOOGLEPLUS;
             if ($GLOBALS['core']->blog->settings->socialShare->linkedin) {
                 $share_url = sprintf('https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s',
                     html::sanitizeURL($url),
-                    html::escapeHTML($title));
+                    html::escapeHTML($text));
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
                 $ret .= <<<LINKEDIN
@@ -177,7 +183,7 @@ LINKEDIN;
             // Mastodon link
             if ($GLOBALS['core']->blog->settings->socialShare->mastodon) {
                 $share_url = sprintf('web+mastodon://share?text=%s+%s',
-                    str_replace('&amp;', '%26', html::escapeHTML($title)),
+                    str_replace('&amp;', '%26', html::escapeHTML($text)),
                     html::sanitizeURL($url));
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
@@ -189,7 +195,7 @@ MASTODON;
             // Mail link
             if ($GLOBALS['core']->blog->settings->socialShare->mail) {
                 $share_url = sprintf('mailto:?subject=%s&amp;body=%s',
-                    html::escapeHTML($title),
+                    html::escapeHTML($text),
                     html::sanitizeURL($url));
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
