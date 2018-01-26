@@ -12,6 +12,7 @@ Twitter, Facebook, Google+, LinkedIn, Mastodon social networks and by mail.
 Markup
 ------
 
+```html
 <div class="share">
 	<p class="share-intro"><PREFIX></p>
 	<ul class="share-links">
@@ -81,12 +82,13 @@ Markup
 		</li>
 	</ul>
 </div>
-
+```
 
 
 Default style for social share links
 ------------------------------------
 
+```css
 .share {
 	font-size: 0.875em;
 	margin-top: 1.5em;
@@ -155,6 +157,14 @@ Default style for social share links
 	background-color: #1686b0;
 }
 
+.share .share-mastodon {
+	background-image: url("index.php?pf=socialShare/img/icon-mastodon.png");
+	background-image: url("index.php?pf=socialShare/img/icon-mastodon.svg"), none;
+}
+.share .share-mastodon:hover {
+	background-color: #3088d4;
+}
+
 .share .share-mail {
 	background-image: url("index.php?pf=socialShare/img/icon-email.png");
 	background-image: url("index.php?pf=socialShare/img/icon-email.svg"), none;
@@ -162,7 +172,7 @@ Default style for social share links
 .share .share-mail:hover {
 	background-color: #99c122;
 }
-
+```
 
 Notes
 -----
