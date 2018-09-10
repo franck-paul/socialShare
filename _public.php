@@ -130,11 +130,21 @@ class dcSocialShare
             // Compose text
             $text = ($intro != '' ? $intro . '%20' : '') . $title;
 
+            // Lookup for tags on entry
+            $tags = '';
+            if ($GLOBALS['core']->blog->settings->socialShare->tags && isset($GLOBALS['_ctx']->posts->post_meta)) {
+                $meta = $GLOBALS['core']->meta->getMetaRecordset($GLOBALS['_ctx']->posts->post_meta, 'tag');
+                $meta->sort('meta_id_lower', 'asc');
+                while ($meta->fetch()) {
+                    $tags .= '%20%23' . $meta->meta_id; // space + # + tag
+                }
+            }
+
             // Twitter link
             if ($GLOBALS['core']->blog->settings->socialShare->twitter) {
                 $share_url = sprintf('https://twitter.com/share?url=%s&amp;text=%s',
                     html::sanitizeURL($url),
-                    html::escapeHTML($text));
+                    html::escapeHTML($text . $tags));
                 if ($twitter_account != '') {
                     $share_url .= '&amp;via=' . html::escapeHTML($twitter_account);
                 }
@@ -184,7 +194,7 @@ LINKEDIN;
             // Mastodon link
             if ($GLOBALS['core']->blog->settings->socialShare->mastodon) {
                 $share_url = sprintf('web+mastodon://share?text=%s+%s',
-                    str_replace('&amp;', '%26', html::escapeHTML($text)),
+                    str_replace('&amp;', '%26', html::escapeHTML($text . $tags)),
                     html::sanitizeURL($url));
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
@@ -257,45 +267,45 @@ MAILLINK;
 }
 
 .share a:hover {
-	color: #fff;
+    color: #fff;
 }
 
 .share .share-twitter {
-	background-image: url("$base/icon-twitter.png");
+    background-image: url("$base/icon-twitter.png");
 }
 .share .share-fb {
-	background-image: url("$base/icon-facebook.png");
+    background-image: url("$base/icon-facebook.png");
 }
 .share .share-gp {
-	background-image: url("$base/icon-gplus.png");
+    background-image: url("$base/icon-gplus.png");
 }
 .share .share-in {
-	background-image: url("$base/icon-linkedin.png");
+    background-image: url("$base/icon-linkedin.png");
 }
 .share .share-mastodon {
-	background-image: url("$base/icon-mastodon.png");
+    background-image: url("$base/icon-mastodon.png");
 }
 .share .share-mail {
-	background-image: url("$base/icon-email.png");
+    background-image: url("$base/icon-email.png");
 }
 
 .share .share-twitter:hover {
-	background-color: #78cbef;
+    background-color: #78cbef;
 }
 .share .share-fb:hover {
-	background-color: #547bbc;
+    background-color: #547bbc;
 }
 .share .share-gp:hover {
-	background-color: #d30e60;
+    background-color: #d30e60;
 }
 .share .share-in:hover {
-	background-color: #1686b0;
+    background-color: #1686b0;
 }
 .share .share-mastodon:hover {
-	background-color: #3088d4;
+    background-color: #3088d4;
 }
 .share .share-mail:hover {
-	background-color: #99c122;
+    background-color: #99c122;
 }
 EOT1;
         if (version_compare($GLOBALS['core']->getVersion('core'), '2.8-r3014', '>=')) {
