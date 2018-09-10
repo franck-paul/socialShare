@@ -139,7 +139,7 @@ msgstr "Texte d'introduction devant le titre :"
 msgid "This will be inserted before title (if not empty)."
 msgstr "Sera inséré devant le titre de l'entrée si non vide."
 
-msgid "Includes tags if any"
+msgid "Use tags if any"
 msgstr "Utiliser les mot-clés s'ils existent"
 
 msgid "Only for Twitter and Mastodon buttons."

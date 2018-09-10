@@ -44,6 +44,7 @@ try
 
     $core->blog->settings->socialShare->put('prefix', __('Share this entry:'), 'string', 'Social sharing buttons prefix text', false, true);
     $core->blog->settings->socialShare->put('intro', '', 'string', 'Title introduction text', false, true);
+    $core->blog->settings->socialShare->put('tags', true, 'boolean', 'Use tags if any', false, true);
     $core->blog->settings->socialShare->put('use_style', 0, 'integer', 'CSS styles used', false, true);
     $core->blog->settings->socialShare->put('style', '', 'string', 'Social sharing buttons style', false, true);
 

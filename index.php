@@ -37,7 +37,7 @@ if (is_null($core->blog->settings->socialShare->active)) {
 
         $core->blog->settings->socialShare->put('prefix', __('Share this entry:'), 'string', 'Social sharing buttons prefix text', false);
         $core->blog->settings->socialShare->put('intro', '', 'string', 'Title introduction text', false);
-        $core->blog->settings->socialShare->put('tags', true, 'boolean', 'Include tags if any', false);
+        $core->blog->settings->socialShare->put('tags', true, 'boolean', 'Use tags if any', false);
         $core->blog->settings->socialShare->put('use_style', 0, 'integer', 'CSS style used', false);
         $core->blog->settings->socialShare->put('style', '', 'string', 'Social sharing buttons style', false);
 
@@ -224,7 +224,7 @@ form::field('ssb_intro', 30, 128, html::escapeHTML($ssb_intro)) . '</p>' .
 
 echo
 '<p>' . form::checkbox('ssb_tags', 1, $ssb_tags) . ' ' .
-'<label for="ssb_tags" class="classic">' . __('Includes tags if any') . '</label></p>' .
+'<label for="ssb_tags" class="classic">' . __('Use tags if any') . '</label></p>' .
 '<p class="form-note">' . __('Only for Twitter and Mastodon buttons.') . '</p>';
 
 echo
