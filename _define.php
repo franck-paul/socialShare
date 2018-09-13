@@ -17,11 +17,11 @@ $this->registerModule(
     "socialShare",                                                 // Name
     "Add social networks sharing buttons to your posts and pages", // Description
     "Franck Paul, Kozlika",                                        // Author
-    '0.9',                                                         // Version
-    array(
-        'requires'    => array(array('core', '2.9')),            // Dependencies
+    '1.0',                                                         // Version
+    [
+        'requires'    => [['core', '2.13']],                     // Dependencies
         'permissions' => 'admin',                                // Permissions
         'support'     => 'https://open-time.net/?q=socialShare', // Support URL
-        'type'        => 'plugin'                                // Type
-    )
+        'type'        => 'plugin'                               // Type
+    ]
 );

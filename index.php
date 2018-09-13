@@ -50,11 +50,11 @@ if (is_null($core->blog->settings->socialShare->active)) {
     }
 }
 
-$ssb_use_styles = array(
+$ssb_use_styles = [
     0 => __('Use default CSS styles'),
     1 => __('Use theme\'s CSS styles'),
     2 => __('Use user-defined styles')
-);
+];
 
 $ssb_active = (boolean) $core->blog->settings->socialShare->active;
 
@@ -158,10 +158,10 @@ if (!empty($_POST)) {
 <body>
 <?php
 echo dcPage::breadcrumb(
-    array(
+    [
         html::escapeHTML($core->blog->name) => '',
         __('socialShare')                   => ''
-    ));
+    ]);
 echo dcPage::notices();
 
 echo
@@ -232,7 +232,7 @@ echo
 $i = 0;
 foreach ($ssb_use_styles as $k => $v) {
     echo '<p><label for="ssb_use_style_' . $i . '" class="classic">' .
-    form::radio(array('ssb_use_style', 'ssb_use_style_' . $i), $k, $ssb_use_style == $k) . ' ' . $v . '</label></p>';
+    form::radio(['ssb_use_style', 'ssb_use_style_' . $i], $k, $ssb_use_style == $k) . ' ' . $v . '</label></p>';
     $i++;
 }
 echo

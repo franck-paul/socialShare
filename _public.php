@@ -13,12 +13,12 @@
 
 if (!defined('DC_RC_PATH')) {return;}
 
-$core->addBehavior('publicHeadContent', array('dcSocialShare', 'publicHeadContent'));
+$core->addBehavior('publicHeadContent', ['dcSocialShare', 'publicHeadContent']);
 
-$core->addBehavior('publicEntryBeforeContent', array('dcSocialShare', 'publicEntryBeforeContent'));
-$core->addBehavior('publicEntryAfterContent', array('dcSocialShare', 'publicEntryAfterContent'));
+$core->addBehavior('publicEntryBeforeContent', ['dcSocialShare', 'publicEntryBeforeContent']);
+$core->addBehavior('publicEntryAfterContent', ['dcSocialShare', 'publicEntryAfterContent']);
 
-$core->tpl->addValue('SocialShare', array('dcSocialShare', 'tplSocialShare'));
+$core->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare']);
 
 class dcSocialShare
 {
