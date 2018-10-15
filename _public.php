@@ -93,17 +93,14 @@ class dcSocialShare
         if ($core->blog->settings->socialShare->active) {
             switch ($core->blog->settings->socialShare->use_style) {
                 case 0: // Default CSS styles
-                    $ret = self::defaultStyle();
+                    echo dcUtils::cssLoad($core->blog->getPF('socialShare/css/default.css'));
                     break;
                 case 1: // Blog's theme CSS styles
                     $ret = '';
                     break;
                 case 2: // User defined CSS styles
-                    $ret = self::customStyle();
+                    echo '<style type="text/css">' . "\n" . self::customStyle() . "\n" . "</style>\n";
                     break;
-            }
-            if ($ret != '') {
-                echo '<style type="text/css">' . "\n" . $ret . "\n" . "</style>\n";
             }
         }
     }
@@ -227,111 +224,5 @@ MAILLINK;
     {
         $s = $GLOBALS['core']->blog->settings->socialShare->style;
         return $s;
-    }
-
-    public static function defaultStyle()
-    {
-        $base = $GLOBALS['core']->blog->getPF('socialShare/img');
-        $ret  = <<<EOT1
-.share {
-    font-size: 0.875em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    padding: 0.5em 0px;
-    text-align: right;
-    clear: both;
-}
-
-.share p, .share ul, .share li {
-    display: inline-block;
-    margin: 0px;
-    padding: 0px;
-}
-
-.share p {
-    padding-right: 1.5em;
-}
-
-.share a {
-    padding: 0.25em 0.5em 0.25em 2em;
-    margin-right: 0.5em;
-    background-position: 0.25em center;
-    background-repeat: no-repeat;
-    background-size: 1.5em auto;
-    text-decoration: none;
-    border-bottom: none;
-}
-
-.share ul li:last-child a {
-    margin-right: 0;
-}
-
-.share a:hover {
-    color: #fff;
-}
-
-.share .share-twitter {
-    background-image: url("$base/icon-twitter.png");
-}
-.share .share-fb {
-    background-image: url("$base/icon-facebook.png");
-}
-.share .share-gp {
-    background-image: url("$base/icon-gplus.png");
-}
-.share .share-in {
-    background-image: url("$base/icon-linkedin.png");
-}
-.share .share-mastodon {
-    background-image: url("$base/icon-mastodon.png");
-}
-.share .share-mail {
-    background-image: url("$base/icon-email.png");
-}
-
-.share .share-twitter:hover {
-    background-color: #78cbef;
-}
-.share .share-fb:hover {
-    background-color: #547bbc;
-}
-.share .share-gp:hover {
-    background-color: #d30e60;
-}
-.share .share-in:hover {
-    background-color: #1686b0;
-}
-.share .share-mastodon:hover {
-    background-color: #3088d4;
-}
-.share .share-mail:hover {
-    background-color: #99c122;
-}
-EOT1;
-        if (version_compare($GLOBALS['core']->getVersion('core'), '2.8-r3014', '>=')) {
-            $ret .= "\n" . '/* Dotclear 2.8 and later specific */' . "\n";
-            $ret .= <<<EOT2
-.share .share-twitter {
-    background-image: url("$base/icon-twitter.svg"), none;
-}
-.share .share-fb {
-    background-image: url("$base/icon-facebook.svg"), none;
-}
-.share .share-gp {
-    background-image: url("$base/icon-gplus.svg"), none;
-}
-.share .share-in {
-    background-image: url("$base/icon-linkedin.svg"), none;
-}
-.share .share-mastodon {
-    background-image: url("$base/icon-mastodon.svg"), none;
-}
-.share .share-mail {
-    background-image: url("$base/icon-email.svg"), none;
-}
-EOT2;
-        }
-
-        return $ret;
     }
 }
