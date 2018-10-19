@@ -21,8 +21,7 @@ Markup
 				target="_blank"
 				title="Share this post on Twitter"
 				href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via="<TWITTER-ACCOUNT>"
-				rel="nofollow"
-				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;">
+				rel="nofollow">
 					Twitter
 			</a>
 		</li>
@@ -32,8 +31,7 @@ Markup
 				target="_blank"
 				title="Share this post on Facebook"
 				href="https://www.facebook.com/sharer.php?u=<URL>&amp;t=<TITRE>"
-				rel="nofollow"
-				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;">
+				rel="nofollow">
 					Facebook
 			</a>
 		</li>
@@ -43,8 +41,7 @@ Markup
 				target="_blank"
 				title="Share this post on Google+"
 				href="https://plus.google.com/share?url=<URL>&amp;hl=<LANGUAGE>"
-				rel="nofollow"
-				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+				rel="nofollow">
 					Google+
 			</a>
 		</li>
@@ -54,8 +51,7 @@ Markup
 				target="_blank"
 				title="Share this post on LinkedIn"
 				href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&amp;title=<TITRE>"
-				rel="nofollow"
-				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+				rel="nofollow">
 					LinkedIn
 			</a>
 		</li>
@@ -65,8 +61,7 @@ Markup
 				target="_blank"
 				title="Share this post on Mastodon"
 				href="web+mastodon://share?text=<TITRE>+<URL>"
-				rel="nofollow"
-				onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;">
+				rel="nofollow">
 					Mastodon
 			</a>
 		</li>
