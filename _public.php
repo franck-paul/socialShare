@@ -14,6 +14,7 @@
 if (!defined('DC_RC_PATH')) {return;}
 
 $core->addBehavior('publicHeadContent', ['dcSocialShare', 'publicHeadContent']);
+$core->addBehavior('publicFooterContent', ['dcSocialShare', 'publicFooterContent']);
 
 $core->addBehavior('publicEntryBeforeContent', ['dcSocialShare', 'publicEntryBeforeContent']);
 $core->addBehavior('publicEntryAfterContent', ['dcSocialShare', 'publicEntryAfterContent']);
@@ -105,6 +106,16 @@ class dcSocialShare
         }
     }
 
+    public static function publicFooterContent()
+    {
+        global $core;
+
+        $core->blog->settings->addNamespace('socialShare');
+        if ($core->blog->settings->socialShare->active) {
+            echo dcUtils::jsLoad($core->blog->getPF('socialShare/js/popup.js'));
+        }
+    }
+
     // Helpers
 
     public static function socialShare($url, $title, $lang, $prefix, $twitter_account, $intro = '')
@@ -148,7 +159,7 @@ class dcSocialShare
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
                 $ret .= <<<TWITTER
-<li><a class="share-twitter" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;"><span>$href_text</span></a></li>
+<li><a class="share-twitter share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 TWITTER;
             }
 
@@ -160,7 +171,7 @@ TWITTER;
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
                 $ret .= <<<FACEBOOK
-<li><a class="share-fb" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><span>$href_text</span></a></li>
+<li><a class="share-fb share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 FACEBOOK;
             }
 
@@ -172,7 +183,7 @@ FACEBOOK;
                 $href_text  = __('Google+');
                 $href_title = __('Share this on Google+');
                 $ret .= <<<GOOGLEPLUS
-<li><a class="share-gp" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+<li><a class="share-gp share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 GOOGLEPLUS;
             }
 
@@ -184,7 +195,7 @@ GOOGLEPLUS;
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
                 $ret .= <<<LINKEDIN
-<li><a class="share-in" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+<li><a class="share-in share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 LINKEDIN;
             }
 
@@ -196,7 +207,7 @@ LINKEDIN;
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
                 $ret .= <<<MASTODON
-<li><a class="share-mastodon" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url" onclick="javascript:window.open(this.href,'','menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><span>$href_text</span></a></li>
+<li><a class="share-mastodon share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
 MASTODON;
             }
 
