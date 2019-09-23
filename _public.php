@@ -137,6 +137,7 @@ class dcSocialShare
 
             // Compose text
             $text = ($intro != '' ? $intro . '%20' : '') . $title;
+            $a11y = __(' (new window)');
 
             // Lookup for tags on entry
             $tags = '';
@@ -159,7 +160,7 @@ class dcSocialShare
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
                 $ret .= <<<TWITTER
-<li><a class="share-twitter share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-twitter share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 TWITTER;
             }
 
@@ -171,7 +172,7 @@ TWITTER;
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
                 $ret .= <<<FACEBOOK
-<li><a class="share-fb share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-fb share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 FACEBOOK;
             }
 
@@ -183,7 +184,7 @@ FACEBOOK;
                 $href_text  = __('Google+');
                 $href_title = __('Share this on Google+');
                 $ret .= <<<GOOGLEPLUS
-<li><a class="share-gp share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-gp share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 GOOGLEPLUS;
             }
 
@@ -195,7 +196,7 @@ GOOGLEPLUS;
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
                 $ret .= <<<LINKEDIN
-<li><a class="share-in share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-in share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 LINKEDIN;
             }
 
@@ -207,7 +208,7 @@ LINKEDIN;
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
                 $ret .= <<<MASTODON
-<li><a class="share-mastodon share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-mastodon share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 MASTODON;
             }
 
@@ -219,7 +220,7 @@ MASTODON;
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
                 $ret .= <<<MAILLINK
-<li><a class="share-mail" target="_blank" rel="nofollow noopener noreferrer" title="$href_title" href="$share_url"><span>$href_text</span></a></li>
+<li><a class="share-mail" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 MAILLINK;
             }
 
