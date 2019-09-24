@@ -19,7 +19,7 @@ Markup
 		<li>
 			<a  class="share-twitter"
 				target="_blank"
-				title="Share this post on Twitter"
+				title="Share this post on Twitter (new window)"
 				href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via="<TWITTER-ACCOUNT>"
 				rel="nofollow">
 					Twitter
@@ -29,7 +29,7 @@ Markup
 			<a
 				class="share-fb"
 				target="_blank"
-				title="Share this post on Facebook"
+				title="Share this post on Facebook (new window)"
 				href="https://www.facebook.com/sharer.php?u=<URL>&amp;t=<TITRE>"
 				rel="nofollow">
 					Facebook
@@ -37,19 +37,9 @@ Markup
 		</li>
 		<li>
 			<a
-				class="share-gp"
-				target="_blank"
-				title="Share this post on Google+"
-				href="https://plus.google.com/share?url=<URL>&amp;hl=<LANGUAGE>"
-				rel="nofollow">
-					Google+
-			</a>
-		</li>
-		<li>
-			<a
 				class="share-in"
 				target="_blank"
-				title="Share this post on LinkedIn"
+				title="Share this post on LinkedIn (new window)"
 				href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&amp;title=<TITRE>"
 				rel="nofollow">
 					LinkedIn
@@ -59,7 +49,7 @@ Markup
 			<a
 				class="share-mastodon"
 				target="_blank"
-				title="Share this post on Mastodon"
+				title="Share this post on Mastodon (new window)"
 				href="web+mastodon://share?text=<TITRE>+<URL>"
 				rel="nofollow">
 					Mastodon
@@ -69,7 +59,7 @@ Markup
 			<a
 				class="share-mail"
 				target="_blank"
-				title="Share this post by email"
+				title="Share this post by email (new window)"
 				href="mailto:?subject=<TITRE>&amp;body=<URL>"
 				rel="nofollow">
 					email
@@ -134,14 +124,6 @@ Default style for social share links
 }
 .share .share-fb:hover {
 	background-color: #547bbc;
-}
-
-.share .share-gp {
-	background-image: url("index.php?pf=socialShare/img/icon-gplus.png");
-	background-image: url("index.php?pf=socialShare/img/icon-gplus.svg"), none;
-}
-.share .share-gp:hover {
-	background-color: #d30e60;
 }
 
 .share .share-in {

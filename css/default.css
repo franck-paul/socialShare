@@ -41,9 +41,6 @@
 .share .share-fb:hover {
     background-color: #547bbc;
 }
-.share .share-gp:hover {
-    background-color: #d30e60;
-}
 .share .share-in:hover {
     background-color: #1686b0;
 }
@@ -61,10 +58,6 @@
 .share .share-fb {
     background-image: url("index.php?pf=socialShare/img/icon-facebook.png");
     background-image: url("index.php?pf=socialShare/img/icon-facebook.svg"), none;
-}
-.share .share-gp {
-    background-image: url("index.php?pf=socialShare/img/icon-gplus.png");
-    background-image: url("index.php?pf=socialShare/img/icon-gplus.svg"), none;
 }
 .share .share-in {
     background-image: url("index.php?pf=socialShare/img/icon-linkedin.png");

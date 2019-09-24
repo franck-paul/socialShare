@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-23 12:54+0200\n"
+"POT-Creation-Date: 2019-09-24 08:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,12 +39,6 @@ msgstr "Facebook"
 
 msgid "Share this on Facebook"
 msgstr "Partager ceci sur Facebook"
-
-msgid "Google+"
-msgstr "Google+"
-
-msgid "Share this on Google+"
-msgstr "Partager ceci sur Google+"
 
 msgid "LinkedIn"
 msgstr "LinkedIn"
@@ -84,9 +78,6 @@ msgstr "Ajoute le bouton de partage vers Twitter"
 
 msgid "Add Facebook sharing button"
 msgstr "Ajoute le bouton de partage vers Facebook"
-
-msgid "Add Google+ sharing button"
-msgstr "Ajoute le bouton de partage vers Google+"
 
 msgid "Add LinkedIn sharing button"
 msgstr "Ajoute le bouton de partage vers LinkedIn"

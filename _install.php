@@ -28,7 +28,6 @@ try
 
     $core->blog->settings->socialShare->put('twitter', true, 'boolean', 'Add Twitter button', false, true);
     $core->blog->settings->socialShare->put('facebook', true, 'boolean', 'Add Facebook button', false, true);
-    $core->blog->settings->socialShare->put('google', true, 'boolean', 'Add Google+ button', false, true);
     $core->blog->settings->socialShare->put('linkedin', true, 'boolean', 'Add LinkedIn button', false, true);
     $core->blog->settings->socialShare->put('mastodon', true, 'boolean', 'Add Mastodon button', false, true);
     $core->blog->settings->socialShare->put('mail', true, 'boolean', 'Add mail button', false, true);

@@ -124,7 +124,6 @@ class dcSocialShare
 
         if ($GLOBALS['core']->blog->settings->socialShare->twitter ||
             $GLOBALS['core']->blog->settings->socialShare->facebook ||
-            $GLOBALS['core']->blog->settings->socialShare->google ||
             $GLOBALS['core']->blog->settings->socialShare->linkedin ||
             $GLOBALS['core']->blog->settings->socialShare->mastodon ||
             $GLOBALS['core']->blog->settings->socialShare->mail) {
@@ -174,18 +173,6 @@ TWITTER;
                 $ret .= <<<FACEBOOK
 <li><a class="share-fb share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
 FACEBOOK;
-            }
-
-            // Google+ link
-            if ($GLOBALS['core']->blog->settings->socialShare->google) {
-                $share_url = sprintf('https://plus.google.com/share?url=%s&amp;hl=%s',
-                    html::sanitizeURL($url),
-                    html::escapeHTML($lang));
-                $href_text  = __('Google+');
-                $href_title = __('Share this on Google+');
-                $ret .= <<<GOOGLEPLUS
-<li><a class="share-gp share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-GOOGLEPLUS;
             }
 
             // LinkedIn link
