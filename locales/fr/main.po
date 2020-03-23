@@ -17,13 +17,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "Add social networks sharing buttons to your posts and pages"
-msgstr "Ajoute les boutons de partage des réseaux sociaux à vos billets et pages"
+msgstr "Ajoute les boutons de partage des réseaux sociaux à vos publications"
 
 msgid "socialShare"
 msgstr "socialShare"
 
 msgid "Share this entry:"
-msgstr "Partager cette entrée :"
+msgstr "Partager cette publication :"
 
 msgid " (new window)"
 msgstr " (nouvelle fenêtre)"
@@ -131,7 +131,7 @@ msgid "Title introduction text:"
 msgstr "Texte d'introduction devant le titre :"
 
 msgid "This will be inserted before title (if not empty)."
-msgstr "Sera inséré devant le titre de l'entrée si non vide."
+msgstr "Sera inséré devant le titre de la publication si non vide."
 
 msgid "Use tags if any"
 msgstr "Utiliser les mot-clés s'ils existent"
