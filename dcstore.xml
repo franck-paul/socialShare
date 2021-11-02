@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="socialShare">
-    <name>socialShare</name>
+    <name>Add social networks sharing buttons to your posts and pages</name>
     <version>1.1</version>
-    <author>Franck Paul, Kozlika</author>
+    <author>Add social networks sharing buttons to your posts and pages</author>
     <desc>Add social networks sharing buttons to your posts and pages</desc>
     <file>https://github.com/franck-paul/socialShare/releases/download/1.1/plugin-socialShare-1.1.zip</file>
     <da:dcmin>2.13</da:dcmin>
