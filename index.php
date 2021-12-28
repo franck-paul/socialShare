@@ -10,8 +10,9 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 $core->blog->settings->addNamespace('socialShare');
 if (is_null($core->blog->settings->socialShare->active)) {
@@ -52,37 +53,36 @@ if (is_null($core->blog->settings->socialShare->active)) {
 $ssb_use_styles = [
     0 => __('Use default CSS styles'),
     1 => __('Use theme\'s CSS styles'),
-    2 => __('Use user-defined styles')
+    2 => __('Use user-defined styles'),
 ];
 
-$ssb_active = (boolean) $core->blog->settings->socialShare->active;
+$ssb_active = (bool) $core->blog->settings->socialShare->active;
 
-$ssb_twitter  = (boolean) $core->blog->settings->socialShare->twitter;
-$ssb_facebook = (boolean) $core->blog->settings->socialShare->facebook;
-$ssb_linkedin = (boolean) $core->blog->settings->socialShare->linkedin;
-$ssb_mastodon = (boolean) $core->blog->settings->socialShare->mastodon;
-$ssb_mail     = (boolean) $core->blog->settings->socialShare->mail;
+$ssb_twitter  = (bool) $core->blog->settings->socialShare->twitter;
+$ssb_facebook = (bool) $core->blog->settings->socialShare->facebook;
+$ssb_linkedin = (bool) $core->blog->settings->socialShare->linkedin;
+$ssb_mastodon = (bool) $core->blog->settings->socialShare->mastodon;
+$ssb_mail     = (bool) $core->blog->settings->socialShare->mail;
 
-$ssb_on_post = (boolean) $core->blog->settings->socialShare->on_post;
-$ssb_on_page = (boolean) $core->blog->settings->socialShare->on_page;
+$ssb_on_post = (bool) $core->blog->settings->socialShare->on_post;
+$ssb_on_page = (bool) $core->blog->settings->socialShare->on_page;
 
-$ssb_on_single_only = (boolean) $core->blog->settings->socialShare->on_single_only;
+$ssb_on_single_only = (bool) $core->blog->settings->socialShare->on_single_only;
 
-$ssb_before_content = (boolean) $core->blog->settings->socialShare->before_content;
-$ssb_after_content  = (boolean) $core->blog->settings->socialShare->after_content;
-$ssb_template_tag   = (boolean) $core->blog->settings->socialShare->template_tag;
+$ssb_before_content = (bool) $core->blog->settings->socialShare->before_content;
+$ssb_after_content  = (bool) $core->blog->settings->socialShare->after_content;
+$ssb_template_tag   = (bool) $core->blog->settings->socialShare->template_tag;
 
 $ssb_prefix    = $core->blog->settings->socialShare->prefix;
 $ssb_intro     = $core->blog->settings->socialShare->intro;
-$ssb_tags      = (boolean) $core->blog->settings->socialShare->tags;
-$ssb_use_style = (integer) $core->blog->settings->socialShare->use_style;
+$ssb_tags      = (bool) $core->blog->settings->socialShare->tags;
+$ssb_use_style = (int) $core->blog->settings->socialShare->use_style;
 $ssb_style     = $core->blog->settings->socialShare->style;
 
 $ssb_twitter_account = $core->blog->settings->socialShare->twitter_account;
 
 if (!empty($_POST)) {
-    try
-    {
+    try {
         $ssb_active = !empty($_POST['ssb_active']);
 
         $ssb_twitter  = !empty($_POST['ssb_twitter']);
@@ -103,7 +103,7 @@ if (!empty($_POST)) {
         $ssb_prefix    = trim(html::escapeHTML($_POST['ssb_prefix']));
         $ssb_intro     = trim(html::escapeHTML($_POST['ssb_intro']));
         $ssb_tags      = !empty($_POST['ssb_tags']);
-        $ssb_use_style = abs((integer) $_POST['ssb_use_style']);
+        $ssb_use_style = abs((int) $_POST['ssb_use_style']);
         $ssb_style     = trim($_POST['ssb_style']);
 
         $ssb_twitter_account = trim(ltrim(html::escapeHTML($_POST['ssb_twitter_account']), '@'));
@@ -156,8 +156,9 @@ if (!empty($_POST)) {
 echo dcPage::breadcrumb(
     [
         html::escapeHTML($core->blog->name) => '',
-        __('socialShare')                   => ''
-    ]);
+        __('socialShare')                   => '',
+    ]
+);
 echo dcPage::notices();
 
 echo
