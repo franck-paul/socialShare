@@ -14,29 +14,29 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-$core->addBehavior('publicHeadContent', ['dcSocialShare', 'publicHeadContent']);
-$core->addBehavior('publicFooterContent', ['dcSocialShare', 'publicFooterContent']);
+dcCore::app()->addBehavior('publicHeadContent', ['dcSocialShare', 'publicHeadContent']);
+dcCore::app()->addBehavior('publicFooterContent', ['dcSocialShare', 'publicFooterContent']);
 
-$core->addBehavior('publicEntryBeforeContent', ['dcSocialShare', 'publicEntryBeforeContent']);
-$core->addBehavior('publicEntryAfterContent', ['dcSocialShare', 'publicEntryAfterContent']);
+dcCore::app()->addBehavior('publicEntryBeforeContent', ['dcSocialShare', 'publicEntryBeforeContent']);
+dcCore::app()->addBehavior('publicEntryAfterContent', ['dcSocialShare', 'publicEntryAfterContent']);
 
-$core->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare']);
+dcCore::app()->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare']);
 
 class dcSocialShare
 {
-    public static function publicEntryBeforeContent($core, $_ctx)
+    public static function publicEntryBeforeContent($core = null, $_ctx)
     {
-        if ($core->blog->settings->socialShare->active) {
-            if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page)) {
-                if ((($core->url->type == 'post' || $core->url->type == 'page') && $core->blog->settings->socialShare->on_single_only) || (!$core->blog->settings->socialShare->on_single_only)) {
-                    if ($core->blog->settings->socialShare->before_content) {
+        if (dcCore::app()->blog->settings->socialShare->active) {
+            if (($_ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
+                if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && dcCore::app()->blog->settings->socialShare->on_single_only) || (!dcCore::app()->blog->settings->socialShare->on_single_only)) {
+                    if (dcCore::app()->blog->settings->socialShare->before_content) {
                         echo self::socialShare(
                             $_ctx->posts->getURL(),
                             $_ctx->posts->post_title,
-                            ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
-                            $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account,
-                            $core->blog->settings->socialShare->intro
+                            ($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            dcCore::app()->blog->settings->socialShare->prefix,
+                            dcCore::app()->blog->settings->socialShare->twitter_account,
+                            dcCore::app()->blog->settings->socialShare->intro
                         );
                     }
                 }
@@ -44,19 +44,19 @@ class dcSocialShare
         }
     }
 
-    public static function publicEntryAfterContent($core, $_ctx)
+    public static function publicEntryAfterContent($core = null, $_ctx)
     {
-        if ($core->blog->settings->socialShare->active) {
-            if (($_ctx->posts->post_type == 'post' && $core->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && $core->blog->settings->socialShare->on_page)) {
-                if ((($core->url->type == 'post' || $core->url->type == 'page') && $core->blog->settings->socialShare->on_single_only) || (!$core->blog->settings->socialShare->on_single_only)) {
-                    if ($core->blog->settings->socialShare->after_content) {
+        if (dcCore::app()->blog->settings->socialShare->active) {
+            if (($_ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
+                if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && dcCore::app()->blog->settings->socialShare->on_single_only) || (!dcCore::app()->blog->settings->socialShare->on_single_only)) {
+                    if (dcCore::app()->blog->settings->socialShare->after_content) {
                         echo self::socialShare(
                             $_ctx->posts->getURL(),
                             $_ctx->posts->post_title,
-                            ($_ctx->posts->post_lang ?: $core->blog->settings->system->lang),
-                            $core->blog->settings->socialShare->prefix,
-                            $core->blog->settings->socialShare->twitter_account,
-                            $core->blog->settings->socialShare->intro
+                            ($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            dcCore::app()->blog->settings->socialShare->prefix,
+                            dcCore::app()->blog->settings->socialShare->twitter_account,
+                            dcCore::app()->blog->settings->socialShare->intro
                         );
                     }
                 }
@@ -66,18 +66,16 @@ class dcSocialShare
 
     public static function tplSocialShare($attr)
     {
-        global $core;
-
         $ret = '';
-        if ($core->blog->settings->socialShare->active && $core->blog->settings->socialShare->template_tag) {
-            $f   = $core->tpl->getFilters($attr);
+        if (dcCore::app()->blog->settings->socialShare->active && dcCore::app()->blog->settings->socialShare->template_tag) {
+            $f   = dcCore::app()->tpl->getFilters($attr);
             $ret = '<?php echo dcSocialShare::socialShare(' .
             sprintf($f, '$_ctx->posts->getURL()') . ',' .
             sprintf($f, '$_ctx->posts->post_title') . ',' .
-            sprintf($f, '($_ctx->posts->post_lang ?: $core->blog->settings->system->lang)') . ',' .
-                '$core->blog->settings->socialShare->prefix' . ',' .
-                '$core->blog->settings->socialShare->twitter_account' . ',' .
-                '$core->blog->settings->socialShare->intro' .
+            sprintf($f, '($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang)') . ',' .
+                'dcCore::app()->blog->settings->socialShare->prefix' . ',' .
+                'dcCore::app()->blog->settings->socialShare->twitter_account' . ',' .
+                'dcCore::app()->blog->settings->socialShare->intro' .
                 '); ?>' . "\n";
         }
 
@@ -86,13 +84,11 @@ class dcSocialShare
 
     public static function publicHeadContent()
     {
-        global $core;
-
-        $core->blog->settings->addNamespace('socialShare');
-        if ($core->blog->settings->socialShare->active) {
-            switch ($core->blog->settings->socialShare->use_style) {
+        dcCore::app()->blog->settings->addNamespace('socialShare');
+        if (dcCore::app()->blog->settings->socialShare->active) {
+            switch (dcCore::app()->blog->settings->socialShare->use_style) {
                 case 0: // Default CSS styles
-                    echo dcUtils::cssLoad($core->blog->getPF('socialShare/css/default.css'));
+                    echo dcUtils::cssModuleLoad('socialShare/css/default.css');
 
                     break;
                 case 1: // Blog's theme CSS styles
@@ -108,11 +104,9 @@ class dcSocialShare
 
     public static function publicFooterContent()
     {
-        global $core;
-
-        $core->blog->settings->addNamespace('socialShare');
-        if ($core->blog->settings->socialShare->active) {
-            echo dcUtils::jsLoad($core->blog->getPF('socialShare/js/popup.js'));
+        dcCore::app()->blog->settings->addNamespace('socialShare');
+        if (dcCore::app()->blog->settings->socialShare->active) {
+            echo dcUtils::jsModuleLoad('socialShare/js/popup.js');
         }
     }
 
@@ -125,7 +119,7 @@ class dcSocialShare
         // Twitter does not like pipe in text, may be another characters?
         $filter = fn ($text) => str_replace(['|'], ['-'], $text);
 
-        if ($GLOBALS['core']->blog->settings->socialShare->twitter || $GLOBALS['core']->blog->settings->socialShare->facebook || $GLOBALS['core']->blog->settings->socialShare->linkedin || $GLOBALS['core']->blog->settings->socialShare->mastodon || $GLOBALS['core']->blog->settings->socialShare->mail) {
+        if (dcCore::app()->blog->settings->socialShare->twitter || dcCore::app()->blog->settings->socialShare->facebook || dcCore::app()->blog->settings->socialShare->linkedin || dcCore::app()->blog->settings->socialShare->mastodon || dcCore::app()->blog->settings->socialShare->mail) {
             $ret = '<div class="share">' . "\n";
             if ($prefix) {
                 $ret .= '<p class="share-intro">' . $prefix . '</p>' . "\n";
@@ -138,8 +132,8 @@ class dcSocialShare
 
             // Lookup for tags on entry
             $tags = '';
-            if ($GLOBALS['core']->blog->settings->socialShare->tags && isset($GLOBALS['_ctx']->posts->post_meta)) {
-                $meta = $GLOBALS['core']->meta->getMetaRecordset($GLOBALS['_ctx']->posts->post_meta, 'tag');
+            if (dcCore::app()->blog->settings->socialShare->tags && isset($GLOBALS['_ctx']->posts->post_meta)) {
+                $meta = dcCore::app()->meta->getMetaRecordset($GLOBALS['_ctx']->posts->post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
                     $tags .= '%20%23' . $meta->meta_id; // space + # + tag
@@ -147,7 +141,7 @@ class dcSocialShare
             }
 
             // Twitter link
-            if ($GLOBALS['core']->blog->settings->socialShare->twitter) {
+            if (dcCore::app()->blog->settings->socialShare->twitter) {
                 $share_url = sprintf(
                     'https://twitter.com/share?url=%s&amp;text=%s',
                     html::sanitizeURL($url),
@@ -164,7 +158,7 @@ class dcSocialShare
             }
 
             // Facebook link
-            if ($GLOBALS['core']->blog->settings->socialShare->facebook) {
+            if (dcCore::app()->blog->settings->socialShare->facebook) {
                 $share_url = sprintf(
                     'https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
                     html::sanitizeURL($url),
@@ -178,7 +172,7 @@ class dcSocialShare
             }
 
             // LinkedIn link
-            if ($GLOBALS['core']->blog->settings->socialShare->linkedin) {
+            if (dcCore::app()->blog->settings->socialShare->linkedin) {
                 $share_url = sprintf(
                     'https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s',
                     html::sanitizeURL($url),
@@ -192,7 +186,7 @@ class dcSocialShare
             }
 
             // Mastodon link
-            if ($GLOBALS['core']->blog->settings->socialShare->mastodon) {
+            if (dcCore::app()->blog->settings->socialShare->mastodon) {
                 $share_url = sprintf(
                     'web+mastodon://share?text=%s+%s',
                     str_replace('&amp;', '%26', html::escapeHTML($text . $tags)),
@@ -206,7 +200,7 @@ class dcSocialShare
             }
 
             // Mail link
-            if ($GLOBALS['core']->blog->settings->socialShare->mail) {
+            if (dcCore::app()->blog->settings->socialShare->mail) {
                 $share_url = sprintf(
                     'mailto:?subject=%s&amp;body=%s',
                     html::escapeHTML($text),
@@ -228,7 +222,7 @@ class dcSocialShare
 
     public static function customStyle()
     {
-        $s = $GLOBALS['core']->blog->settings->socialShare->style;
+        $s = dcCore::app()->blog->settings->socialShare->style;
 
         return $s;
     }

@@ -20,7 +20,7 @@ __('socialShare') . __('Add social networks sharing buttons to your posts and pa
 $_menu['Blog']->addItem(
     __('socialShare'),
     'plugin.php?p=socialShare',
-    urldecode(dcPage::getPF('socialShare/icon.png')),
+    urldecode(dcPage::getPF('socialShare/icon.svg')),
     preg_match('/plugin.php\?p=socialShare(&.*)?$/', $_SERVER['REQUEST_URI']),
-    $core->auth->check('admin', $core->blog->id)
+    dcCore::app()->auth->check('admin', dcCore::app()->blog->id)
 );

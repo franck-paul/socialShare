@@ -1,73 +1,75 @@
 .share {
-    font-size: 0.875em;
-    margin-top: 1.5em;
-    margin-bottom: 1.5em;
-    padding: 0.5em 0;
-    text-align: right;
-    clear: both;
+  font-size: 0.875em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  padding: 0.5em 0;
+  text-align: right;
+  clear: both;
 }
 
-.share p, .share ul, .share li {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
+.share p,
+.share ul,
+.share li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 .share p {
-    padding-right: 1.5em;
+  padding-right: 1.5em;
 }
 
 .share a {
-    padding: 0.25em 0.5em 0.25em 2em;
-    margin-right: 0.5em;
-    background-position: 0.25em center;
-    background-repeat: no-repeat;
-    background-size: 1.5em auto;
-    text-decoration: none;
-    border-bottom: none;
+  padding: 0.25em 0.5em 0.25em 2em;
+  margin-right: 0.5em;
+  background-position: 0.25em center;
+  background-repeat: no-repeat;
+  background-size: 1.5em auto;
+  text-decoration: none;
+  border-bottom: none;
 }
 
 .share ul li:last-child a {
-    margin-right: 0;
+  margin-right: 0;
 }
 
 .share a:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .share .share-twitter:hover {
-    background-color: #78cbef;
+  background-color: #78cbef;
 }
 .share .share-fb:hover {
-    background-color: #547bbc;
+  background-color: #547bbc;
 }
 .share .share-in:hover {
-    background-color: #1686b0;
+  background-color: #1686b0;
 }
 .share .share-mastodon:hover {
-    background-color: #3088d4;
+  background-color: #3088d4;
 }
 .share .share-mail:hover {
-    background-color: #99c122;
+  background-color: #99c122;
 }
 
 .share .share-twitter {
-    background-image: url("index.php?pf=socialShare/img/icon-twitter.png");
-    background-image: url("index.php?pf=socialShare/img/icon-twitter.svg"), none;
+  background-image: url('index.php?pf=socialShare/img/icon-twitter.png');
+  background-image: url('index.php?pf=socialShare/img/icon-twitter.svg'), none;
 }
 .share .share-fb {
-    background-image: url("index.php?pf=socialShare/img/icon-facebook.png");
-    background-image: url("index.php?pf=socialShare/img/icon-facebook.svg"), none;
+  background-image: url('index.php?pf=socialShare/img/icon-facebook.png');
+  background-image: url('index.php?pf=socialShare/img/icon-facebook.svg'), none;
 }
 .share .share-in {
-    background-image: url("index.php?pf=socialShare/img/icon-linkedin.png");
-    background-image: url("index.php?pf=socialShare/img/icon-linkedin.svg"), none;
+  background-image: url('index.php?pf=socialShare/img/icon-linkedin.png');
+  background-image: url('index.php?pf=socialShare/img/icon-linkedin.svg'), none;
 }
 .share .share-mastodon {
-    background-image: url("index.php?pf=socialShare/img/icon-mastodon.png");
-    background-image: url("index.php?pf=socialShare/img/icon-mastodon.svg"), none;
+  background-image: url('index.php?pf=socialShare/img/icon-mastodon.png');
+  background-image: url('index.php?pf=socialShare/img/icon-mastodon.svg'), none;
 }
 .share .share-mail {
-    background-image: url("index.php?pf=socialShare/img/icon-email.png");
-    background-image: url("index.php?pf=socialShare/img/icon-email.svg"), none;
+  background-image: url('index.php?pf=socialShare/img/icon-email.png');
+  background-image: url('index.php?pf=socialShare/img/icon-email.svg'), none;
 }
