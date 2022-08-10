@@ -24,16 +24,16 @@ dcCore::app()->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare'])
 
 class dcSocialShare
 {
-    public static function publicEntryBeforeContent($core = null, $_ctx)
+    public static function publicEntryBeforeContent($core = null, $_ctx = null)
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
-            if (($_ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
+            if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
                 if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && dcCore::app()->blog->settings->socialShare->on_single_only) || (!dcCore::app()->blog->settings->socialShare->on_single_only)) {
                     if (dcCore::app()->blog->settings->socialShare->before_content) {
                         echo self::socialShare(
-                            $_ctx->posts->getURL(),
-                            $_ctx->posts->post_title,
-                            ($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            dcCore::app()->ctx->posts->getURL(),
+                            dcCore::app()->ctx->posts->post_title,
+                            (dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
                             dcCore::app()->blog->settings->socialShare->prefix,
                             dcCore::app()->blog->settings->socialShare->twitter_account,
                             dcCore::app()->blog->settings->socialShare->intro
@@ -44,16 +44,16 @@ class dcSocialShare
         }
     }
 
-    public static function publicEntryAfterContent($core = null, $_ctx)
+    public static function publicEntryAfterContent($core = null, $_ctx = null)
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
-            if (($_ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || ($_ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
+            if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
                 if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && dcCore::app()->blog->settings->socialShare->on_single_only) || (!dcCore::app()->blog->settings->socialShare->on_single_only)) {
                     if (dcCore::app()->blog->settings->socialShare->after_content) {
                         echo self::socialShare(
-                            $_ctx->posts->getURL(),
-                            $_ctx->posts->post_title,
-                            ($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            dcCore::app()->ctx->posts->getURL(),
+                            dcCore::app()->ctx->posts->post_title,
+                            (dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
                             dcCore::app()->blog->settings->socialShare->prefix,
                             dcCore::app()->blog->settings->socialShare->twitter_account,
                             dcCore::app()->blog->settings->socialShare->intro
@@ -70,9 +70,9 @@ class dcSocialShare
         if (dcCore::app()->blog->settings->socialShare->active && dcCore::app()->blog->settings->socialShare->template_tag) {
             $f   = dcCore::app()->tpl->getFilters($attr);
             $ret = '<?php echo dcSocialShare::socialShare(' .
-            sprintf($f, '$_ctx->posts->getURL()') . ',' .
-            sprintf($f, '$_ctx->posts->post_title') . ',' .
-            sprintf($f, '($_ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang)') . ',' .
+            sprintf($f, 'dcCore::app()->ctx->posts->getURL()') . ',' .
+            sprintf($f, 'dcCore::app()->ctx->posts->post_title') . ',' .
+            sprintf($f, '(dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang)') . ',' .
                 'dcCore::app()->blog->settings->socialShare->prefix' . ',' .
                 'dcCore::app()->blog->settings->socialShare->twitter_account' . ',' .
                 'dcCore::app()->blog->settings->socialShare->intro' .
@@ -132,8 +132,8 @@ class dcSocialShare
 
             // Lookup for tags on entry
             $tags = '';
-            if (dcCore::app()->blog->settings->socialShare->tags && isset($GLOBALS['_ctx']->posts->post_meta)) {
-                $meta = dcCore::app()->meta->getMetaRecordset($GLOBALS['_ctx']->posts->post_meta, 'tag');
+            if (dcCore::app()->blog->settings->socialShare->tags && isset(dcCore::app()->ctx->posts->post_meta)) {
+                $meta = dcCore::app()->meta->getMetaRecordset(dcCore::app()->ctx->posts->post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
                     $tags .= '%20%23' . $meta->meta_id; // space + # + tag
