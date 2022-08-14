@@ -24,7 +24,7 @@ dcCore::app()->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare'])
 
 class dcSocialShare
 {
-    public static function publicEntryBeforeContent($core = null, $_ctx = null)
+    public static function publicEntryBeforeContent($core, $_ctx)
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
@@ -44,7 +44,7 @@ class dcSocialShare
         }
     }
 
-    public static function publicEntryAfterContent($core = null, $_ctx = null)
+    public static function publicEntryAfterContent($core, $_ctx)
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
