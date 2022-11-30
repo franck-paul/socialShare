@@ -14,17 +14,9 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-dcCore::app()->addBehavior('publicHeadContent', ['dcSocialShare', 'publicHeadContent']);
-dcCore::app()->addBehavior('publicFooterContent', ['dcSocialShare', 'publicFooterContent']);
-
-dcCore::app()->addBehavior('publicEntryBeforeContent', ['dcSocialShare', 'publicEntryBeforeContent']);
-dcCore::app()->addBehavior('publicEntryAfterContent', ['dcSocialShare', 'publicEntryAfterContent']);
-
-dcCore::app()->tpl->addValue('SocialShare', ['dcSocialShare', 'tplSocialShare']);
-
 class dcSocialShare
 {
-    public static function publicEntryBeforeContent($core, $_ctx)
+    public static function publicEntryBeforeContent()
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
@@ -44,7 +36,7 @@ class dcSocialShare
         }
     }
 
-    public static function publicEntryAfterContent($core, $_ctx)
+    public static function publicEntryAfterContent()
     {
         if (dcCore::app()->blog->settings->socialShare->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && dcCore::app()->blog->settings->socialShare->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && dcCore::app()->blog->settings->socialShare->on_page)) {
@@ -222,8 +214,14 @@ class dcSocialShare
 
     public static function customStyle()
     {
-        $s = dcCore::app()->blog->settings->socialShare->style;
-
-        return $s;
+        return dcCore::app()->blog->settings->socialShare->style;
     }
 }
+
+dcCore::app()->addBehavior('publicHeadContent', [dcSocialShare::class, 'publicHeadContent']);
+dcCore::app()->addBehavior('publicFooterContent', [dcSocialShare::class, 'publicFooterContent']);
+
+dcCore::app()->addBehavior('publicEntryBeforeContent', [dcSocialShare::class, 'publicEntryBeforeContent']);
+dcCore::app()->addBehavior('publicEntryAfterContent', [dcSocialShare::class, 'publicEntryAfterContent']);
+
+dcCore::app()->tpl->addValue('SocialShare', [dcSocialShare::class, 'tplSocialShare']);

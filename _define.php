@@ -15,17 +15,20 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'socialShare',                                                 // Name
-    'Add social networks sharing buttons to your posts and pages', // Description
-    'Franck Paul, Kozlika',                                        // Author
-    '1.2.2',
+    'socialShare',
+    'Add social networks sharing buttons to your posts and pages',
+    'Franck Paul, Kozlika',
+    '2.0',
     [
-        'requires'    => [['core', '2.23']],                     // Dependencies
-        'permissions' => 'admin',                                // Permissions
-        'type'        => 'plugin',                               // Type
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_USAGE,
+            dcAuth::PERMISSION_ADMIN,
+        ]),
+        'type' => 'plugin',
 
-        'details'    => 'https://open-time.net/?q=socialShare',       // Details URL
-        'support'    => 'https://github.com/franck-paul/socialShare', // Support URL
+        'details'    => 'https://open-time.net/?q=socialShare',
+        'support'    => 'https://github.com/franck-paul/socialShare',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/socialShare/master/dcstore.xml',
     ]
 );
