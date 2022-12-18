@@ -44,7 +44,7 @@ if (is_null(dcCore::app()->blog->settings->socialShare->active)) {
         dcCore::app()->blog->settings->socialShare->put('twitter_account', '', 'string', 'Twitter account to use with Twitter button', false);
 
         dcCore::app()->blog->triggerBlog();
-        http::redirect($p_url);
+        http::redirect(dcCore::app()->admin->getPageURL());
     } catch (Exception $e) {
         dcCore::app()->error->add($e->getMessage());
     }
@@ -139,7 +139,7 @@ if (!empty($_POST)) {
         dcCore::app()->blog->triggerBlog();
 
         dcPage::addSuccessNotice(__('Settings have been successfully updated.'));
-        http::redirect($p_url);
+        http::redirect(dcCore::app()->admin->getPageURL());
     } catch (Exception $e) {
         dcCore::app()->error->add($e->getMessage());
     }
@@ -162,7 +162,7 @@ echo dcPage::breadcrumb(
 echo dcPage::notices();
 
 echo
-'<form action="' . $p_url . '" method="post">' .
+'<form action="' . dcCore::app()->admin->getPageURL() . '" method="post">' .
 '<p>' . form::checkbox('ssb_active', 1, $ssb_active) . ' ' .
 '<label for="ssb_active" class="classic">' . __('Activate socialShare plugin') . '</label></p>' .
 

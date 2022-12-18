@@ -14,10 +14,7 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-$new_version = dcCore::app()->plugins->moduleInfo('socialShare', 'version');
-$old_version = dcCore::app()->getVersion('socialShare');
-
-if (version_compare((string) $old_version, $new_version, '>=')) {
+if (!dcCore::app()->newVersion(basename(__DIR__), dcCore::app()->plugins->moduleInfo(basename(__DIR__), 'version'))) {
     return;
 }
 
@@ -48,8 +45,6 @@ try {
     dcCore::app()->blog->settings->socialShare->put('style', '', 'string', 'Social sharing buttons style', false, true);
 
     dcCore::app()->blog->settings->socialShare->put('twitter_account', '', 'string', 'Twitter account to use with Twitter button', false, true);
-
-    dcCore::app()->setVersion('socialShare', $new_version);
 
     return true;
 } catch (Exception $e) {
