@@ -218,10 +218,12 @@ class dcSocialShare
     }
 }
 
-dcCore::app()->addBehavior('publicHeadContent', [dcSocialShare::class, 'publicHeadContent']);
-dcCore::app()->addBehavior('publicFooterContent', [dcSocialShare::class, 'publicFooterContent']);
+dcCore::app()->addBehaviors([
+    'publicHeadContent'        => [dcSocialShare::class, 'publicHeadContent'],
+    'publicFooterContent'      => [dcSocialShare::class, 'publicFooterContent'],
 
-dcCore::app()->addBehavior('publicEntryBeforeContent', [dcSocialShare::class, 'publicEntryBeforeContent']);
-dcCore::app()->addBehavior('publicEntryAfterContent', [dcSocialShare::class, 'publicEntryAfterContent']);
+    'publicEntryBeforeContent' => [dcSocialShare::class, 'publicEntryBeforeContent'],
+    'publicEntryAfterContent'  => [dcSocialShare::class, 'publicEntryAfterContent'],
+]);
 
 dcCore::app()->tpl->addValue('SocialShare', [dcSocialShare::class, 'tplSocialShare']);
