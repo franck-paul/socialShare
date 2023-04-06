@@ -19,8 +19,6 @@ if (!dcCore::app()->newVersion(basename(__DIR__), dcCore::app()->plugins->module
 }
 
 try {
-    dcCore::app()->blog->settings->addNamespace('socialShare');
-
     dcCore::app()->blog->settings->socialShare->put('active', false, 'boolean', 'Active', false, true);
 
     dcCore::app()->blog->settings->socialShare->put('twitter', true, 'boolean', 'Add Twitter button', false, true);

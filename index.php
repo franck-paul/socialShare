@@ -10,11 +10,14 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
+
+use Dotclear\Helper\Html\Html;
+use Dotclear\Helper\Network\Http;
+
 if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-dcCore::app()->blog->settings->addNamespace('socialShare');
 if (is_null(dcCore::app()->blog->settings->socialShare->active)) {
     try {
         // Add default settings values if necessary
@@ -44,7 +47,7 @@ if (is_null(dcCore::app()->blog->settings->socialShare->active)) {
         dcCore::app()->blog->settings->socialShare->put('twitter_account', '', 'string', 'Twitter account to use with Twitter button', false);
 
         dcCore::app()->blog->triggerBlog();
-        http::redirect(dcCore::app()->admin->getPageURL());
+        Http::redirect(dcCore::app()->admin->getPageURL());
     } catch (Exception $e) {
         dcCore::app()->error->add($e->getMessage());
     }
@@ -100,16 +103,15 @@ if (!empty($_POST)) {
         $ssb_after_content  = !empty($_POST['ssb_after_content']);
         $ssb_template_tag   = !empty($_POST['ssb_template_tag']);
 
-        $ssb_prefix    = trim(html::escapeHTML($_POST['ssb_prefix']));
-        $ssb_intro     = trim(html::escapeHTML($_POST['ssb_intro']));
+        $ssb_prefix    = trim(Html::escapeHTML($_POST['ssb_prefix']));
+        $ssb_intro     = trim(Html::escapeHTML($_POST['ssb_intro']));
         $ssb_tags      = !empty($_POST['ssb_tags']);
         $ssb_use_style = abs((int) $_POST['ssb_use_style']);
         $ssb_style     = trim((string) $_POST['ssb_style']);
 
-        $ssb_twitter_account = trim(ltrim(html::escapeHTML($_POST['ssb_twitter_account']), '@'));
+        $ssb_twitter_account = trim(ltrim(Html::escapeHTML($_POST['ssb_twitter_account']), '@'));
 
         # Everything's fine, save options
-        dcCore::app()->blog->settings->addNamespace('socialShare');
 
         dcCore::app()->blog->settings->socialShare->put('active', $ssb_active);
 
@@ -139,7 +141,7 @@ if (!empty($_POST)) {
         dcCore::app()->blog->triggerBlog();
 
         dcPage::addSuccessNotice(__('Settings have been successfully updated.'));
-        http::redirect(dcCore::app()->admin->getPageURL());
+        Http::redirect(dcCore::app()->admin->getPageURL());
     } catch (Exception $e) {
         dcCore::app()->error->add($e->getMessage());
     }
@@ -155,7 +157,7 @@ if (!empty($_POST)) {
 <?php
 echo dcPage::breadcrumb(
     [
-        html::escapeHTML(dcCore::app()->blog->name) => '',
+        Html::escapeHTML(dcCore::app()->blog->name) => '',
         __('socialShare')                           => '',
     ]
 );
@@ -183,7 +185,7 @@ echo
 '</div>' .
 '<div class="col">' .
 '<p><label for="ssb_twitter_account" class="classic">' . __('Twitter account:') . '</label> ' .
-form::field('ssb_twitter_account', 30, 128, html::escapeHTML($ssb_twitter_account)) . '</p>' .
+form::field('ssb_twitter_account', 30, 128, Html::escapeHTML($ssb_twitter_account)) . '</p>' .
 '<p class="form-note">' . __('This will be used as "via" in tweet rather than the blog name (if not empty).') . '</p>' .
 '</div>' .
 '</div>' .
@@ -210,11 +212,11 @@ form::field('ssb_twitter_account', 30, 128, html::escapeHTML($ssb_twitter_accoun
 '<h3>' . __('Advanced options') . '</h3>' .
 
 '<p><label for="ssb_prefix">' . __('Social sharing buttons text prefix:') . '</label> ' .
-form::field('ssb_prefix', 30, 128, html::escapeHTML($ssb_prefix)) . '</p>' .
+form::field('ssb_prefix', 30, 128, Html::escapeHTML($ssb_prefix)) . '</p>' .
 '<p class="form-note">' . __('This will be inserted before buttons (if not empty).') . '</p>' .
 
 '<p><label for="ssb_intro">' . __('Title introduction text:') . '</label> ' .
-form::field('ssb_intro', 30, 128, html::escapeHTML($ssb_intro)) . '</p>' .
+form::field('ssb_intro', 30, 128, Html::escapeHTML($ssb_intro)) . '</p>' .
 '<p class="form-note">' . __('This will be inserted before title (if not empty).') . '</p>';
 
 echo
@@ -232,7 +234,7 @@ foreach ($ssb_use_styles as $k => $v) {
 }
 echo
 '<p class="area"><label for="ssb_style">' . __('User defined CSS styles:') . '</label> ' .
-form::textarea('ssb_style', 30, 8, html::escapeHTML($ssb_style)) . '</p>' .
+form::textarea('ssb_style', 30, 8, Html::escapeHTML($ssb_style)) . '</p>' .
 '<p class="form-note">' . __('See the README.md file for HTML markup and example of CSS styles.') . '</p>' .
     '</div>';
 

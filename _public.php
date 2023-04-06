@@ -10,9 +10,8 @@
  * @copyright Franck Paul carnet.franck.paul@gmail.com
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-if (!defined('DC_RC_PATH')) {
-    return;
-}
+
+use Dotclear\Helper\Html\Html;
 
 class dcSocialShare
 {
@@ -76,7 +75,6 @@ class dcSocialShare
 
     public static function publicHeadContent()
     {
-        dcCore::app()->blog->settings->addNamespace('socialShare');
         if (dcCore::app()->blog->settings->socialShare->active) {
             switch (dcCore::app()->blog->settings->socialShare->use_style) {
                 case 0: // Default CSS styles
@@ -96,7 +94,6 @@ class dcSocialShare
 
     public static function publicFooterContent()
     {
-        dcCore::app()->blog->settings->addNamespace('socialShare');
         if (dcCore::app()->blog->settings->socialShare->active) {
             echo dcUtils::jsModuleLoad('socialShare/js/popup.js');
         }
@@ -136,11 +133,11 @@ class dcSocialShare
             if (dcCore::app()->blog->settings->socialShare->twitter) {
                 $share_url = sprintf(
                     'https://twitter.com/share?url=%s&amp;text=%s',
-                    html::sanitizeURL($url),
-                    html::escapeHTML($filter($text) . $tags)
+                    Html::sanitizeURL($url),
+                    Html::escapeHTML($filter($text) . $tags)
                 );
                 if ($twitter_account != '') {
-                    $share_url .= '&amp;via=' . html::escapeHTML($twitter_account);
+                    $share_url .= '&amp;via=' . Html::escapeHTML($twitter_account);
                 }
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
@@ -153,8 +150,8 @@ class dcSocialShare
             if (dcCore::app()->blog->settings->socialShare->facebook) {
                 $share_url = sprintf(
                     'https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
-                    html::sanitizeURL($url),
-                    html::escapeHTML($text)
+                    Html::sanitizeURL($url),
+                    Html::escapeHTML($text)
                 );
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
@@ -167,8 +164,8 @@ class dcSocialShare
             if (dcCore::app()->blog->settings->socialShare->linkedin) {
                 $share_url = sprintf(
                     'https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s',
-                    html::sanitizeURL($url),
-                    html::escapeHTML($text)
+                    Html::sanitizeURL($url),
+                    Html::escapeHTML($text)
                 );
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
@@ -181,8 +178,8 @@ class dcSocialShare
             if (dcCore::app()->blog->settings->socialShare->mastodon) {
                 $share_url = sprintf(
                     'web+mastodon://share?text=%s+%s',
-                    str_replace('&amp;', '%26', html::escapeHTML($text . $tags)),
-                    html::sanitizeURL($url)
+                    str_replace('&amp;', '%26', Html::escapeHTML($text . $tags)),
+                    Html::sanitizeURL($url)
                 );
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
@@ -195,8 +192,8 @@ class dcSocialShare
             if (dcCore::app()->blog->settings->socialShare->mail) {
                 $share_url = sprintf(
                     'mailto:?subject=%s&amp;body=%s',
-                    html::escapeHTML($text),
-                    html::sanitizeURL($url)
+                    Html::escapeHTML($text),
+                    Html::sanitizeURL($url)
                 );
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
@@ -219,8 +216,8 @@ class dcSocialShare
 }
 
 dcCore::app()->addBehaviors([
-    'publicHeadContent'        => [dcSocialShare::class, 'publicHeadContent'],
-    'publicFooterContent'      => [dcSocialShare::class, 'publicFooterContent'],
+    'publicHeadContent'   => [dcSocialShare::class, 'publicHeadContent'],
+    'publicFooterContent' => [dcSocialShare::class, 'publicFooterContent'],
 
     'publicEntryBeforeContent' => [dcSocialShare::class, 'publicEntryBeforeContent'],
     'publicEntryAfterContent'  => [dcSocialShare::class, 'publicEntryAfterContent'],
