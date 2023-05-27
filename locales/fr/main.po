@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 addToAny module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-24 08:36+0200\n"
+"POT-Creation-Date: 2023-05-27 10:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,47 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Add social networks sharing buttons to your posts and pages"
-msgstr "Ajoute les boutons de partage des réseaux sociaux à vos publications"
-
-msgid "socialShare"
-msgstr "socialShare"
-
 msgid "Share this entry:"
 msgstr "Partager cette publication :"
-
-msgid " (new window)"
-msgstr " (nouvelle fenêtre)"
-
-msgid "Twitter"
-msgstr "Twitter"
-
-msgid "Share this on Twitter"
-msgstr "Partager ceci sur Twitter"
-
-msgid "Facebook"
-msgstr "Facebook"
-
-msgid "Share this on Facebook"
-msgstr "Partager ceci sur Facebook"
-
-msgid "LinkedIn"
-msgstr "LinkedIn"
-
-msgid "Share this on LinkedIn"
-msgstr "Partager ceci sur LinkedIn"
-
-msgid "Mastodon"
-msgstr "Mastodon"
-
-msgid "Share this on Mastodon"
-msgstr "Partager ceci sur Mastodon"
-
-msgid "Mail"
-msgstr "email"
-
-msgid "Share this by mail"
-msgstr "Partager ceci par email"
 
 msgid "Use default CSS styles"
 msgstr "Utiliser les styles CSS par défaut"
@@ -66,6 +27,9 @@ msgstr "Utiliser les styles CSS définis dans le thème du blog"
 
 msgid "Use user-defined styles"
 msgstr "Utiliser des styles CSS personnalisés"
+
+msgid "socialShare"
+msgstr "socialShare"
 
 msgid "Activate socialShare plugin"
 msgstr "Activer le plugin socialShare"
@@ -93,6 +57,9 @@ msgstr "Compte Twitter :"
 
 msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
 msgstr "Sera utilisé dans le \"via\" du tweet plutôt que le nom du blog (si non vide)."
+
+msgid "Options"
+msgstr ""
 
 msgid "Add social sharing buttons on posts"
 msgstr "Ajoute les boutons de partage pour les billets"
@@ -147,3 +114,42 @@ msgstr "Styles CSS personnalisés :"
 
 msgid "See the README.md file for HTML markup and example of CSS styles."
 msgstr "Voir le fichier README.md pour le balisage HTML et un exemple de styles CSS."
+
+msgid "Save"
+msgstr ""
+
+msgid "Add social networks sharing buttons to your posts and pages"
+msgstr "Ajoute les boutons de partage des réseaux sociaux à vos publications"
+
+msgid " (new window)"
+msgstr " (nouvelle fenêtre)"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Share this on Twitter"
+msgstr "Partager ceci sur Twitter"
+
+#~ msgid "Facebook"
+#~ msgstr "Facebook"
+
+#~ msgid "Share this on Facebook"
+#~ msgstr "Partager ceci sur Facebook"
+
+#~ msgid "LinkedIn"
+#~ msgstr "LinkedIn"
+
+#~ msgid "Share this on LinkedIn"
+#~ msgstr "Partager ceci sur LinkedIn"
+
+#~ msgid "Mastodon"
+#~ msgstr "Mastodon"
+
+#~ msgid "Share this on Mastodon"
+#~ msgstr "Partager ceci sur Mastodon"
+
+#~ msgid "Mail"
+#~ msgstr "email"
+
+#~ msgid "Share this by mail"
+#~ msgstr "Partager ceci par email"
