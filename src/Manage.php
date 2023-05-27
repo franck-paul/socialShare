@@ -264,7 +264,7 @@ class Manage extends dcNsProcess
                         ->label((new Label(__('Add Mail sharing button'), Label::INSIDE_TEXT_AFTER))),
                 ]),
 
-                (new Text('h3', __('Buttons'))),
+                (new Text('h3', __('Options'))),
                 (new Para())->items([
                     (new Checkbox('ssb_on_post', $ssb_on_post))
                         ->value(1)
