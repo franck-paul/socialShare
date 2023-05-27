@@ -14,7 +14,7 @@ $this->registerModule(
     'socialShare',
     'Add social networks sharing buttons to your posts and pages',
     'Franck Paul, Kozlika',
-    '3.0.2',
+    '3.0.3',
     [
         'requires'    => [['core', '2.26']],
         'permissions' => dcCore::app()->auth->makePermissions([
