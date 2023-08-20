@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use dcCore;
-use dcUtils;
 
 class FrontendBehaviors
 {
@@ -67,7 +66,7 @@ class FrontendBehaviors
         if ($settings->active) {
             switch ($settings->use_style) {
                 case 0: // Default CSS styles
-                    echo dcUtils::cssModuleLoad('socialShare/css/default.css');
+                    echo My::cssLoad('default.css');
 
                     break;
                 case 1: // Blog's theme CSS styles
@@ -85,7 +84,7 @@ class FrontendBehaviors
     {
         $settings = dcCore::app()->blog->settings->get(My::id());
         if ($settings->active) {
-            echo dcUtils::jsModuleLoad('socialShare/js/popup.js');
+            echo My::jsLoad('popup.js');
         }
     }
 }
