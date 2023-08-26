@@ -21,7 +21,7 @@ class FrontendTemplate
     public static function tplSocialShare($attr)
     {
         $ret      = '';
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->active && $settings->template_tag) {
             $f   = dcCore::app()->tpl->getFilters($attr);
             $ret = '<?php echo ' . FrontendHelper::class . '::socialShare(' .

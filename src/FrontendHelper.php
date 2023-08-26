@@ -26,7 +26,7 @@ class FrontendHelper
         // Twitter does not like pipe in text, may be another characters?
         $filter = fn ($text) => str_replace(['|'], ['-'], $text);
 
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
             $ret = '<div class="share">' . "\n";
             if ($prefix) {
@@ -130,7 +130,7 @@ class FrontendHelper
 
     public static function customStyle()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         return $settings->style;
     }

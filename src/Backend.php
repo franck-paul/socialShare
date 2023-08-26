@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
-use dcCore;
 use Dotclear\Core\Backend\Menus;
 use Dotclear\Core\Process;
 
@@ -34,13 +33,7 @@ class Backend extends Process
             return false;
         }
 
-        dcCore::app()->admin->menus[Menus::MENU_BLOG]->addItem(
-            __('socialShare'),
-            My::manageUrl(),
-            My::icons(),
-            preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
-            My::checkContext(My::MENU)
-        );
+        My::addBackendMenuItem(Menus::MENU_BLOG);
 
         return true;
     }

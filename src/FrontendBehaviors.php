@@ -20,7 +20,7 @@ class FrontendBehaviors
 {
     public static function publicEntryBeforeContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && $settings->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && $settings->on_page)) {
                 if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
@@ -41,7 +41,7 @@ class FrontendBehaviors
 
     public static function publicEntryAfterContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->active) {
             if ((dcCore::app()->ctx->posts->post_type == 'post' && $settings->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && $settings->on_page)) {
                 if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
@@ -62,7 +62,7 @@ class FrontendBehaviors
 
     public static function publicHeadContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->active) {
             switch ($settings->use_style) {
                 case 0: // Default CSS styles
@@ -82,7 +82,7 @@ class FrontendBehaviors
 
     public static function publicFooterContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         if ($settings->active) {
             echo My::jsLoad('popup.js');
         }
