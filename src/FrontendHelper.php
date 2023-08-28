@@ -60,9 +60,7 @@ class FrontendHelper
                 }
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
-                $ret .= <<<TWITTER
-                    <li><a class="share-twitter share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-                    TWITTER;
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-twitter share-popup');
             }
 
             // Facebook link
@@ -74,9 +72,7 @@ class FrontendHelper
                 );
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
-                $ret .= <<<FACEBOOK
-                    <li><a class="share-fb share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-                    FACEBOOK;
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-fb share-popup');
             }
 
             // LinkedIn link
@@ -88,9 +84,7 @@ class FrontendHelper
                 );
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
-                $ret .= <<<LINKEDIN
-                    <li><a class="share-in share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-                    LINKEDIN;
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-in share-popup');
             }
 
             // Mastodon link
@@ -102,9 +96,7 @@ class FrontendHelper
                 );
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
-                $ret .= <<<MASTODON
-                    <li><a class="share-mastodon share-popup" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-                    MASTODON;
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mastodon share-popup');
             }
 
             // Mail link
@@ -116,9 +108,7 @@ class FrontendHelper
                 );
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
-                $ret .= <<<MAILLINK
-                    <li><a class="share-mail" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
-                    MAILLINK;
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mail');
             }
 
             $ret .= '</ul>' . "\n" .
@@ -133,5 +123,14 @@ class FrontendHelper
         $settings = My::settings();
 
         return $settings->style;
+    }
+
+    private static function link(string $href_title, string $a11y, string $share_url, string $href_text, string $class): string
+    {
+        // Tricky code to avoid xgettext bug on indented end heredoc identifier (see https://savannah.gnu.org/bugs/?62158)
+        // Warning: don't use <<< if there is some __() l10n calls after as xgettext will not find them
+        return <<<LINK
+            <li><a class="$class" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
+            LINK;
     }
 }

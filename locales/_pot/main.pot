@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 socialShare module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-27 10:55+0200\n"
+"POT-Creation-Date: 2023-08-28 09:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,183 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/socialShare/index.php:41
-#: ../git-plugins/socialShare/src/Install.php:58
-#: ../git-plugins/socialShare/src/Manage.php:76
-msgid "Share this entry:"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:57
-#: ../git-plugins/socialShare/src/Manage.php:194
-msgid "Use default CSS styles"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:58
-#: ../git-plugins/socialShare/src/Manage.php:195
-msgid "Use theme's CSS styles"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:59
-#: ../git-plugins/socialShare/src/Manage.php:196
-msgid "Use user-defined styles"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:153
-#: ../git-plugins/socialShare/index.php:161
-#: ../git-plugins/socialShare/src/Backend.php:28
-#: ../git-plugins/socialShare/src/Backend.php:40
-#: ../git-plugins/socialShare/src/Manage.php:209
-#: ../git-plugins/socialShare/src/Manage.php:214
-msgid "socialShare"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:169
-#: ../git-plugins/socialShare/src/Manage.php:227
-msgid "Activate socialShare plugin"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:171
-#: ../git-plugins/socialShare/src/Manage.php:230
-#: ../git-plugins/socialShare/src/Manage.php:267
-msgid "Buttons"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:176
-#: ../git-plugins/socialShare/src/Manage.php:234
-msgid "Add Twitter sharing button"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:178
-#: ../git-plugins/socialShare/src/Manage.php:249
-msgid "Add Facebook sharing button"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:180
-#: ../git-plugins/socialShare/src/Manage.php:254
-msgid "Add LinkedIn sharing button"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:182
-#: ../git-plugins/socialShare/src/Manage.php:259
-msgid "Add Mastodon sharing button"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:184
-#: ../git-plugins/socialShare/src/Manage.php:264
-msgid "Add Mail sharing button"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:187
-#: ../git-plugins/socialShare/src/Manage.php:241
-msgid "Twitter account:"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:189
-#: ../git-plugins/socialShare/src/Manage.php:244
-msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:193
-msgid "Options"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:196
-#: ../git-plugins/socialShare/src/Manage.php:271
-msgid "Add social sharing buttons on posts"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:198
-#: ../git-plugins/socialShare/src/Manage.php:276
-msgid "Add social sharing buttons on pages"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:200
-#: ../git-plugins/socialShare/src/Manage.php:281
-msgid "Add social sharing buttons only on single display (post or page)"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:202
-#: ../git-plugins/socialShare/src/Manage.php:284
-msgid "Position"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:205
-#: ../git-plugins/socialShare/src/Manage.php:288
-msgid "Automatically add social sharing buttons before content"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:207
-#: ../git-plugins/socialShare/src/Manage.php:293
-msgid "Automatically add social sharing buttons after content"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:209
-#: ../git-plugins/socialShare/src/Manage.php:298
-msgid "Add social sharing buttons using template tag"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:210
-#: ../git-plugins/socialShare/src/Manage.php:301
-msgid "The {{tpl:SocialShare}} template tag must be present in your template's file(s)."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:212
-#: ../git-plugins/socialShare/src/Manage.php:304
-msgid "Advanced options"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:214
-#: ../git-plugins/socialShare/src/Manage.php:310
-msgid "Social sharing buttons text prefix:"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:216
-#: ../git-plugins/socialShare/src/Manage.php:313
-msgid "This will be inserted before buttons (if not empty)."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:218
-#: ../git-plugins/socialShare/src/Manage.php:320
-msgid "Title introduction text:"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:220
-#: ../git-plugins/socialShare/src/Manage.php:323
-msgid "This will be inserted before title (if not empty)."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:224
-#: ../git-plugins/socialShare/src/Manage.php:328
-msgid "Use tags if any"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:225
-#: ../git-plugins/socialShare/src/Manage.php:331
-msgid "Only for Twitter and Mastodon buttons."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:228
-#: ../git-plugins/socialShare/src/Manage.php:334
-msgid "Social sharing buttons CSS styles"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:236
-#: ../git-plugins/socialShare/src/Manage.php:341
-msgid "User defined CSS styles:"
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:238
-#: ../git-plugins/socialShare/src/Manage.php:344
-msgid "See the README.md file for HTML markup and example of CSS styles."
-msgstr ""
-
-#: ../git-plugins/socialShare/index.php:242
-#: ../git-plugins/socialShare/src/Manage.php:349
-msgid "Save"
-msgstr ""
-
-#: ../git-plugins/socialShare/src/Backend.php:28
+#: ../git-plugins/socialShare/src/Backend.php:25
 msgid "Add social networks sharing buttons to your posts and pages"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Backend.php:25
+#: ../git-plugins/socialShare/src/Manage.php:212
+msgid "socialShare"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/FrontendHelper.php:39
@@ -205,4 +35,169 @@ msgstr ""
 
 #: ../git-plugins/socialShare/src/FrontendHelper.php:62
 msgid "Share this on Twitter"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:73
+msgid "Facebook"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:74
+msgid "Share this on Facebook"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:85
+msgid "LinkedIn"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:86
+msgid "Share this on LinkedIn"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:97
+msgid "Mastodon"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:98
+msgid "Share this on Mastodon"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:109
+msgid "Mail"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/FrontendHelper.php:110
+msgid "Share this by mail"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Install.php:56
+#: ../git-plugins/socialShare/src/Manage.php:74
+msgid "Share this entry:"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:192
+msgid "Use default CSS styles"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:193
+msgid "Use theme's CSS styles"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:194
+msgid "Use user-defined styles"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:225
+msgid "Activate socialShare plugin"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:228
+msgid "Buttons"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:232
+msgid "Add Twitter sharing button"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:239
+msgid "Twitter account:"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:242
+msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:247
+msgid "Add Facebook sharing button"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:252
+msgid "Add LinkedIn sharing button"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:257
+msgid "Add Mastodon sharing button"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:262
+msgid "Add Mail sharing button"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:265
+msgid "Options"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:269
+msgid "Add social sharing buttons on posts"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:274
+msgid "Add social sharing buttons on pages"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:279
+msgid "Add social sharing buttons only on single display (post or page)"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:282
+msgid "Position"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:286
+msgid "Automatically add social sharing buttons before content"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:291
+msgid "Automatically add social sharing buttons after content"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:296
+msgid "Add social sharing buttons using template tag"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:299
+msgid "The {{tpl:SocialShare}} template tag must be present in your template's file(s)."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:302
+msgid "Advanced options"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:308
+msgid "Social sharing buttons text prefix:"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:311
+msgid "This will be inserted before buttons (if not empty)."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:318
+msgid "Title introduction text:"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:321
+msgid "This will be inserted before title (if not empty)."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:326
+msgid "Use tags if any"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:329
+msgid "Only for Twitter and Mastodon buttons."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:332
+msgid "Social sharing buttons CSS styles"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:339
+msgid "User defined CSS styles:"
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:342
+msgid "See the README.md file for HTML markup and example of CSS styles."
+msgstr ""
+
+#: ../git-plugins/socialShare/src/Manage.php:347
+msgid "Save"
 msgstr ""
