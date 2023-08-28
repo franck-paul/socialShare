@@ -1,10 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # This file is put in the public domain.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# 
 # Translators:
 # Franck Paul <carnet.franck.paul@gmail.com>, 2023
-#
+# 
 #, fuzzy
 msgid ""
 msgstr ""
@@ -14,10 +14,10 @@ msgstr ""
 "PO-Revision-Date: 2023-05-27 08:57+0000\n"
 "Last-Translator: Franck Paul <carnet.franck.paul@gmail.com>, 2023\n"
 "Language-Team: French (https://app.transifex.com/open-time/teams/109573/fr/)\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 msgid "Add social networks sharing buttons to your posts and pages"
@@ -36,32 +36,28 @@ msgid "Share this on Twitter"
 msgstr "Partager ceci sur Twitter"
 
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
-#, fuzzy
 msgid "Share this on Facebook"
-msgstr "Partager ceci sur Twitter"
+msgstr "Partager sur Facebook"
 
 msgid "LinkedIn"
-msgstr ""
+msgstr "LinkedIn"
 
-#, fuzzy
 msgid "Share this on LinkedIn"
-msgstr "Partager ceci sur Twitter"
+msgstr "Partager sur LinkedIn"
 
 msgid "Mastodon"
-msgstr ""
+msgstr "Mastodon"
 
-#, fuzzy
 msgid "Share this on Mastodon"
-msgstr "Partager ceci sur Twitter"
+msgstr "Partager sur Mastodon"
 
 msgid "Mail"
-msgstr ""
+msgstr "Mail"
 
-#, fuzzy
 msgid "Share this by mail"
-msgstr "Partager cette publication :"
+msgstr "Partager ce document par mail"
 
 msgid "Share this entry:"
 msgstr "Partager cette publication :"
@@ -87,8 +83,12 @@ msgstr "Ajoute le bouton de partage vers Twitter"
 msgid "Twitter account:"
 msgstr "Compte Twitter :"
 
-msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
-msgstr "Sera utilisé dans le \"via\" du tweet plutôt que le nom du blog (si non vide)."
+msgid ""
+"This will be used as \"via\" in tweet rather than the blog name (if not "
+"empty)."
+msgstr ""
+"Sera utilisé dans le \"via\" du tweet plutôt que le nom du blog (si non "
+"vide)."
 
 msgid "Add Facebook sharing button"
 msgstr "Ajoute le bouton de partage vers Facebook"
@@ -112,7 +112,9 @@ msgid "Add social sharing buttons on pages"
 msgstr "Ajoute les boutons de partage pour les pages"
 
 msgid "Add social sharing buttons only on single display (post or page)"
-msgstr "Ajoute les boutons de partage uniquement dans l'affichage de billet (ou de page) seul"
+msgstr ""
+"Ajoute les boutons de partage uniquement dans l'affichage de billet (ou de "
+"page) seul"
 
 msgid "Position"
 msgstr "Position"
@@ -126,8 +128,12 @@ msgstr "Insérer automatiquement les boutons de partage après le contenu"
 msgid "Add social sharing buttons using template tag"
 msgstr "Insérer les boutons de partage en utilisant la balise template"
 
-msgid "The {{tpl:SocialShare}} template tag must be present in your template's file(s)."
-msgstr "La balise {{tpl:SocialShare}} doit être présente dans vôtre/vos fichier(s) template."
+msgid ""
+"The {{tpl:SocialShare}} template tag must be present in your template's "
+"file(s)."
+msgstr ""
+"La balise {{tpl:SocialShare}} doit être présente dans vôtre/vos fichier(s) "
+"template."
 
 msgid "Advanced options"
 msgstr "Options avancées"
@@ -157,7 +163,8 @@ msgid "User defined CSS styles:"
 msgstr "Styles CSS personnalisés :"
 
 msgid "See the README.md file for HTML markup and example of CSS styles."
-msgstr "Voir le fichier README.md pour le balisage HTML et un exemple de styles CSS."
+msgstr ""
+"Voir le fichier README.md pour le balisage HTML et un exemple de styles CSS."
 
 msgid "Save"
 msgstr "Enregistrer"
