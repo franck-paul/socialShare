@@ -18,7 +18,7 @@ use dcCore;
 
 class FrontendBehaviors
 {
-    public static function publicEntryBeforeContent()
+    public static function publicEntryBeforeContent(): string
     {
         $settings = My::settings();
         if ($settings->active) {
@@ -37,9 +37,11 @@ class FrontendBehaviors
                 }
             }
         }
+
+        return '';
     }
 
-    public static function publicEntryAfterContent()
+    public static function publicEntryAfterContent(): string
     {
         $settings = My::settings();
         if ($settings->active) {
@@ -58,9 +60,11 @@ class FrontendBehaviors
                 }
             }
         }
+
+        return '';
     }
 
-    public static function publicHeadContent()
+    public static function publicHeadContent(): string
     {
         $settings = My::settings();
         if ($settings->active) {
@@ -78,13 +82,17 @@ class FrontendBehaviors
                     break;
             }
         }
+
+        return '';
     }
 
-    public static function publicFooterContent()
+    public static function publicFooterContent(): string
     {
         $settings = My::settings();
         if ($settings->active) {
             echo My::jsLoad('popup.js');
         }
+
+        return '';
     }
 }

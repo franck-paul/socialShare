@@ -14,11 +14,17 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
+use ArrayObject;
 use dcCore;
 
 class FrontendTemplate
 {
-    public static function tplSocialShare($attr)
+    /**
+     * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr   The attribute
+     *
+     * @return     string
+     */
+    public static function tplSocialShare(array|ArrayObject $attr): string
     {
         $ret      = '';
         $settings = My::settings();

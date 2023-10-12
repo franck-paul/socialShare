@@ -19,7 +19,7 @@ use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
 {
-    public static function socialShare($url, $title, $lang, $prefix, $twitter_account, $intro = '')
+    public static function socialShare(string $url, string $title, string $lang, string $prefix, string $twitter_account, string $intro = ''): string
     {
         $ret = '';
 
@@ -118,11 +118,11 @@ class FrontendHelper
         return $ret;
     }
 
-    public static function customStyle()
+    public static function customStyle(): string
     {
         $settings = My::settings();
 
-        return $settings->style;
+        return $settings->style ?? '';
     }
 
     private static function link(string $href_title, string $a11y, string $share_url, string $href_text, string $class): string
