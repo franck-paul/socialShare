@@ -33,10 +33,10 @@ class FrontendTemplate
             $ret = '<?php echo ' . FrontendHelper::class . '::socialShare(' .
             sprintf($f, 'dcCore::app()->ctx->posts->getURL()') . ',' .
             sprintf($f, 'dcCore::app()->ctx->posts->post_title') . ',' .
-            sprintf($f, '(dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang)') . ',' .
-                'dcCore::app()->blog->settings->' . My::id() . '->prefix' . ',' .
-                'dcCore::app()->blog->settings->' . My::id() . '->twitter_account' . ',' .
-                'dcCore::app()->blog->settings->' . My::id() . '->intro' .
+            sprintf($f, '(dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang)') . ',' .
+                'App::blog()->settings()->' . My::id() . '->prefix' . ',' .
+                'App::blog()->settings()->' . My::id() . '->twitter_account' . ',' .
+                'App::blog()->settings()->' . My::id() . '->intro' .
                 '); ?>' . "\n";
         }
 

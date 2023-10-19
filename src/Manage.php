@@ -16,6 +16,7 @@ namespace Dotclear\Plugin\socialShare;
 
 use dcCore;
 use dcNamespace;
+use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
 use Dotclear\Core\Process;
@@ -79,8 +80,8 @@ class Manage extends Process
 
                 $settings->put('twitter_account', '', dcNamespace::NS_STRING, 'Twitter account to use with Twitter button', false);
 
-                dcCore::app()->blog->triggerBlog();
-                dcCore::app()->admin->url->redirect('admin.plugin.' . My::id());
+                App::blog()->triggerBlog();
+                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
             } catch (Exception $e) {
                 dcCore::app()->error->add($e->getMessage());
             }
@@ -140,10 +141,10 @@ class Manage extends Process
 
                 $settings->put('twitter_account', $ssb_twitter_account, dcNamespace::NS_STRING);
 
-                dcCore::app()->blog->triggerBlog();
+                App::blog()->triggerBlog();
 
                 Notices::addSuccessNotice(__('Settings have been successfully updated.'));
-                dcCore::app()->admin->url->redirect('admin.plugin.' . My::id());
+                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
             } catch (Exception $e) {
                 dcCore::app()->error->add($e->getMessage());
             }
@@ -208,8 +209,8 @@ class Manage extends Process
 
         echo Page::breadcrumb(
             [
-                Html::escapeHTML(dcCore::app()->blog->name) => '',
-                __('socialShare')                           => '',
+                Html::escapeHTML(App::blog()->name()) => '',
+                __('socialShare')                     => '',
             ]
         );
         echo Notices::getNotices();

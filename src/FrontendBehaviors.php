@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use dcCore;
+use Dotclear\App;
 
 class FrontendBehaviors
 {
@@ -28,7 +29,7 @@ class FrontendBehaviors
                         echo FrontendHelper::socialShare(
                             dcCore::app()->ctx->posts->getURL(),
                             dcCore::app()->ctx->posts->post_title,
-                            (dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            (dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang),
                             $settings->prefix,
                             $settings->twitter_account,
                             $settings->intro
@@ -51,7 +52,7 @@ class FrontendBehaviors
                         echo FrontendHelper::socialShare(
                             dcCore::app()->ctx->posts->getURL(),
                             dcCore::app()->ctx->posts->post_title,
-                            (dcCore::app()->ctx->posts->post_lang ?: dcCore::app()->blog->settings->system->lang),
+                            (dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang),
                             $settings->prefix,
                             $settings->twitter_account,
                             $settings->intro
