@@ -15,7 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use ArrayObject;
-use dcCore;
+use Dotclear\App;
 
 class FrontendTemplate
 {
@@ -29,11 +29,11 @@ class FrontendTemplate
         $ret      = '';
         $settings = My::settings();
         if ($settings->active && $settings->template_tag) {
-            $f   = dcCore::app()->tpl->getFilters($attr);
+            $f   = App::frontend()->template()->getFilters($attr);
             $ret = '<?php echo ' . FrontendHelper::class . '::socialShare(' .
-            sprintf($f, 'dcCore::app()->ctx->posts->getURL()') . ',' .
-            sprintf($f, 'dcCore::app()->ctx->posts->post_title') . ',' .
-            sprintf($f, '(dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang)') . ',' .
+            sprintf($f, 'App::frontend()->context()->posts->getURL()') . ',' .
+            sprintf($f, 'App::frontend()->context()->posts->post_title') . ',' .
+            sprintf($f, '(App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang)') . ',' .
                 'App::blog()->settings()->' . My::id() . '->prefix' . ',' .
                 'App::blog()->settings()->' . My::id() . '->twitter_account' . ',' .
                 'App::blog()->settings()->' . My::id() . '->intro' .

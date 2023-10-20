@@ -14,8 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
-use dcCore;
-use dcNamespace;
 use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
@@ -55,35 +53,35 @@ class Manage extends Process
         if (is_null($settings->active)) {
             try {
                 // Add default settings values if necessary
-                $settings->put('active', false, dcNamespace::NS_BOOL, 'Active', false);
+                $settings->put('active', false, App::blogWorkspace()::NS_BOOL, 'Active', false);
 
-                $settings->put('twitter', true, dcNamespace::NS_BOOL, 'Add Twitter button', false);
-                $settings->put('facebook', true, dcNamespace::NS_BOOL, 'Add Facebook button', false);
-                $settings->put('linkedin', true, dcNamespace::NS_BOOL, 'Add LinkedIn button', false);
-                $settings->put('mastodon', true, dcNamespace::NS_BOOL, 'Add Mastodon button', false);
-                $settings->put('mail', true, dcNamespace::NS_BOOL, 'Add mail button', false);
+                $settings->put('twitter', true, App::blogWorkspace()::NS_BOOL, 'Add Twitter button', false);
+                $settings->put('facebook', true, App::blogWorkspace()::NS_BOOL, 'Add Facebook button', false);
+                $settings->put('linkedin', true, App::blogWorkspace()::NS_BOOL, 'Add LinkedIn button', false);
+                $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false);
+                $settings->put('mail', true, App::blogWorkspace()::NS_BOOL, 'Add mail button', false);
 
-                $settings->put('on_post', true, dcNamespace::NS_BOOL, 'Add social sharing buttons on post', false);
-                $settings->put('on_page', false, dcNamespace::NS_BOOL, 'Add social sharing buttons on page', false);
+                $settings->put('on_post', true, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on post', false);
+                $settings->put('on_page', false, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on page', false);
 
-                $settings->put('on_single_only', true, dcNamespace::NS_BOOL, 'Display social sharing buttons on single display only (post or page)', false);
+                $settings->put('on_single_only', true, App::blogWorkspace()::NS_BOOL, 'Display social sharing buttons on single display only (post or page)', false);
 
-                $settings->put('before_content', false, dcNamespace::NS_BOOL, 'Display social sharing buttons before content', false);
-                $settings->put('after_content', true, dcNamespace::NS_BOOL, 'Display social sharing buttons after content', false);
-                $settings->put('template_tag', false, dcNamespace::NS_BOOL, 'Display social sharing buttons using template tag', false);
+                $settings->put('before_content', false, App::blogWorkspace()::NS_BOOL, 'Display social sharing buttons before content', false);
+                $settings->put('after_content', true, App::blogWorkspace()::NS_BOOL, 'Display social sharing buttons after content', false);
+                $settings->put('template_tag', false, App::blogWorkspace()::NS_BOOL, 'Display social sharing buttons using template tag', false);
 
-                $settings->put('prefix', __('Share this entry:'), dcNamespace::NS_STRING, 'Social sharing buttons prefix text', false);
-                $settings->put('intro', '', dcNamespace::NS_STRING, 'Title introduction text', false);
-                $settings->put('tags', true, dcNamespace::NS_BOOL, 'Use tags if any', false);
-                $settings->put('use_style', 0, dcNamespace::NS_INT, 'CSS style used', false);
-                $settings->put('style', '', dcNamespace::NS_STRING, 'Social sharing buttons style', false);
+                $settings->put('prefix', __('Share this entry:'), App::blogWorkspace()::NS_STRING, 'Social sharing buttons prefix text', false);
+                $settings->put('intro', '', App::blogWorkspace()::NS_STRING, 'Title introduction text', false);
+                $settings->put('tags', true, App::blogWorkspace()::NS_BOOL, 'Use tags if any', false);
+                $settings->put('use_style', 0, App::blogWorkspace()::NS_INT, 'CSS style used', false);
+                $settings->put('style', '', App::blogWorkspace()::NS_STRING, 'Social sharing buttons style', false);
 
-                $settings->put('twitter_account', '', dcNamespace::NS_STRING, 'Twitter account to use with Twitter button', false);
+                $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter account to use with Twitter button', false);
 
                 App::blog()->triggerBlog();
-                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
+                My::redirect();
             } catch (Exception $e) {
-                dcCore::app()->error->add($e->getMessage());
+                App::error()->add($e->getMessage());
             }
         }
 
@@ -116,37 +114,37 @@ class Manage extends Process
 
                 // Everything's fine, save options
 
-                $settings->put('active', $ssb_active, dcNamespace::NS_BOOL);
+                $settings->put('active', $ssb_active, App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('twitter', $ssb_twitter, dcNamespace::NS_BOOL);
-                $settings->put('facebook', $ssb_facebook, dcNamespace::NS_BOOL);
-                $settings->put('linkedin', $ssb_linkedin, dcNamespace::NS_BOOL);
-                $settings->put('mastodon', $ssb_mastodon, dcNamespace::NS_BOOL);
-                $settings->put('mail', $ssb_mail, dcNamespace::NS_BOOL);
+                $settings->put('twitter', $ssb_twitter, App::blogWorkspace()::NS_BOOL);
+                $settings->put('facebook', $ssb_facebook, App::blogWorkspace()::NS_BOOL);
+                $settings->put('linkedin', $ssb_linkedin, App::blogWorkspace()::NS_BOOL);
+                $settings->put('mastodon', $ssb_mastodon, App::blogWorkspace()::NS_BOOL);
+                $settings->put('mail', $ssb_mail, App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('on_post', $ssb_on_post, dcNamespace::NS_BOOL);
-                $settings->put('on_page', $ssb_on_page, dcNamespace::NS_BOOL);
+                $settings->put('on_post', $ssb_on_post, App::blogWorkspace()::NS_BOOL);
+                $settings->put('on_page', $ssb_on_page, App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('on_single_only', $ssb_on_single_only, dcNamespace::NS_BOOL);
+                $settings->put('on_single_only', $ssb_on_single_only, App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('before_content', $ssb_before_content, dcNamespace::NS_BOOL);
-                $settings->put('after_content', $ssb_after_content, dcNamespace::NS_BOOL);
-                $settings->put('template_tag', $ssb_template_tag, dcNamespace::NS_BOOL);
+                $settings->put('before_content', $ssb_before_content, App::blogWorkspace()::NS_BOOL);
+                $settings->put('after_content', $ssb_after_content, App::blogWorkspace()::NS_BOOL);
+                $settings->put('template_tag', $ssb_template_tag, App::blogWorkspace()::NS_BOOL);
 
-                $settings->put('prefix', $ssb_prefix, dcNamespace::NS_STRING);
-                $settings->put('intro', $ssb_intro, dcNamespace::NS_STRING);
-                $settings->put('tags', $ssb_tags, dcNamespace::NS_BOOL);
-                $settings->put('use_style', $ssb_use_style, dcNamespace::NS_INT);
-                $settings->put('style', $ssb_style, dcNamespace::NS_STRING);
+                $settings->put('prefix', $ssb_prefix, App::blogWorkspace()::NS_STRING);
+                $settings->put('intro', $ssb_intro, App::blogWorkspace()::NS_STRING);
+                $settings->put('tags', $ssb_tags, App::blogWorkspace()::NS_BOOL);
+                $settings->put('use_style', $ssb_use_style, App::blogWorkspace()::NS_INT);
+                $settings->put('style', $ssb_style, App::blogWorkspace()::NS_STRING);
 
-                $settings->put('twitter_account', $ssb_twitter_account, dcNamespace::NS_STRING);
+                $settings->put('twitter_account', $ssb_twitter_account, App::blogWorkspace()::NS_STRING);
 
                 App::blog()->triggerBlog();
 
                 Notices::addSuccessNotice(__('Settings have been successfully updated.'));
-                dcCore::app()->adminurl->redirect('admin.plugin.' . My::id());
+                My::redirect();
             } catch (Exception $e) {
-                dcCore::app()->error->add($e->getMessage());
+                App::error()->add($e->getMessage());
             }
         }
 
@@ -217,7 +215,7 @@ class Manage extends Process
 
         // Form
         echo (new Form('frmsettings'))
-            ->action(dcCore::app()->admin->getPageURL())
+            ->action(App::backend()->getPageURL())
             ->method('post')
             ->fields([
                 (new Para())->items([

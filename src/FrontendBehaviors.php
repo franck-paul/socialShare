@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
-use dcCore;
 use Dotclear\App;
 
 class FrontendBehaviors
@@ -23,13 +22,13 @@ class FrontendBehaviors
     {
         $settings = My::settings();
         if ($settings->active) {
-            if ((dcCore::app()->ctx->posts->post_type == 'post' && $settings->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && $settings->on_page)) {
-                if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
+            if ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page)) {
+                if (((App::url()->type == 'post' || App::url()->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
                     if ($settings->before_content) {
                         echo FrontendHelper::socialShare(
-                            dcCore::app()->ctx->posts->getURL(),
-                            dcCore::app()->ctx->posts->post_title,
-                            (dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang),
+                            App::frontend()->context()->posts->getURL(),
+                            App::frontend()->context()->posts->post_title,
+                            (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
                             $settings->prefix,
                             $settings->twitter_account,
                             $settings->intro
@@ -46,13 +45,13 @@ class FrontendBehaviors
     {
         $settings = My::settings();
         if ($settings->active) {
-            if ((dcCore::app()->ctx->posts->post_type == 'post' && $settings->on_post) || (dcCore::app()->ctx->posts->post_type == 'page' && $settings->on_page)) {
-                if (((dcCore::app()->url->type == 'post' || dcCore::app()->url->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
+            if ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page)) {
+                if (((App::url()->type == 'post' || App::url()->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
                     if ($settings->after_content) {
                         echo FrontendHelper::socialShare(
-                            dcCore::app()->ctx->posts->getURL(),
-                            dcCore::app()->ctx->posts->post_title,
-                            (dcCore::app()->ctx->posts->post_lang ?: App::blog()->settings()->system->lang),
+                            App::frontend()->context()->posts->getURL(),
+                            App::frontend()->context()->posts->post_title,
+                            (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
                             $settings->prefix,
                             $settings->twitter_account,
                             $settings->intro

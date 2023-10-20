@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
@@ -40,8 +40,8 @@ class FrontendHelper
 
             // Lookup for tags on entry
             $tags = '';
-            if ($settings->tags && isset(dcCore::app()->ctx->posts->post_meta)) {
-                $meta = dcCore::app()->meta->getMetaRecordset(dcCore::app()->ctx->posts->post_meta, 'tag');
+            if ($settings->tags && isset(App::frontend()->context()->posts->post_meta)) {
+                $meta = App::meta()->getMetaRecordset(App::frontend()->context()->posts->post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
                     $tags .= '%20%23' . $meta->meta_id; // space + # + tag

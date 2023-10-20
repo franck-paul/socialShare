@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\socialShare;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Process;
 
 class Frontend extends Process
@@ -36,7 +36,7 @@ class Frontend extends Process
             return false;
         }
 
-        dcCore::app()->addBehaviors([
+        App::behavior()->addBehaviors([
             'publicHeadContent'   => FrontendBehaviors::publicHeadContent(...),
             'publicFooterContent' => FrontendBehaviors::publicFooterContent(...),
 
@@ -44,7 +44,7 @@ class Frontend extends Process
             'publicEntryAfterContent'  => FrontendBehaviors::publicEntryAfterContent(...),
         ]);
 
-        dcCore::app()->tpl->addValue('SocialShare', FrontendTemplate::tplSocialShare(...));
+        App::frontend()->template()->addValue('SocialShare', FrontendTemplate::tplSocialShare(...));
 
         return true;
     }
