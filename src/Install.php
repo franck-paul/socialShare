@@ -59,8 +59,8 @@ class Install extends Process
             $settings->put('style', '', App::blogWorkspace()::NS_STRING, 'Social sharing buttons style', false, true);
 
             $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter account to use with Twitter button', false, true);
-        } catch (Exception $e) {
-            App::error()->add($e->getMessage());
+        } catch (Exception $exception) {
+            App::error()->add($exception->getMessage());
         }
 
         return true;

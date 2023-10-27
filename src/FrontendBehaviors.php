@@ -21,20 +21,16 @@ class FrontendBehaviors
     public static function publicEntryBeforeContent(): string
     {
         $settings = My::settings();
-        if ($settings->active) {
-            if ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page)) {
-                if (((App::url()->type == 'post' || App::url()->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
-                    if ($settings->before_content) {
-                        echo FrontendHelper::socialShare(
-                            App::frontend()->context()->posts->getURL(),
-                            App::frontend()->context()->posts->post_title,
-                            (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
-                            $settings->prefix,
-                            $settings->twitter_account,
-                            $settings->intro
-                        );
-                    }
-                }
+        if ($settings->active && ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page))) {
+            if (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->before_content) {
+                echo FrontendHelper::socialShare(
+                    App::frontend()->context()->posts->getURL(),
+                    App::frontend()->context()->posts->post_title,
+                    (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
+                    $settings->prefix,
+                    $settings->twitter_account,
+                    $settings->intro
+                );
             }
         }
 
@@ -44,20 +40,16 @@ class FrontendBehaviors
     public static function publicEntryAfterContent(): string
     {
         $settings = My::settings();
-        if ($settings->active) {
-            if ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page)) {
-                if (((App::url()->type == 'post' || App::url()->type == 'page') && $settings->on_single_only) || (!$settings->on_single_only)) {
-                    if ($settings->after_content) {
-                        echo FrontendHelper::socialShare(
-                            App::frontend()->context()->posts->getURL(),
-                            App::frontend()->context()->posts->post_title,
-                            (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
-                            $settings->prefix,
-                            $settings->twitter_account,
-                            $settings->intro
-                        );
-                    }
-                }
+        if ($settings->active && ((App::frontend()->context()->posts->post_type == 'post' && $settings->on_post) || (App::frontend()->context()->posts->post_type == 'page' && $settings->on_page))) {
+            if (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->after_content) {
+                echo FrontendHelper::socialShare(
+                    App::frontend()->context()->posts->getURL(),
+                    App::frontend()->context()->posts->post_title,
+                    (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
+                    $settings->prefix,
+                    $settings->twitter_account,
+                    $settings->intro
+                );
             }
         }
 

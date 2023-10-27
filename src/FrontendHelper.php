@@ -24,14 +24,15 @@ class FrontendHelper
         $ret = '';
 
         // Twitter does not like pipe in text, may be another characters?
-        $filter = fn ($text) => str_replace(['|'], ['-'], $text);
+        $filter = static fn($text) => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
         if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
             $ret = '<div class="share">' . "\n";
-            if ($prefix) {
+            if ($prefix !== '' && $prefix !== '0') {
                 $ret .= '<p class="share-intro">' . $prefix . '</p>' . "\n";
             }
+
             $ret .= '<ul class="share-links">' . "\n";
 
             // Compose text
@@ -58,6 +59,7 @@ class FrontendHelper
                 if ($twitter_account != '') {
                     $share_url .= '&amp;via=' . Html::escapeHTML($twitter_account);
                 }
+
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
                 $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-twitter share-popup');
@@ -130,7 +132,7 @@ class FrontendHelper
         // Tricky code to avoid xgettext bug on indented end heredoc identifier (see https://savannah.gnu.org/bugs/?62158)
         // Warning: don't use <<< if there is some __() l10n calls after as xgettext will not find them
         return <<<LINK
-            <li><a class="$class" target="_blank" rel="nofollow noopener noreferrer" title="$href_title$a11y" href="$share_url"><span>$href_text</span></a></li>
+            <li><a class="{$class}" target="_blank" rel="nofollow noopener noreferrer" title="{$href_title}$a11y" href="{$share_url}"><span>{$href_text}</span></a></li>
             LINK;
     }
 }

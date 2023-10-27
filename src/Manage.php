@@ -85,7 +85,7 @@ class Manage extends Process
             }
         }
 
-        if (!empty($_POST)) {
+        if ($_POST !== []) {
             try {
                 $ssb_active = !empty($_POST['ssb_active']);
 
@@ -200,7 +200,7 @@ class Manage extends Process
                     ->value($k)
                     ->label((new Label($v, Label::INSIDE_TEXT_AFTER))),
             ]);
-            $i++;
+            ++$i;
         }
 
         Page::openModule(My::name());
