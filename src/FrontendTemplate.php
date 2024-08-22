@@ -30,7 +30,7 @@ class FrontendTemplate
         $settings = My::settings();
         if ($settings->active && $settings->template_tag) {
             $f   = App::frontend()->template()->getFilters($attr);
-            $ret = '<?php echo ' . FrontendHelper::class . '::socialShare(' .
+            $ret = '<?= ' . FrontendHelper::class . '::socialShare(' .
             sprintf($f, 'App::frontend()->context()->posts->getURL()') . ',' .
             sprintf($f, 'App::frontend()->context()->posts->post_title') . ',' .
             sprintf($f, '(App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang)') . ',' .

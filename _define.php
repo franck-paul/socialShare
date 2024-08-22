@@ -22,6 +22,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=socialShare',
         'support'    => 'https://github.com/franck-paul/socialShare',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/socialShare/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/socialShare/main/dcstore.xml',
     ]
 );

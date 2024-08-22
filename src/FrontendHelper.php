@@ -24,7 +24,7 @@ class FrontendHelper
         $ret = '';
 
         // Twitter does not like pipe in text, may be another characters?
-        $filter = static fn($text) => str_replace(['|'], ['-'], $text);
+        $filter = static fn (string $text) => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
         if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
