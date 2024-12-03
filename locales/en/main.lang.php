@@ -21,6 +21,8 @@ L10n::$locales['LinkedIn'] = '';
 L10n::$locales['Share this on LinkedIn'] = '';
 L10n::$locales['Mastodon'] = '';
 L10n::$locales['Share this on Mastodon'] = '';
+L10n::$locales['Bluesky'] = '';
+L10n::$locales['Share this on Bluesky'] = '';
 L10n::$locales['Mail'] = '';
 L10n::$locales['Share this by mail'] = '';
 L10n::$locales['Share this entry:'] = '';
@@ -35,6 +37,7 @@ L10n::$locales['This will be used as "via" in tweet rather than the blog name (i
 L10n::$locales['Add Facebook sharing button'] = '';
 L10n::$locales['Add LinkedIn sharing button'] = '';
 L10n::$locales['Add Mastodon sharing button'] = '';
+L10n::$locales['Add Bluesky sharing button'] = '';
 L10n::$locales['Add Mail sharing button'] = '';
 L10n::$locales['Options'] = '';
 L10n::$locales['Add social sharing buttons on posts'] = '';

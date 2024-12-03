@@ -21,6 +21,8 @@ L10n::$locales['LinkedIn'] = 'LinkedIn';
 L10n::$locales['Share this on LinkedIn'] = 'Partager sur LinkedIn';
 L10n::$locales['Mastodon'] = 'Mastodon';
 L10n::$locales['Share this on Mastodon'] = 'Partager sur Mastodon';
+L10n::$locales['Bluesky'] = 'Bluesky';
+L10n::$locales['Share this on Bluesky'] = 'Partager sur Bluesky';
 L10n::$locales['Mail'] = 'Mail';
 L10n::$locales['Share this by mail'] = 'Partager ce document par mail';
 L10n::$locales['Share this entry:'] = 'Partager cette publication :';
@@ -35,6 +37,7 @@ L10n::$locales['This will be used as "via" in tweet rather than the blog name (i
 L10n::$locales['Add Facebook sharing button'] = 'Ajoute le bouton de partage vers Facebook';
 L10n::$locales['Add LinkedIn sharing button'] = 'Ajoute le bouton de partage vers LinkedIn';
 L10n::$locales['Add Mastodon sharing button'] = 'Ajoute le bouton de partage vers Mastodon';
+L10n::$locales['Add Bluesky sharing button'] = 'Ajoute le bouton de partage vers Bluesky';
 L10n::$locales['Add Mail sharing button'] = 'Ajoute le bouton de partage par email';
 L10n::$locales['Options'] = 'Options';
 L10n::$locales['Add social sharing buttons on posts'] = 'Ajoute les boutons de partage pour les billets';
