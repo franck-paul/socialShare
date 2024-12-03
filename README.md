@@ -13,7 +13,7 @@ Summary
 
 This plugin adds social share buttons to posts and/or pages, for:
 
-Twitter, Facebook, Google+, LinkedIn, Mastodon social networks and by mail.
+Twitter, Facebook, Google+, LinkedIn, Mastodon, Bluesky social networks and by mail.
 
 Markup
 ------
@@ -28,7 +28,7 @@ Markup
     title="Share this post on Twitter (new window)"
     href="https://twitter.com/share?url=<URL>&amp;text=<TITRE>&amp;via="<TWITTER-ACCOUNT>"
     rel="nofollow">
-     Twitter
+        Twitter
    </a>
   </li>
   <li>
@@ -38,7 +38,7 @@ Markup
     title="Share this post on Facebook (new window)"
     href="https://www.facebook.com/sharer.php?u=<URL>&amp;t=<TITRE>"
     rel="nofollow">
-     Facebook
+        Facebook
    </a>
   </li>
   <li>
@@ -48,7 +48,7 @@ Markup
     title="Share this post on LinkedIn (new window)"
     href="https://www.linkedin.com/shareArticle?mini=true&url=<URL>&amp;title=<TITRE>"
     rel="nofollow">
-     LinkedIn
+        LinkedIn
    </a>
   </li>
   <li>
@@ -58,8 +58,18 @@ Markup
     title="Share this post on Mastodon (new window)"
     href="web+mastodon://share?text=<TITRE>+<URL>"
     rel="nofollow">
-     Mastodon
+        Mastodon
    </a>
+  </li>
+  <li>
+    <a
+    class="share-bluesky"
+    target="_blank"
+    title="Share this post on Bluesky (new window)"
+    href="https://bsky.app/intent/compose?text=<TITRE>%20(<URL>)"
+    rel="nofollow">
+        Bluesky
+    </a>
   </li>
   <li>
    <a
@@ -116,40 +126,42 @@ Default style for social share links
 }
 
 .share .share-twitter {
- background-image: url("index.php?pf=socialShare/img/icon-twitter.png");
- background-image: url("index.php?pf=socialShare/img/icon-twitter.svg"), none;
+ background-image: url("index.php?pf=socialShare/img/icon-twitter.svg");
 }
 .share .share-twitter:hover {
  background-color: #78cbef;
 }
 
 .share .share-fb {
- background-image: url("index.php?pf=socialShare/img/icon-facebook.png");
- background-image: url("index.php?pf=socialShare/img/icon-facebook.svg"), none;
+ background-image: url("index.php?pf=socialShare/img/icon-facebook.svg");
 }
 .share .share-fb:hover {
  background-color: #547bbc;
 }
 
 .share .share-in {
- background-image: url("index.php?pf=socialShare/img/icon-linkedin.png");
- background-image: url("index.php?pf=socialShare/img/icon-linkedin.svg"), none;
+ background-image: url("index.php?pf=socialShare/img/icon-linkedin.svg");
 }
 .share .share-in:hover {
  background-color: #1686b0;
 }
 
 .share .share-mastodon {
- background-image: url("index.php?pf=socialShare/img/icon-mastodon.png");
- background-image: url("index.php?pf=socialShare/img/icon-mastodon.svg"), none;
+ background-image: url("index.php?pf=socialShare/img/icon-mastodon.svg");
 }
 .share .share-mastodon:hover {
  background-color: #3088d4;
 }
 
+.share .share-bluesky {
+ background-image: url("index.php?pf=socialShare/img/icon-bluesky.svg");
+}
+.share .share-bluesky:hover {
+ background-color: #1185fe;
+}
+
 .share .share-mail {
- background-image: url("index.php?pf=socialShare/img/icon-email.png");
- background-image: url("index.php?pf=socialShare/img/icon-email.svg"), none;
+ background-image: url("index.php?pf=socialShare/img/icon-email.svg");
 }
 .share .share-mail:hover {
  background-color: #99c122;

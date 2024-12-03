@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 socialShare module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-28 09:23+0200\n"
+"POT-Creation-Date: 2024-12-03 09:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,12 @@ msgid "Mastodon"
 msgstr ""
 
 msgid "Share this on Mastodon"
+msgstr ""
+
+msgid "Bluesky"
+msgstr ""
+
+msgid "Share this on Bluesky"
 msgstr ""
 
 msgid "Mail"
@@ -89,6 +95,9 @@ msgid "Add LinkedIn sharing button"
 msgstr ""
 
 msgid "Add Mastodon sharing button"
+msgstr ""
+
+msgid "Add Bluesky sharing button"
 msgstr ""
 
 msgid "Add Mail sharing button"

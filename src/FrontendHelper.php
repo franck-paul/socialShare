@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief socialShare, a plugin for Dotclear 2
  *
@@ -99,6 +100,19 @@ class FrontendHelper
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
                 $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mastodon share-popup');
+            }
+
+            // Bluesky link
+            if ($settings->bluesky) {
+                $share_url = sprintf(
+                    'https://bsky.app/intent/compose?text=%s (%s)',
+                    Html::escapeHTML($filter($text) . $tags),
+                    Html::sanitizeURL($url)
+                );
+
+                $href_text  = __('Bluesky');
+                $href_title = __('Share this on Bluesky');
+                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-bluesky share-popup');
             }
 
             // Mail link

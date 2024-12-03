@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief socialShare, a plugin for Dotclear 2
  *
@@ -59,6 +60,7 @@ class Manage extends Process
                 $settings->put('facebook', true, App::blogWorkspace()::NS_BOOL, 'Add Facebook button', false);
                 $settings->put('linkedin', true, App::blogWorkspace()::NS_BOOL, 'Add LinkedIn button', false);
                 $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false);
+                $settings->put('bluesky', true, App::blogWorkspace()::NS_BOOL, 'Add Bluesky button', false);
                 $settings->put('mail', true, App::blogWorkspace()::NS_BOOL, 'Add mail button', false);
 
                 $settings->put('on_post', true, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on post', false);
@@ -93,6 +95,7 @@ class Manage extends Process
                 $ssb_facebook = !empty($_POST['ssb_facebook']);
                 $ssb_linkedin = !empty($_POST['ssb_linkedin']);
                 $ssb_mastodon = !empty($_POST['ssb_mastodon']);
+                $ssb_bluesky  = !empty($_POST['ssb_bluesky']);
                 $ssb_mail     = !empty($_POST['ssb_mail']);
 
                 $ssb_on_post = !empty($_POST['ssb_on_post']);
@@ -120,6 +123,7 @@ class Manage extends Process
                 $settings->put('facebook', $ssb_facebook, App::blogWorkspace()::NS_BOOL);
                 $settings->put('linkedin', $ssb_linkedin, App::blogWorkspace()::NS_BOOL);
                 $settings->put('mastodon', $ssb_mastodon, App::blogWorkspace()::NS_BOOL);
+                $settings->put('bluesky', $ssb_bluesky, App::blogWorkspace()::NS_BOOL);
                 $settings->put('mail', $ssb_mail, App::blogWorkspace()::NS_BOOL);
 
                 $settings->put('on_post', $ssb_on_post, App::blogWorkspace()::NS_BOOL);
@@ -168,6 +172,7 @@ class Manage extends Process
         $ssb_facebook = (bool) $settings->facebook;
         $ssb_linkedin = (bool) $settings->linkedin;
         $ssb_mastodon = (bool) $settings->mastodon;
+        $ssb_bluesky  = (bool) $settings->bluesky;
         $ssb_mail     = (bool) $settings->mail;
 
         $ssb_on_post = (bool) $settings->on_post;
@@ -254,6 +259,11 @@ class Manage extends Process
                     (new Checkbox('ssb_mastodon', $ssb_mastodon))
                         ->value(1)
                         ->label((new Label(__('Add Mastodon sharing button'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                (new Para())->items([
+                    (new Checkbox('ssb_bluesky', $ssb_bluesky))
+                        ->value(1)
+                        ->label((new Label(__('Add Bluesky sharing button'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->items([
                     (new Checkbox('ssb_mail', $ssb_mail))

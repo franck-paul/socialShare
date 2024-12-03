@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief socialShare, a plugin for Dotclear 2
  *
@@ -41,6 +42,7 @@ class Install extends Process
             $settings->put('facebook', true, App::blogWorkspace()::NS_BOOL, 'Add Facebook button', false, true);
             $settings->put('linkedin', true, App::blogWorkspace()::NS_BOOL, 'Add LinkedIn button', false, true);
             $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false, true);
+            $settings->put('bluesky', true, App::blogWorkspace()::NS_BOOL, 'Add Bluesky button', false, true);
             $settings->put('mail', true, App::blogWorkspace()::NS_BOOL, 'Add mail button', false, true);
 
             $settings->put('on_post', true, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on post', false, true);

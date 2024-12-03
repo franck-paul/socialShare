@@ -49,27 +49,28 @@
 .share .share-mastodon:hover {
   background-color: #3088d4;
 }
+.share .share-bluesky:hover {
+  background-color: #1185fe;
+}
 .share .share-mail:hover {
   background-color: #99c122;
 }
 
 .share .share-twitter {
-  background-image: url('index.php?pf=socialShare/img/icon-twitter.png');
-  background-image: url('index.php?pf=socialShare/img/icon-twitter.svg'), none;
+  background-image: url('index.php?pf=socialShare/img/icon-twitter.svg');
 }
 .share .share-fb {
-  background-image: url('index.php?pf=socialShare/img/icon-facebook.png');
-  background-image: url('index.php?pf=socialShare/img/icon-facebook.svg'), none;
+  background-image: url('index.php?pf=socialShare/img/icon-facebook.svg');
 }
 .share .share-in {
-  background-image: url('index.php?pf=socialShare/img/icon-linkedin.png');
-  background-image: url('index.php?pf=socialShare/img/icon-linkedin.svg'), none;
+  background-image: url('index.php?pf=socialShare/img/icon-linkedin.svg');
 }
 .share .share-mastodon {
-  background-image: url('index.php?pf=socialShare/img/icon-mastodon.png');
-  background-image: url('index.php?pf=socialShare/img/icon-mastodon.svg'), none;
+  background-image: url('index.php?pf=socialShare/img/icon-mastodon.svg');
+}
+.share .share-bluesky {
+  background-image: url('index.php?pf=socialShare/img/icon-bluesky.svg');
 }
 .share .share-mail {
-  background-image: url('index.php?pf=socialShare/img/icon-email.png');
-  background-image: url('index.php?pf=socialShare/img/icon-email.svg'), none;
+  background-image: url('index.php?pf=socialShare/img/icon-email.svg');
 }
