@@ -25,7 +25,7 @@ class FrontendHelper
         $ret = '';
 
         // Twitter does not like pipe in text, may be another characters?
-        $filter = static fn (string $text) => str_replace(['|'], ['-'], $text);
+        $filter = static fn (string $text): string => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
         if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
@@ -37,7 +37,7 @@ class FrontendHelper
             $ret .= '<ul class="share-links">' . "\n";
 
             // Compose text
-            $text = ($intro != '' ? $intro . '%20' : '') . $title;
+            $text = ($intro !== '' ? $intro . '%20' : '') . $title;
             $a11y = __(' (new window)');
 
             // Lookup for tags on entry
@@ -57,7 +57,7 @@ class FrontendHelper
                     Html::sanitizeURL($url),
                     Html::escapeHTML($filter($text) . $tags)
                 );
-                if ($twitter_account != '') {
+                if ($twitter_account !== '') {
                     $share_url .= '&amp;via=' . Html::escapeHTML($twitter_account);
                 }
 
