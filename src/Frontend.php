@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief socialShare, a plugin for Dotclear 2
  *
@@ -44,7 +45,7 @@ class Frontend extends Process
             'publicEntryAfterContent'  => FrontendBehaviors::publicEntryAfterContent(...),
         ]);
 
-        App::frontend()->template()->addValue('SocialShare', FrontendTemplate::tplSocialShare(...));
+        App::frontend()->template()->addValue('SocialShare', FrontendTemplate::SocialShare(...));
 
         return true;
     }

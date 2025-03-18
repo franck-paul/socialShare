@@ -16,29 +16,28 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use ArrayObject;
-use Dotclear\App;
+use Dotclear\Plugin\TemplateHelper\Code;
 
 class FrontendTemplate
 {
     /**
      * @param      array<string, mixed>|\ArrayObject<string, mixed>  $attr   The attribute
      */
-    public static function tplSocialShare(array|ArrayObject $attr): string
+    public static function SocialShare(array|ArrayObject $attr): string
     {
-        $ret      = '';
         $settings = My::settings();
         if ($settings->active && $settings->template_tag) {
-            $f   = App::frontend()->template()->getFilters($attr);
-            $ret = '<?= ' . FrontendHelper::class . '::socialShare(' .
-            sprintf($f, 'App::frontend()->context()->posts->getURL()') . ',' .
-            sprintf($f, 'App::frontend()->context()->posts->post_title') . ',' .
-            sprintf($f, '(App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang)') . ',' .
-                'App::blog()->settings()->' . My::id() . '->prefix' . ',' .
-                'App::blog()->settings()->' . My::id() . '->twitter_account' . ',' .
-                'App::blog()->settings()->' . My::id() . '->intro' .
-                '); ?>' . "\n";
+            return Code::getPHPTemplateValueCode(
+                FrontendTemplateCode::SocialShare(...),
+                [
+                    (string) $settings->prefix,
+                    (string) $settings->twitter_account,
+                    (string) $settings->intro,
+                ],
+                $attr,
+            );
         }
 
-        return $ret;
+        return '';
     }
 }

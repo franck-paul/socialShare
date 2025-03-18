@@ -17,13 +17,17 @@ $this->registerModule(
     'Franck Paul, Kozlika',
     '6.1',
     [
-        'date'        => '2003-08-13T13:42:00+0100',
-        'requires'    => [['core', '2.28']],
+        'date'     => '2003-08-13T13:42:00+0100',
+        'requires' => [
+            ['TemplateHelper'],
+            ['core', '2.34'],
+        ],
         'permissions' => 'My',
         'type'        => 'plugin',
 
         'details'    => 'https://open-time.net/?q=socialShare',
         'support'    => 'https://github.com/franck-paul/socialShare',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/socialShare/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );
