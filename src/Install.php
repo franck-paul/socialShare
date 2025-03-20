@@ -44,6 +44,7 @@ class Install extends Process
             $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false, true);
             $settings->put('bluesky', true, App::blogWorkspace()::NS_BOOL, 'Add Bluesky button', false, true);
             $settings->put('mail', true, App::blogWorkspace()::NS_BOOL, 'Add mail button', false, true);
+            $settings->put('menu', true, App::blogWorkspace()::NS_BOOL, 'Add share menu button', false, true);
 
             $settings->put('on_post', true, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on post', false, true);
             $settings->put('on_page', false, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on page', false, true);

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief socialShare, a plugin for Dotclear 2
  *

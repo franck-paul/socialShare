@@ -62,6 +62,7 @@ class Manage extends Process
                 $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false);
                 $settings->put('bluesky', true, App::blogWorkspace()::NS_BOOL, 'Add Bluesky button', false);
                 $settings->put('mail', true, App::blogWorkspace()::NS_BOOL, 'Add mail button', false);
+                $settings->put('menu', true, App::blogWorkspace()::NS_BOOL, 'Add share menu button', false);
 
                 $settings->put('on_post', true, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on post', false);
                 $settings->put('on_page', false, App::blogWorkspace()::NS_BOOL, 'Add social sharing buttons on page', false);
@@ -97,6 +98,7 @@ class Manage extends Process
                 $ssb_mastodon = !empty($_POST['ssb_mastodon']);
                 $ssb_bluesky  = !empty($_POST['ssb_bluesky']);
                 $ssb_mail     = !empty($_POST['ssb_mail']);
+                $ssb_menu     = !empty($_POST['ssb_menu']);
 
                 $ssb_on_post = !empty($_POST['ssb_on_post']);
                 $ssb_on_page = !empty($_POST['ssb_on_page']);
@@ -125,6 +127,7 @@ class Manage extends Process
                 $settings->put('mastodon', $ssb_mastodon, App::blogWorkspace()::NS_BOOL);
                 $settings->put('bluesky', $ssb_bluesky, App::blogWorkspace()::NS_BOOL);
                 $settings->put('mail', $ssb_mail, App::blogWorkspace()::NS_BOOL);
+                $settings->put('menu', $ssb_menu, App::blogWorkspace()::NS_BOOL);
 
                 $settings->put('on_post', $ssb_on_post, App::blogWorkspace()::NS_BOOL);
                 $settings->put('on_page', $ssb_on_page, App::blogWorkspace()::NS_BOOL);
@@ -174,6 +177,7 @@ class Manage extends Process
         $ssb_mastodon = (bool) $settings->mastodon;
         $ssb_bluesky  = (bool) $settings->bluesky;
         $ssb_mail     = (bool) $settings->mail;
+        $ssb_menu     = (bool) $settings->menu;
 
         $ssb_on_post = (bool) $settings->on_post;
         $ssb_on_page = (bool) $settings->on_page;
@@ -269,6 +273,14 @@ class Manage extends Process
                     (new Checkbox('ssb_mail', $ssb_mail))
                         ->value(1)
                         ->label((new Label(__('Add Mail sharing button'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                (new Para())->items([
+                    (new Checkbox('ssb_menu', $ssb_menu))
+                        ->value(1)
+                        ->label((new Label(__(' Add a button for the browser\'s share menu'), Label::INSIDE_TEXT_AFTER))),
+                ]),
+                (new Para())->class('form-note')->items([
+                    (new Text(null, __('This button may not be available depending on your browser capabilities and settings.'))),
                 ]),
 
                 (new Text('h3', __('Options'))),

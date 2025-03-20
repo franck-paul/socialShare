@@ -55,6 +55,9 @@
 .share .share-mail:hover {
   background-color: #99c122;
 }
+.share .share-menu:hover {
+  background-color: #666666;
+}
 
 .share .share-twitter {
   background-image: url('index.php?pf=socialShare/img/icon-twitter.svg');
@@ -73,4 +76,7 @@
 }
 .share .share-mail {
   background-image: url('index.php?pf=socialShare/img/icon-email.svg');
+}
+.share .share-menu {
+  background-image: url('index.php?pf=socialShare/img/icon-menu.svg');
 }

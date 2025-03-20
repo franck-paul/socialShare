@@ -16,6 +16,8 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use Dotclear\App;
+use Dotclear\Helper\Html\Form\Li;
+use Dotclear\Helper\Html\Form\Link;
 use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
@@ -41,11 +43,13 @@ class FrontendHelper
             $a11y = __(' (new window)');
 
             // Lookup for tags on entry
-            $tags = '';
+            $tags     = '';
+            $tag_list = [];
             if ($settings->tags && isset(App::frontend()->context()->posts->post_meta)) {
                 $meta = App::meta()->getMetaRecordset(App::frontend()->context()->posts->post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
+                    $tag_list[] = $meta->meta_id;
                     $tags .= '%20%23' . $meta->meta_id; // space + # + tag
                 }
             }
@@ -93,7 +97,7 @@ class FrontendHelper
             // Mastodon link
             if ($settings->mastodon) {
                 $share_url = sprintf(
-                    'web+mastodon://share?text=%s+%s',
+                    'https://mastodonshare.com/?text=%s+%s',    // was 'web+mastodon://share?text=%s+%s',
                     str_replace('&amp;', '%26', Html::escapeHTML($text . $tags)),
                     Html::sanitizeURL($url)
                 );
@@ -125,6 +129,25 @@ class FrontendHelper
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
                 $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mail');
+            }
+
+            // Share menu link
+            if ($settings->menu) {
+                $tags = implode(' ', array_map(fn ($tag) => '#' . $tag, $tag_list));
+                $ret .= (new Li())
+                    ->items([
+                        (new Link())
+                            ->href('#')
+                            ->text(__('Share menu'))
+                            ->name('share-menu')
+                            ->class('share-menu')
+                            ->extra('hidden')
+                            ->data([
+                                'title' => implode(' ', [$text, $tags]),
+                                'url'   => $url,
+                            ]),
+                    ])
+                ->render();
             }
 
             $ret .= '</ul>' . "\n" .
