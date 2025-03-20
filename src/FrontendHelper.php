@@ -16,28 +16,22 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use Dotclear\App;
+use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Link;
+use Dotclear\Helper\Html\Form\Text;
+use Dotclear\Helper\Html\Form\Ul;
 use Dotclear\Helper\Html\Html;
 
 class FrontendHelper
 {
-    public static function socialShare(string $url, string $title, string $lang, string $prefix, string $twitter_account, string $intro = ''): string
+    public static function socialShare(string $url, string $title, string $prefix, string $twitter_account, string $intro = ''): string
     {
-        $ret = '';
-
         // Twitter does not like pipe in text, may be another characters?
         $filter = static fn (string $text): string => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
         if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
-            $ret = '<div class="share">' . "\n";
-            if ($prefix !== '' && $prefix !== '0') {
-                $ret .= '<p class="share-intro">' . $prefix . '</p>' . "\n";
-            }
-
-            $ret .= '<ul class="share-links">' . "\n";
-
             // Compose text
             $text = ($intro !== '' ? $intro . '%20' : '') . $title;
             $a11y = __(' (new window)');
@@ -54,6 +48,14 @@ class FrontendHelper
                 }
             }
 
+            // Compose links
+            $links = [];
+            if ($prefix !== '') {
+                $links[] = (new Li())
+                    ->class('share-intro')
+                    ->text($prefix);
+            }
+
             // Twitter link
             if ($settings->twitter) {
                 $share_url = sprintf(
@@ -67,7 +69,21 @@ class FrontendHelper
 
                 $href_text  = __('Twitter');
                 $href_title = __('Share this on Twitter');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-twitter share-popup');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class(['share-twitter', 'share-popup'])
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // Facebook link
@@ -79,7 +95,21 @@ class FrontendHelper
                 );
                 $href_text  = __('Facebook');
                 $href_title = __('Share this on Facebook');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-fb share-popup');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class(['share-fb', 'share-popup'])
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // LinkedIn link
@@ -91,7 +121,21 @@ class FrontendHelper
                 );
                 $href_text  = __('LinkedIn');
                 $href_title = __('Share this on LinkedIn');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-in share-popup');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class(['share-in', 'share-popup'])
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // Mastodon link
@@ -103,7 +147,21 @@ class FrontendHelper
                 );
                 $href_text  = __('Mastodon');
                 $href_title = __('Share this on Mastodon');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mastodon share-popup');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class(['share-mastodon', 'share-popup'])
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // Bluesky link
@@ -116,7 +174,21 @@ class FrontendHelper
 
                 $href_text  = __('Bluesky');
                 $href_title = __('Share this on Bluesky');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-bluesky share-popup');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class(['share-bluesky', 'share-popup'])
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // Mail link
@@ -128,33 +200,56 @@ class FrontendHelper
                 );
                 $href_text  = __('Mail');
                 $href_title = __('Share this by mail');
-                $ret .= self::link($href_title, $a11y, $share_url, $href_text, 'share-mail');
+
+                $links[] = (new Li())
+                    ->items([
+                        (new Link())
+                            ->href($share_url)
+                            ->class('share-mail')
+                            ->extra([
+                                'target="_blank',
+                                'rel="nofollow noopener noreferrer"',
+                            ])
+                            ->title($href_title . $a11y)
+                            ->items([
+                                (new Text('span', $href_text)),
+                            ]),
+                    ]);
             }
 
             // Share menu link
             if ($settings->menu) {
-                $tags = implode(' ', array_map(fn ($tag) => '#' . $tag, $tag_list));
-                $ret .= (new Li())
+                $share_url  = '#';
+                $href_text  = __('Share menu');
+                $href_title = __('Share menu');
+                $tags       = implode(' ', array_map(fn ($tag) => '#' . $tag, $tag_list));
+
+                $links[] = (new Li())
                     ->items([
                         (new Link())
-                            ->href('#')
-                            ->text(__('Share menu'))
-                            ->name('share-menu')
+                            ->href($share_url)
                             ->class('share-menu')
                             ->extra('hidden')
                             ->data([
                                 'title' => implode(' ', [$text, $tags]),
                                 'url'   => $url,
+                            ])
+                            ->title($href_title)
+                            ->items([
+                                (new Text('span', $href_text)),
                             ]),
-                    ])
-                ->render();
+                    ]);
             }
-
-            $ret .= '</ul>' . "\n" .
-                '</div>' . "\n";
         }
 
-        return $ret;
+        return (new Div())
+            ->class('share')
+            ->items([
+                (new Ul())
+                    ->class('share-links')
+                    ->items($links),
+            ])
+        ->render();
     }
 
     public static function customStyle(): string
@@ -162,14 +257,5 @@ class FrontendHelper
         $settings = My::settings();
 
         return $settings->style ?? '';
-    }
-
-    private static function link(string $href_title, string $a11y, string $share_url, string $href_text, string $class): string
-    {
-        // Tricky code to avoid xgettext bug on indented end heredoc identifier (see https://savannah.gnu.org/bugs/?62158)
-        // Warning: don't use <<< if there is some __() l10n calls after as xgettext will not find them
-        return <<<LINK
-            <li><a class="{$class}" target="_blank" rel="nofollow noopener noreferrer" title="{$href_title}$a11y" href="{$share_url}"><span>{$href_text}</span></a></li>
-            LINK;
     }
 }

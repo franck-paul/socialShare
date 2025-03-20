@@ -26,7 +26,6 @@ class FrontendBehaviors
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
                 App::frontend()->context()->posts->post_title,
-                (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
                 $settings->prefix,
                 $settings->twitter_account,
                 $settings->intro
@@ -43,7 +42,6 @@ class FrontendBehaviors
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
                 App::frontend()->context()->posts->post_title,
-                (App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang),
                 $settings->prefix,
                 $settings->twitter_account,
                 $settings->intro

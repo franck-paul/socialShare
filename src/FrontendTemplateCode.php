@@ -34,7 +34,6 @@ class FrontendTemplateCode
         $socialshare_buffer = \Dotclear\Plugin\socialShare\FrontendHelper::socialShare(
             App::frontend()->context()->posts->getURL(),
             App::frontend()->context()->posts->post_title,
-            App::frontend()->context()->posts->post_lang ?: App::blog()->settings()->system->lang,
             $_prefix_,
             $_twitter_account_,
             $_intro_

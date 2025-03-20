@@ -3,34 +3,32 @@
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   padding: 0.5em 0;
-  text-align: right;
   clear: both;
 }
 
-.share p,
 .share ul,
 .share li {
-  display: inline-block;
   margin: 0;
   padding: 0;
 }
 
-.share p {
-  padding-right: 1.5em;
+.share ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.25em;
+}
+.share ul li {
+  list-style: none;
 }
 
 .share a {
   padding: 0.25em 0.5em 0.25em 2em;
-  margin-right: 0.5em;
   background-position: 0.25em center;
   background-repeat: no-repeat;
   background-size: 1.5em auto;
   text-decoration: none;
   border-bottom: none;
-}
-
-.share ul li:last-child a {
-  margin-right: 0;
 }
 
 .share a:hover {

@@ -20,8 +20,8 @@
         event.preventDefault();
         try {
           await navigator.share({
-            url: url,
-            title: title,
+            url,
+            title,
           });
         } catch (err) {
           console.error(err);
