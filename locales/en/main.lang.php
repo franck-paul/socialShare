@@ -10,8 +10,8 @@
 
 use Dotclear\Helper\L10n;
 
-L10n::$locales['Add social networks sharing buttons to your posts and pages'] = '';
 L10n::$locales['socialShare'] = '';
+L10n::$locales['Add social networks sharing buttons to your posts and pages'] = '';
 L10n::$locales[' (new window)'] = '';
 L10n::$locales['Twitter'] = '';
 L10n::$locales['Share this on Twitter'] = '';
@@ -25,6 +25,7 @@ L10n::$locales['Bluesky'] = '';
 L10n::$locales['Share this on Bluesky'] = '';
 L10n::$locales['Mail'] = '';
 L10n::$locales['Share this by mail'] = '';
+L10n::$locales['Share menu'] = '';
 L10n::$locales['Share this entry:'] = '';
 L10n::$locales['Use default CSS styles'] = '';
 L10n::$locales['Use theme\'s CSS styles'] = '';
@@ -39,6 +40,8 @@ L10n::$locales['Add LinkedIn sharing button'] = '';
 L10n::$locales['Add Mastodon sharing button'] = '';
 L10n::$locales['Add Bluesky sharing button'] = '';
 L10n::$locales['Add Mail sharing button'] = '';
+L10n::$locales[' Add a button for the browser\'s share menu'] = '';
+L10n::$locales['This button may not be available depending on your browser capabilities and settings.'] = '';
 L10n::$locales['Options'] = '';
 L10n::$locales['Add social sharing buttons on posts'] = '';
 L10n::$locales['Add social sharing buttons on pages'] = '';

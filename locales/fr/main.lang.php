@@ -10,8 +10,8 @@
 
 use Dotclear\Helper\L10n;
 
-L10n::$locales['Add social networks sharing buttons to your posts and pages'] = 'Ajoute les boutons de partage des réseaux sociaux à vos publications';
 L10n::$locales['socialShare'] = 'socialShare';
+L10n::$locales['Add social networks sharing buttons to your posts and pages'] = 'Ajoute les boutons de partage des réseaux sociaux à vos publications';
 L10n::$locales[' (new window)'] = ' (nouvelle fenêtre)';
 L10n::$locales['Twitter'] = 'Twitter';
 L10n::$locales['Share this on Twitter'] = 'Partager ceci sur Twitter';
@@ -25,6 +25,7 @@ L10n::$locales['Bluesky'] = 'Bluesky';
 L10n::$locales['Share this on Bluesky'] = 'Partager sur Bluesky';
 L10n::$locales['Mail'] = 'Mail';
 L10n::$locales['Share this by mail'] = 'Partager ce document par mail';
+L10n::$locales['Share menu'] = 'Menu de partage';
 L10n::$locales['Share this entry:'] = 'Partager cette publication :';
 L10n::$locales['Use default CSS styles'] = 'Utiliser les styles CSS par défaut';
 L10n::$locales['Use theme\'s CSS styles'] = 'Utiliser les styles CSS définis dans le thème du blog';
@@ -39,6 +40,8 @@ L10n::$locales['Add LinkedIn sharing button'] = 'Ajoute le bouton de partage ver
 L10n::$locales['Add Mastodon sharing button'] = 'Ajoute le bouton de partage vers Mastodon';
 L10n::$locales['Add Bluesky sharing button'] = 'Ajoute le bouton de partage vers Bluesky';
 L10n::$locales['Add Mail sharing button'] = 'Ajoute le bouton de partage par email';
+L10n::$locales[' Add a button for the browser\'s share menu'] = ' Ajouter un bouton pour le menu de partage du navigateur';
+L10n::$locales['This button may not be available depending on your browser capabilities and settings.'] = 'Ce bouton peut ne pas être disponible en fonction des capacités et des paramètres de votre navigateur.';
 L10n::$locales['Options'] = 'Options';
 L10n::$locales['Add social sharing buttons on posts'] = 'Ajoute les boutons de partage pour les billets';
 L10n::$locales['Add social sharing buttons on pages'] = 'Ajoute les boutons de partage pour les pages';
