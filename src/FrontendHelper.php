@@ -31,7 +31,7 @@ class FrontendHelper
         $filter = static fn (string $text): string => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
-        if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail) {
+        if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail || $settings->menu) {
             // Compose text
             $text = ($intro !== '' ? $intro . '%20' : '') . $title;
             $a11y = __(' (new window)');
@@ -222,7 +222,7 @@ class FrontendHelper
                 $share_url  = '#';
                 $href_text  = __('Share menu');
                 $href_title = __('Share menu');
-                $tags       = implode(' ', array_map(fn ($tag) => '#' . $tag, $tag_list));
+                $tags       = implode(' ', array_map(fn ($tag): string => '#' . $tag, $tag_list));
 
                 $links[] = (new Li())
                     ->items([
@@ -240,16 +240,18 @@ class FrontendHelper
                             ]),
                     ]);
             }
+
+            return (new Div())
+                ->class('share')
+                ->items([
+                    (new Ul())
+                        ->class('share-links')
+                        ->items($links),
+                ])
+            ->render();
         }
 
-        return (new Div())
-            ->class('share')
-            ->items([
-                (new Ul())
-                    ->class('share-links')
-                    ->items($links),
-            ])
-        ->render();
+        return '';
     }
 
     public static function customStyle(): string
