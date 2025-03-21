@@ -30,11 +30,11 @@ msgid " (new window)"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/FrontendHelper.php:68
-msgid "Twitter"
+msgid "Twitter/X"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/FrontendHelper.php:69
-msgid "Share this on Twitter"
+msgid "Share this on Twitter/X"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/FrontendHelper.php:80
@@ -107,11 +107,11 @@ msgid "Buttons"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:240
-msgid "Add Twitter sharing button"
+msgid "Add Twitter/X sharing button"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:247
-msgid "Twitter account:"
+msgid "Twitter/X account:"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:250
@@ -207,7 +207,7 @@ msgid "Use tags if any"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:350
-msgid "Only for Twitter and Mastodon buttons."
+msgid "Only for Twitter/X and Mastodon buttons."
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:353

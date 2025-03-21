@@ -59,7 +59,7 @@ class FrontendHelper
             // Twitter link
             if ($settings->twitter) {
                 $share_url = sprintf(
-                    'https://twitter.com/share?url=%s&amp;text=%s',
+                    'https://x.com/share?url=%s&amp;text=%s',
                     Html::sanitizeURL($url),
                     Html::escapeHTML($filter($text) . $tags)
                 );
@@ -67,8 +67,8 @@ class FrontendHelper
                     $share_url .= '&amp;via=' . Html::escapeHTML($twitter_account);
                 }
 
-                $href_text  = __('Twitter');
-                $href_title = __('Share this on Twitter');
+                $href_text  = __('Twitter/X');
+                $href_title = __('Share this on Twitter/X');
 
                 $links[] = (new Li())
                     ->items([

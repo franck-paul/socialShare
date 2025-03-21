@@ -25,10 +25,10 @@ msgstr ""
 msgid " (new window)"
 msgstr ""
 
-msgid "Twitter"
+msgid "Twitter/X"
 msgstr ""
 
-msgid "Share this on Twitter"
+msgid "Share this on Twitter/X"
 msgstr ""
 
 msgid "Facebook"
@@ -82,10 +82,10 @@ msgstr ""
 msgid "Buttons"
 msgstr ""
 
-msgid "Add Twitter sharing button"
+msgid "Add Twitter/X sharing button"
 msgstr ""
 
-msgid "Twitter account:"
+msgid "Twitter/X account:"
 msgstr ""
 
 msgid "This will be used as \"via\" in tweet rather than the blog name (if not empty)."
@@ -157,7 +157,7 @@ msgstr ""
 msgid "Use tags if any"
 msgstr ""
 
-msgid "Only for Twitter and Mastodon buttons."
+msgid "Only for Twitter/X and Mastodon buttons."
 msgstr ""
 
 msgid "Social sharing buttons CSS styles"

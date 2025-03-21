@@ -56,7 +56,7 @@ class Manage extends Process
                 // Add default settings values if necessary
                 $settings->put('active', false, App::blogWorkspace()::NS_BOOL, 'Active', false);
 
-                $settings->put('twitter', true, App::blogWorkspace()::NS_BOOL, 'Add Twitter button', false);
+                $settings->put('twitter', true, App::blogWorkspace()::NS_BOOL, 'Add Twitter/X button', false);
                 $settings->put('facebook', true, App::blogWorkspace()::NS_BOOL, 'Add Facebook button', false);
                 $settings->put('linkedin', true, App::blogWorkspace()::NS_BOOL, 'Add LinkedIn button', false);
                 $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false);
@@ -79,7 +79,7 @@ class Manage extends Process
                 $settings->put('use_style', 0, App::blogWorkspace()::NS_INT, 'CSS style used', false);
                 $settings->put('style', '', App::blogWorkspace()::NS_STRING, 'Social sharing buttons style', false);
 
-                $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter account to use with Twitter button', false);
+                $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter/X account to use with Twitter/X button', false);
 
                 App::blog()->triggerBlog();
                 My::redirect();
@@ -237,14 +237,14 @@ class Manage extends Process
                 (new Para())->items([
                     (new Checkbox('ssb_twitter', $ssb_twitter))
                         ->value(1)
-                        ->label((new Label(__('Add Twitter sharing button'), Label::INSIDE_TEXT_AFTER))),
+                        ->label((new Label(__('Add Twitter/X sharing button'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->items([
                     (new Input('ssb_twitter_account'))
                         ->size(30)
                         ->maxlength(128)
                         ->value(Html::escapeHTML($ssb_twitter_account))
-                        ->label((new Label(__('Twitter account:'), Label::INSIDE_TEXT_BEFORE))),
+                        ->label((new Label(__('Twitter/X account:'), Label::INSIDE_TEXT_BEFORE))),
                 ]),
                 (new Para())->class('form-note')->items([
                     (new Text(null, __('This will be used as "via" in tweet rather than the blog name (if not empty).'))),
@@ -347,7 +347,7 @@ class Manage extends Process
                         ->label((new Label(__('Use tags if any'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->class('form-note')->items([
-                    (new Text(null, __('Only for Twitter and Mastodon buttons.'))),
+                    (new Text(null, __('Only for Twitter/X and Mastodon buttons.'))),
                 ]),
 
                 (new Text('h3', __('Social sharing buttons CSS styles'))),

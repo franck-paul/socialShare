@@ -29,11 +29,11 @@ msgstr "Ajoute les boutons de partage des réseaux sociaux à vos publications"
 msgid " (new window)"
 msgstr " (nouvelle fenêtre)"
 
-msgid "Twitter"
-msgstr "Twitter"
+msgid "Twitter/X"
+msgstr "Twitter/X"
 
-msgid "Share this on Twitter"
-msgstr "Partager ceci sur Twitter"
+msgid "Share this on Twitter/X"
+msgstr "Partager ceci sur Twitter/X"
 
 msgid "Facebook"
 msgstr "Facebook"
@@ -86,11 +86,11 @@ msgstr "Activer le plugin socialShare"
 msgid "Buttons"
 msgstr "Boutons"
 
-msgid "Add Twitter sharing button"
-msgstr "Ajoute le bouton de partage vers Twitter"
+msgid "Add Twitter/X sharing button"
+msgstr "Ajoute le bouton de partage vers Twitter/X"
 
-msgid "Twitter account:"
-msgstr "Compte Twitter :"
+msgid "Twitter/X account:"
+msgstr "Compte Twitter/X :"
 
 msgid ""
 "This will be used as \"via\" in tweet rather than the blog name (if not "
@@ -175,8 +175,8 @@ msgstr "Sera inséré devant le titre de la publication si non vide."
 msgid "Use tags if any"
 msgstr "Utiliser les mot-clés s'ils existent"
 
-msgid "Only for Twitter and Mastodon buttons."
-msgstr "Uniquement pour les boutons Twitter et Mastodon."
+msgid "Only for Twitter/X and Mastodon buttons."
+msgstr "Uniquement pour les boutons Twitter/X et Mastodon."
 
 msgid "Social sharing buttons CSS styles"
 msgstr "Styles CSS à appliquer"

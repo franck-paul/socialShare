@@ -38,7 +38,7 @@ class Install extends Process
 
             $settings->put('active', false, App::blogWorkspace()::NS_BOOL, 'Active', false, true);
 
-            $settings->put('twitter', true, App::blogWorkspace()::NS_BOOL, 'Add Twitter button', false, true);
+            $settings->put('twitter', true, App::blogWorkspace()::NS_BOOL, 'Add Twitter/X button', false, true);
             $settings->put('facebook', true, App::blogWorkspace()::NS_BOOL, 'Add Facebook button', false, true);
             $settings->put('linkedin', true, App::blogWorkspace()::NS_BOOL, 'Add LinkedIn button', false, true);
             $settings->put('mastodon', true, App::blogWorkspace()::NS_BOOL, 'Add Mastodon button', false, true);
@@ -61,7 +61,7 @@ class Install extends Process
             $settings->put('use_style', 0, App::blogWorkspace()::NS_INT, 'CSS styles used', false, true);
             $settings->put('style', '', App::blogWorkspace()::NS_STRING, 'Social sharing buttons style', false, true);
 
-            $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter account to use with Twitter button', false, true);
+            $settings->put('twitter_account', '', App::blogWorkspace()::NS_STRING, 'Twitter/X account to use with Twitter/X button', false, true);
         } catch (Exception $exception) {
             App::error()->add($exception->getMessage());
         }
