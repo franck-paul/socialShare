@@ -157,7 +157,7 @@ msgstr ""
 msgid "Use tags if any"
 msgstr ""
 
-msgid "Only for Twitter/X and Mastodon buttons."
+msgid "Only for Twitter/X, Bluesky and Mastodon buttons."
 msgstr ""
 
 msgid "Social sharing buttons CSS styles"

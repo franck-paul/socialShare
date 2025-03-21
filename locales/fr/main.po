@@ -175,8 +175,8 @@ msgstr "Sera inséré devant le titre de la publication si non vide."
 msgid "Use tags if any"
 msgstr "Utiliser les mot-clés s'ils existent"
 
-msgid "Only for Twitter/X and Mastodon buttons."
-msgstr "Uniquement pour les boutons Twitter/X et Mastodon."
+msgid "Only for Twitter/X, Bluesky and Mastodon buttons."
+msgstr "Uniquement pour les boutons Twitter/X, Bluesky et Mastodon."
 
 msgid "Social sharing buttons CSS styles"
 msgstr "Styles CSS à appliquer"

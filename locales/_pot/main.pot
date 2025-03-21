@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 socialShare module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-20 06:05+0100\n"
+"POT-Creation-Date: 2025-03-21 10:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,59 +25,60 @@ msgstr ""
 msgid "Add social networks sharing buttons to your posts and pages"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:43
+#: ../git-plugins/socialShare/src/FrontendHelper.php:37
 msgid " (new window)"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:68
+#: ../git-plugins/socialShare/src/FrontendHelper.php:70
 msgid "Twitter/X"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:69
+#: ../git-plugins/socialShare/src/FrontendHelper.php:71
 msgid "Share this on Twitter/X"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:80
+#: ../git-plugins/socialShare/src/FrontendHelper.php:96
 msgid "Facebook"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:81
+#: ../git-plugins/socialShare/src/FrontendHelper.php:97
 msgid "Share this on Facebook"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:92
+#: ../git-plugins/socialShare/src/FrontendHelper.php:122
 msgid "LinkedIn"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:93
+#: ../git-plugins/socialShare/src/FrontendHelper.php:123
 msgid "Share this on LinkedIn"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:104
+#: ../git-plugins/socialShare/src/FrontendHelper.php:148
 msgid "Mastodon"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:105
+#: ../git-plugins/socialShare/src/FrontendHelper.php:149
 msgid "Share this on Mastodon"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:117
+#: ../git-plugins/socialShare/src/FrontendHelper.php:175
 msgid "Bluesky"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:118
+#: ../git-plugins/socialShare/src/FrontendHelper.php:176
 msgid "Share this on Bluesky"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:129
+#: ../git-plugins/socialShare/src/FrontendHelper.php:201
 msgid "Mail"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:130
+#: ../git-plugins/socialShare/src/FrontendHelper.php:202
 msgid "Share this by mail"
 msgstr ""
 
-#: ../git-plugins/socialShare/src/FrontendHelper.php:141
+#: ../git-plugins/socialShare/src/FrontendHelper.php:223
+#: ../git-plugins/socialShare/src/FrontendHelper.php:224
 msgid "Share menu"
 msgstr ""
 
@@ -207,7 +208,7 @@ msgid "Use tags if any"
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:350
-msgid "Only for Twitter/X and Mastodon buttons."
+msgid "Only for Twitter/X, Bluesky and Mastodon buttons."
 msgstr ""
 
 #: ../git-plugins/socialShare/src/Manage.php:353

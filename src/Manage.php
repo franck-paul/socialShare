@@ -347,7 +347,7 @@ class Manage extends Process
                         ->label((new Label(__('Use tags if any'), Label::INSIDE_TEXT_AFTER))),
                 ]),
                 (new Para())->class('form-note')->items([
-                    (new Text(null, __('Only for Twitter/X and Mastodon buttons.'))),
+                    (new Text(null, __('Only for Twitter/X, Bluesky and Mastodon buttons.'))),
                 ]),
 
                 (new Text('h3', __('Social sharing buttons CSS styles'))),
