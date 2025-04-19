@@ -33,7 +33,7 @@ msgid "Twitter/X"
 msgstr "Twitter/X"
 
 msgid "Share this on Twitter/X"
-msgstr "Partager ceci sur Twitter/X"
+msgstr "Partager sur Twitter/X"
 
 msgid "Facebook"
 msgstr "Facebook"
@@ -87,7 +87,7 @@ msgid "Buttons"
 msgstr "Boutons"
 
 msgid "Add Twitter/X sharing button"
-msgstr "Ajoute le bouton de partage vers Twitter/X"
+msgstr "Ajouter un bouton de partage Twitter/X"
 
 msgid "Twitter/X account:"
 msgstr "Compte Twitter/X :"
