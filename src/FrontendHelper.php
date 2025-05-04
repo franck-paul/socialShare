@@ -19,6 +19,7 @@ use Dotclear\App;
 use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Link;
+use Dotclear\Helper\Html\Form\Span;
 use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Form\Ul;
 use Dotclear\Helper\Html\Html;
@@ -81,7 +82,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -107,7 +108,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -133,7 +134,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -159,7 +160,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -186,7 +187,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -212,7 +213,7 @@ class FrontendHelper
                             ])
                             ->title($href_title . $a11y)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
@@ -236,7 +237,7 @@ class FrontendHelper
                             ])
                             ->title($href_title)
                             ->items([
-                                (new Text('span', $href_text)),
+                                (new Span($href_text)),
                             ]),
                     ]);
             }
