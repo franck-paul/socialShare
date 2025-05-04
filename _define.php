@@ -15,9 +15,9 @@ $this->registerModule(
     'socialShare',
     'Add social networks sharing buttons to your posts and pages',
     'Franck Paul, Kozlika',
-    '7.5',
+    '7.6',
     [
-        'date'     => '2025-04-19T16:52:31+0200',
+        'date'     => '2025-05-04T12:45:00+0200',
         'requires' => [
             ['TemplateHelper'],
             ['core', '2.34'],
