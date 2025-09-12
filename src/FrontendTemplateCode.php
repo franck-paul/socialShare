@@ -38,7 +38,7 @@ class FrontendTemplateCode
             $_twitter_account_,
             $_intro_
         );
-        echo \Dotclear\Core\Frontend\Ctx::global_filters(
+        echo App::frontend()->context()::global_filters(
             $socialshare_buffer,
             $_params_,
             $_tag_
