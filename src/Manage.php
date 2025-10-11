@@ -205,7 +205,7 @@ class Manage
         $i            = 0;
         foreach ($ssb_use_styles as $k => $v) {
             $radio_styles[] = (new Para())->items([
-                (new Radio(['ssb_use_style', 'ssb_use_style_' . $i], $ssb_use_style == $k))
+                (new Radio(['ssb_use_style', 'ssb_use_style_' . $i], $ssb_use_style === $k))
                     ->value($k)
                     ->label((new Label($v, Label::INSIDE_TEXT_AFTER))),
             ]);
