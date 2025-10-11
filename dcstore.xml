@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="socialShare">
     <name>socialShare</name>
-    <version>8.2</version>
+    <version>8.3</version>
     <author>Franck Paul, Kozlika</author>
     <desc>Add social networks sharing buttons to your posts and pages</desc>
-    <date>2025-09-22T10:25:13+0200</date>
-    <file>https://github.com/franck-paul/socialShare/releases/download/8.2/plugin-socialShare-8.2.zip</file>
+    <date>2025-10-11T10:44:52+0200</date>
+    <file>https://github.com/franck-paul/socialShare/releases/download/8.3/plugin-socialShare-8.3.zip</file>
     <da:dcmin>2.36</da:dcmin>
     <da:details>https://open-time.net/?q=socialShare</da:details>
     <da:support>https://github.com/franck-paul/socialShare</da:support>
