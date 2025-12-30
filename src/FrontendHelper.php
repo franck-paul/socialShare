@@ -20,7 +20,6 @@ use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Link;
 use Dotclear\Helper\Html\Form\Span;
-use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Form\Ul;
 use Dotclear\Helper\Html\Html;
 
@@ -225,6 +224,9 @@ class FrontendHelper
                 $href_title = __('Share menu');
                 $tags       = implode(' ', array_map(fn ($tag): string => '#' . $tag, $tag_list));
 
+                // No need to use %20 as space in share menu text
+                $text_share = ($intro !== '' ? $intro . ' ' : '') . $title;
+
                 $links[] = (new Li())
                     ->items([
                         (new Link())
@@ -232,7 +234,7 @@ class FrontendHelper
                             ->class('share-menu')
                             ->extra('hidden')
                             ->data([
-                                'title' => implode(' ', [$text, $tags]),
+                                'title' => implode(' ', [$text_share, $tags]),
                                 'url'   => $url,
                             ])
                             ->title($href_title)

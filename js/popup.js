@@ -10,7 +10,7 @@
     });
   }
 
-  if ('share' in window.navigator) {
+  if ('share' in globalThis.navigator) {
     const shares = document.querySelectorAll('.share-menu');
     for (const share of shares) {
       const url = share?.dataset?.url;
