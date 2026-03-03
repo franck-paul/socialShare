@@ -27,12 +27,14 @@ class FrontendTemplate
     {
         $settings = My::settings();
         if ($settings->active && $settings->template_tag) {
+            $getStr = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
             return Code::getPHPTemplateValueCode(
                 FrontendTemplateCode::SocialShare(...),
                 [
-                    (string) $settings->prefix,
-                    (string) $settings->twitter_account,
-                    (string) $settings->intro,
+                    $getStr($settings->prefix),
+                    $getStr($settings->twitter_account),
+                    $getStr($settings->intro),
                 ],
                 $attr,
             );

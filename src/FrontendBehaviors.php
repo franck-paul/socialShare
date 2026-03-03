@@ -16,19 +16,22 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use Dotclear\App;
+use Dotclear\Database\MetaRecord;
 
 class FrontendBehaviors
 {
     public static function publicEntryBeforeContent(): string
     {
         $settings = My::settings();
-        if ($settings->active && (App::frontend()->context()->posts->post_type == 'post' && $settings->on_post || App::frontend()->context()->posts->post_type == 'page' && $settings->on_page) && (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->before_content)) {
+        if ($settings->active && App::frontend()->context()->posts instanceof MetaRecord && (App::frontend()->context()->posts->post_type == 'post' && $settings->on_post || App::frontend()->context()->posts->post_type == 'page' && $settings->on_page) && (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->before_content)) {
+            $getStr = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
             echo FrontendHelper::socialShare(
-                App::frontend()->context()->posts->getURL(),
-                App::frontend()->context()->posts->post_title,
-                $settings->prefix,
-                $settings->twitter_account,
-                $settings->intro
+                $getStr(App::frontend()->context()->posts->getURL() ?? ''),
+                $getStr(App::frontend()->context()->posts->post_title ?? ''),
+                $getStr($settings->prefix),
+                $getStr($settings->twitter_account),
+                $getStr($settings->intro)
             );
         }
 
@@ -38,13 +41,15 @@ class FrontendBehaviors
     public static function publicEntryAfterContent(): string
     {
         $settings = My::settings();
-        if ($settings->active && (App::frontend()->context()->posts->post_type == 'post' && $settings->on_post || App::frontend()->context()->posts->post_type == 'page' && $settings->on_page) && (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->after_content)) {
+        if ($settings->active && App::frontend()->context()->posts instanceof MetaRecord && (App::frontend()->context()->posts->post_type == 'post' && $settings->on_post || App::frontend()->context()->posts->post_type == 'page' && $settings->on_page) && (((App::url()->getType() == 'post' || App::url()->getType() == 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->after_content)) {
+            $getStr = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
             echo FrontendHelper::socialShare(
-                App::frontend()->context()->posts->getURL(),
-                App::frontend()->context()->posts->post_title,
-                $settings->prefix,
-                $settings->twitter_account,
-                $settings->intro
+                $getStr(App::frontend()->context()->posts->getURL() ?? ''),
+                $getStr(App::frontend()->context()->posts->post_title ?? ''),
+                $getStr($settings->prefix),
+                $getStr($settings->twitter_account),
+                $getStr($settings->intro)
             );
         }
 

@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\socialShare;
 
 use Dotclear\App;
+use Dotclear\Database\MetaRecord;
 use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Link;
@@ -39,12 +40,15 @@ class FrontendHelper
             // Lookup for tags on entry
             $tags     = '';
             $tag_list = [];
-            if ($settings->tags && isset(App::frontend()->context()->posts->post_meta)) {
-                $meta = App::meta()->getMetaRecordset(App::frontend()->context()->posts->post_meta, 'tag');
+            if ($settings->tags && App::frontend()->context()->posts instanceof MetaRecord && isset(App::frontend()->context()->posts->post_meta)) {
+                $post_meta = is_string($post_meta = App::frontend()->context()->posts->post_meta ?? null) ? $post_meta : null;
+                $meta      = App::meta()->getMetaRecordset($post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
-                    $tag_list[] = $meta->meta_id;
-                    $tags .= '%20%23' . $meta->meta_id; // space + # + tag
+                    if (is_string($meta->meta_id)) {
+                        $tag_list[] = $meta->meta_id;
+                        $tags .= '%20%23' . $meta->meta_id; // space + # + tag
+                    }
                 }
             }
 
@@ -222,7 +226,7 @@ class FrontendHelper
                 $share_url  = '#';
                 $href_text  = __('Share menu');
                 $href_title = __('Share menu');
-                $tags       = implode(' ', array_map(fn ($tag): string => '#' . $tag, $tag_list));
+                $tags       = implode(' ', array_map(fn (string $tag): string => '#' . $tag, $tag_list));
 
                 // No need to use %20 as space in share menu text
                 $text_share = ($intro !== '' ? $intro . ' ' : '') . $title;
@@ -261,6 +265,6 @@ class FrontendHelper
     {
         $settings = My::settings();
 
-        return $settings->style ?? '';
+        return isset($settings->style) && is_string($settings->style) ? $settings->style : '';
     }
 }
