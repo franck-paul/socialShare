@@ -91,36 +91,36 @@ class Manage
         if ($_POST !== []) {
             try {
                 // Post data helpers
-                $getBool = fn (string $name): bool => !empty($_POST[$name]);
-                $getInt  = fn (string $name, int $default = 0): int => isset($_POST[$name]) && is_numeric($val = $_POST[$name]) ? (int) $val : $default;
-                $getStr  = fn (string $name, string $default = ''): string => isset($_POST[$name]) && is_string($val = $_POST[$name]) ? $val : $default;
+                $_Bool = fn (string $name): bool => !empty($_POST[$name]);
+                $_Int  = fn (string $name, int $default = 0): int => isset($_POST[$name]) && is_numeric($val = $_POST[$name]) ? (int) $val : $default;
+                $_Str  = fn (string $name, string $default = ''): string => isset($_POST[$name]) && is_string($val = $_POST[$name]) ? $val : $default;
 
-                $ssb_active = $getBool('ssb_active');
+                $ssb_active = $_Bool('ssb_active');
 
-                $ssb_twitter  = $getBool('ssb_twitter');
-                $ssb_facebook = $getBool('ssb_facebook');
-                $ssb_linkedin = $getBool('ssb_linkedin');
-                $ssb_mastodon = $getBool('ssb_mastodon');
-                $ssb_bluesky  = $getBool('ssb_bluesky');
-                $ssb_mail     = $getBool('ssb_mail');
-                $ssb_menu     = $getBool('ssb_menu');
+                $ssb_twitter  = $_Bool('ssb_twitter');
+                $ssb_facebook = $_Bool('ssb_facebook');
+                $ssb_linkedin = $_Bool('ssb_linkedin');
+                $ssb_mastodon = $_Bool('ssb_mastodon');
+                $ssb_bluesky  = $_Bool('ssb_bluesky');
+                $ssb_mail     = $_Bool('ssb_mail');
+                $ssb_menu     = $_Bool('ssb_menu');
 
-                $ssb_on_post = $getBool('ssb_on_post');
-                $ssb_on_page = $getBool('ssb_on_page');
+                $ssb_on_post = $_Bool('ssb_on_post');
+                $ssb_on_page = $_Bool('ssb_on_page');
 
-                $ssb_on_single_only = $getBool('ssb_on_single_only');
+                $ssb_on_single_only = $_Bool('ssb_on_single_only');
 
-                $ssb_before_content = $getBool('ssb_before_content');
-                $ssb_after_content  = $getBool('ssb_after_content');
-                $ssb_template_tag   = $getBool('ssb_template_tag');
+                $ssb_before_content = $_Bool('ssb_before_content');
+                $ssb_after_content  = $_Bool('ssb_after_content');
+                $ssb_template_tag   = $_Bool('ssb_template_tag');
 
-                $ssb_prefix    = trim(Html::escapeHTML($getStr('ssb_prefix')));
-                $ssb_intro     = trim(Html::escapeHTML($getStr('ssb_intro')));
-                $ssb_tags      = $getBool('ssb_tags');
-                $ssb_use_style = abs($getInt('ssb_use_style'));
-                $ssb_style     = trim($getStr('ssb_style'));
+                $ssb_prefix    = trim(Html::escapeHTML($_Str('ssb_prefix')));
+                $ssb_intro     = trim(Html::escapeHTML($_Str('ssb_intro')));
+                $ssb_tags      = $_Bool('ssb_tags');
+                $ssb_use_style = abs($_Int('ssb_use_style'));
+                $ssb_style     = trim($_Str('ssb_style'));
 
-                $ssb_twitter_account = trim(ltrim(Html::escapeHTML($getStr('ssb_twitter_account')), '@'));
+                $ssb_twitter_account = trim(ltrim(Html::escapeHTML($_Str('ssb_twitter_account')), '@'));
 
                 // Everything's fine, save options
 
@@ -175,36 +175,36 @@ class Manage
         $settings = My::settings();
 
         // Settings data helpers
-        $getBool = fn (mixed $setting): bool => (bool) $setting;
-        $getInt  = fn (mixed $setting, int $default = 0): int => $setting !== null && is_numeric($val = $setting) ? (int) $val : $default;
-        $getStr  = fn (mixed $setting, string $default = ''): string => $setting !== null && is_string($val = $setting) ? $val : $default;
+        $_Bool = fn (mixed $setting): bool => (bool) $setting;
+        $_Int  = fn (mixed $setting, int $default = 0): int => $setting !== null && is_numeric($val = $setting) ? (int) $val : $default;
+        $_Str  = fn (mixed $setting, string $default = ''): string => $setting !== null && is_string($val = $setting) ? $val : $default;
 
-        $ssb_active = $getBool($settings->active);
+        $ssb_active = $_Bool($settings->active);
 
-        $ssb_twitter  = $getBool($settings->twitter);
-        $ssb_facebook = $getBool($settings->facebook);
-        $ssb_linkedin = $getBool($settings->linkedin);
-        $ssb_mastodon = $getBool($settings->mastodon);
-        $ssb_bluesky  = $getBool($settings->bluesky);
-        $ssb_mail     = $getBool($settings->mail);
-        $ssb_menu     = $getBool($settings->menu);
+        $ssb_twitter  = $_Bool($settings->twitter);
+        $ssb_facebook = $_Bool($settings->facebook);
+        $ssb_linkedin = $_Bool($settings->linkedin);
+        $ssb_mastodon = $_Bool($settings->mastodon);
+        $ssb_bluesky  = $_Bool($settings->bluesky);
+        $ssb_mail     = $_Bool($settings->mail);
+        $ssb_menu     = $_Bool($settings->menu);
 
-        $ssb_on_post = $getBool($settings->on_post);
-        $ssb_on_page = $getBool($settings->on_page);
+        $ssb_on_post = $_Bool($settings->on_post);
+        $ssb_on_page = $_Bool($settings->on_page);
 
-        $ssb_on_single_only = $getBool($settings->on_single_only);
+        $ssb_on_single_only = $_Bool($settings->on_single_only);
 
-        $ssb_before_content = $getBool($settings->before_content);
-        $ssb_after_content  = $getBool($settings->after_content);
-        $ssb_template_tag   = $getBool($settings->template_tag);
+        $ssb_before_content = $_Bool($settings->before_content);
+        $ssb_after_content  = $_Bool($settings->after_content);
+        $ssb_template_tag   = $_Bool($settings->template_tag);
 
-        $ssb_prefix    = $getStr($settings->prefix);
-        $ssb_intro     = $getStr($settings->intro);
-        $ssb_tags      = $getBool($settings->tags);
-        $ssb_use_style = $getInt($settings->use_style);
-        $ssb_style     = $getStr($settings->style);
+        $ssb_prefix    = $_Str($settings->prefix);
+        $ssb_intro     = $_Str($settings->intro);
+        $ssb_tags      = $_Bool($settings->tags);
+        $ssb_use_style = $_Int($settings->use_style);
+        $ssb_style     = $_Str($settings->style);
 
-        $ssb_twitter_account = $getStr($settings->twitter_account);
+        $ssb_twitter_account = $_Str($settings->twitter_account);
 
         $ssb_use_styles = [
             0 => __('Use default CSS styles'),
