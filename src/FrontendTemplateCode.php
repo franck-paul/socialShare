@@ -35,7 +35,7 @@ class FrontendTemplateCode
         $socialshare_post_title = '';
         if (App::frontend()->context()->posts instanceof \Dotclear\Database\MetaRecord) {
             $socialshare_url        = is_string($socialshare_url = App::frontend()->context()->posts->getURL() ?? '') ? $socialshare_url : '';
-            $socialshare_post_title = is_string($socialshare_post_title = App::frontend()->context()->posts->post_title ?? '') ? $socialshare_post_title : '';
+            $socialshare_post_title = App::frontend()->context()->posts->strField('post_title');
         }
 
         $socialshare_buffer = \Dotclear\Plugin\socialShare\FrontendHelper::socialShare(

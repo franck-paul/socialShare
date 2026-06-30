@@ -41,7 +41,7 @@ class FrontendHelper
             $tags     = '';
             $tag_list = [];
             if ($settings->tags && App::frontend()->context()->posts instanceof MetaRecord && isset(App::frontend()->context()->posts->post_meta)) {
-                $post_meta = is_string($post_meta = App::frontend()->context()->posts->post_meta ?? null) ? $post_meta : null;
+                $post_meta = App::frontend()->context()->posts->strField('post_meta', true);
                 $meta      = App::meta()->getMetaRecordset($post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
