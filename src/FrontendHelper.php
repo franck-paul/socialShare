@@ -32,7 +32,13 @@ class FrontendHelper
         $filter = static fn (string $text): string => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
-        if ($settings->twitter || $settings->facebook || $settings->linkedin || $settings->mastodon || $settings->mail || $settings->menu) {
+        if ($settings->getBool('twitter')
+            || $settings->getBool('facebook')
+            || $settings->getBool('linkedin')
+            || $settings->getBool('mastodon')
+            || $settings->getBool('mail')
+            || $settings->getBool('menu')
+        ) {
             // Compose text
             $text = ($intro !== '' ? $intro . '%20' : '') . $title;
             $a11y = __(' (new window)');
@@ -40,7 +46,10 @@ class FrontendHelper
             // Lookup for tags on entry
             $tags     = '';
             $tag_list = [];
-            if ($settings->tags && App::frontend()->context()->posts instanceof MetaRecord && isset(App::frontend()->context()->posts->post_meta)) {
+            if ($settings->getBool('tags')
+                && App::frontend()->context()->posts instanceof MetaRecord
+                && isset(App::frontend()->context()->posts->post_meta)
+            ) {
                 $post_meta = App::frontend()->context()->posts->strField('post_meta', true);
                 $meta      = App::meta()->getMetaRecordset($post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
@@ -61,7 +70,7 @@ class FrontendHelper
             }
 
             // Twitter link
-            if ($settings->twitter) {
+            if ($settings->getBool('twitter')) {
                 $share_url = sprintf(
                     'https://x.com/share?url=%s&amp;text=%s',
                     Html::sanitizeURL($url),
@@ -91,7 +100,7 @@ class FrontendHelper
             }
 
             // Facebook link
-            if ($settings->facebook) {
+            if ($settings->getBool('facebook')) {
                 $share_url = sprintf(
                     'https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
                     Html::sanitizeURL($url),
@@ -117,7 +126,7 @@ class FrontendHelper
             }
 
             // LinkedIn link
-            if ($settings->linkedin) {
+            if ($settings->getBool('linkedin')) {
                 $share_url = sprintf(
                     'https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s',
                     Html::sanitizeURL($url),
@@ -143,7 +152,7 @@ class FrontendHelper
             }
 
             // Mastodon link
-            if ($settings->mastodon) {
+            if ($settings->getBool('mastodon')) {
                 $share_url = sprintf(
                     'https://mastodonshare.com/?text=%s+%s',    // was 'web+mastodon://share?text=%s+%s',
                     str_replace('&amp;', '%26', Html::escapeHTML($text . $tags)),
@@ -169,7 +178,7 @@ class FrontendHelper
             }
 
             // Bluesky link
-            if ($settings->bluesky) {
+            if ($settings->getBool('bluesky')) {
                 $share_url = sprintf(
                     'https://bsky.app/intent/compose?text=%s (%s)',
                     Html::escapeHTML($filter($text) . $tags),
@@ -196,7 +205,7 @@ class FrontendHelper
             }
 
             // Mail link
-            if ($settings->mail) {
+            if ($settings->getBool('mail')) {
                 $share_url = sprintf(
                     'mailto:?subject=%s&amp;body=%s',
                     Html::escapeHTML($text),
@@ -222,7 +231,7 @@ class FrontendHelper
             }
 
             // Share menu link
-            if ($settings->menu) {
+            if ($settings->getBool('menu')) {
                 $share_url  = '#';
                 $href_text  = __('Share menu');
                 $href_title = __('Share menu');
@@ -263,8 +272,6 @@ class FrontendHelper
 
     public static function customStyle(): string
     {
-        $settings = My::settings();
-
-        return isset($settings->style) && is_string($settings->style) ? $settings->style : '';
+        return My::settings()->getStr('style', false);
     }
 }

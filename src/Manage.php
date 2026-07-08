@@ -51,7 +51,7 @@ class Manage
         }
 
         $settings = My::settings();
-        if (is_null($settings->active)) {
+        if (is_null($settings->get('active'))) {
             try {
                 // Add default settings values if necessary
                 $settings->put('active', false, App::blogWorkspace()::NS_BOOL, 'Active', false);
@@ -174,37 +174,32 @@ class Manage
 
         $settings = My::settings();
 
-        // Settings data helpers
-        $_Bool = fn (mixed $setting): bool => (bool) $setting;
-        $_Int  = fn (mixed $setting, int $default = 0): int => $setting !== null && is_numeric($val = $setting) ? (int) $val : $default;
-        $_Str  = fn (mixed $setting, string $default = ''): string => $setting !== null && is_string($val = $setting) ? $val : $default;
+        $ssb_active = $settings->getBool('active', false);
 
-        $ssb_active = $_Bool($settings->active);
+        $ssb_twitter  = $settings->getBool('twitter', false);
+        $ssb_facebook = $settings->getBool('facebook', false);
+        $ssb_linkedin = $settings->getBool('linkedin', false);
+        $ssb_mastodon = $settings->getBool('mastodon', false);
+        $ssb_bluesky  = $settings->getBool('bluesky', false);
+        $ssb_mail     = $settings->getBool('mail', false);
+        $ssb_menu     = $settings->getBool('menu', false);
 
-        $ssb_twitter  = $_Bool($settings->twitter);
-        $ssb_facebook = $_Bool($settings->facebook);
-        $ssb_linkedin = $_Bool($settings->linkedin);
-        $ssb_mastodon = $_Bool($settings->mastodon);
-        $ssb_bluesky  = $_Bool($settings->bluesky);
-        $ssb_mail     = $_Bool($settings->mail);
-        $ssb_menu     = $_Bool($settings->menu);
+        $ssb_on_post = $settings->getBool('on_post', false);
+        $ssb_on_page = $settings->getBool('on_page', false);
 
-        $ssb_on_post = $_Bool($settings->on_post);
-        $ssb_on_page = $_Bool($settings->on_page);
+        $ssb_on_single_only = $settings->getBool('on_single_only', false);
 
-        $ssb_on_single_only = $_Bool($settings->on_single_only);
+        $ssb_before_content = $settings->getBool('before_content', false);
+        $ssb_after_content  = $settings->getBool('after_content', false);
+        $ssb_template_tag   = $settings->getBool('template_tag', false);
 
-        $ssb_before_content = $_Bool($settings->before_content);
-        $ssb_after_content  = $_Bool($settings->after_content);
-        $ssb_template_tag   = $_Bool($settings->template_tag);
+        $ssb_prefix    = $settings->getStr('prefix', false);
+        $ssb_intro     = $settings->getStr('intro', false);
+        $ssb_tags      = $settings->getBool('tags', false);
+        $ssb_use_style = $settings->getInt('use_style', false);
+        $ssb_style     = $settings->getStr('style', false);
 
-        $ssb_prefix    = $_Str($settings->prefix);
-        $ssb_intro     = $_Str($settings->intro);
-        $ssb_tags      = $_Bool($settings->tags);
-        $ssb_use_style = $_Int($settings->use_style);
-        $ssb_style     = $_Str($settings->style);
-
-        $ssb_twitter_account = $_Str($settings->twitter_account);
+        $ssb_twitter_account = $settings->getStr('twitter_account', false);
 
         $ssb_use_styles = [
             0 => __('Use default CSS styles'),

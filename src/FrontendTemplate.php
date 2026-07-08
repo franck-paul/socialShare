@@ -26,15 +26,13 @@ class FrontendTemplate
     public static function SocialShare(array|ArrayObject $attr): string
     {
         $settings = My::settings();
-        if ($settings->active && $settings->template_tag) {
-            $_Str = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
+        if ($settings->getBool('active') && $settings->getBool('template_tag')) {
             return Code::getPHPTemplateValueCode(
                 FrontendTemplateCode::SocialShare(...),
                 [
-                    $_Str($settings->prefix),
-                    $_Str($settings->twitter_account),
-                    $_Str($settings->intro),
+                    $settings->getStr('prefix', false),
+                    $settings->getStr('twitter_account', false),
+                    $settings->getStr('intro', false),
                 ],
                 $attr,
             );

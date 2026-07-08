@@ -23,20 +23,20 @@ class FrontendBehaviors
     public static function publicEntryBeforeContent(): string
     {
         $settings = My::settings();
-        if ($settings->active
+        if ($settings->getBool('active')
             && App::frontend()->context()->posts instanceof MetaRecord
-            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->on_post
-                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->on_page)
-            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->before_content)
+            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
+                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
+            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('before_content'))
         ) {
             $_Str = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
 
             echo FrontendHelper::socialShare(
                 $_Str(App::frontend()->context()->posts->getURL() ?? ''),
                 $_Str(App::frontend()->context()->posts->strField('post_title')),
-                $_Str($settings->prefix),
-                $_Str($settings->twitter_account),
-                $_Str($settings->intro)
+                $settings->getStr('prefix', false),
+                $settings->getStr('twitter_account', false),
+                $settings->getStr('intro', false)
             );
         }
 
@@ -46,20 +46,20 @@ class FrontendBehaviors
     public static function publicEntryAfterContent(): string
     {
         $settings = My::settings();
-        if ($settings->active
+        if ($settings->getBool('active')
             && App::frontend()->context()->posts instanceof MetaRecord
-            && (App::frontend()->context()->posts->strField('post_type')    === 'post'    && $settings->on_post
-                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->on_page)
-            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->on_single_only || !$settings->on_single_only) && $settings->after_content)
+            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
+                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
+            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('after_content'))
         ) {
             $_Str = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
 
             echo FrontendHelper::socialShare(
                 $_Str(App::frontend()->context()->posts->getURL() ?? ''),
                 $_Str(App::frontend()->context()->posts->strField('post_title')),
-                $_Str($settings->prefix),
-                $_Str($settings->twitter_account),
-                $_Str($settings->intro)
+                $settings->getStr('prefix', false),
+                $settings->getStr('twitter_account', false),
+                $settings->getStr('intro', false)
             );
         }
 
@@ -69,8 +69,8 @@ class FrontendBehaviors
     public static function publicHeadContent(): string
     {
         $settings = My::settings();
-        if ($settings->active) {
-            switch ($settings->use_style) {
+        if ($settings->getBool('active')) {
+            switch ($settings->getInt('use_style', false)) {
                 case 0: // Default CSS styles
                     echo My::cssLoad('default.css');
 
@@ -91,7 +91,7 @@ class FrontendBehaviors
     public static function publicFooterContent(): string
     {
         $settings = My::settings();
-        if ($settings->active) {
+        if ($settings->getBool('active')) {
             echo My::jsLoad('popup.js');
         }
 
