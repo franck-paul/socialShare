@@ -34,7 +34,7 @@ class FrontendTemplateCode
         $socialshare_url        = '';
         $socialshare_post_title = '';
         if (App::frontend()->context()->posts instanceof \Dotclear\Database\MetaRecord) {
-            $socialshare_url        = is_string($socialshare_url = App::frontend()->context()->posts->getURL() ?? '') ? $socialshare_url : '';
+            $socialshare_url        = App::frontend()->context()->posts->getURL();
             $socialshare_post_title = App::frontend()->context()->posts->strField('post_title');
         }
 

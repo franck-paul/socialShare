@@ -29,11 +29,9 @@ class FrontendBehaviors
                 || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
             && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('before_content'))
         ) {
-            $_Str = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
             echo FrontendHelper::socialShare(
-                $_Str(App::frontend()->context()->posts->getURL() ?? ''),
-                $_Str(App::frontend()->context()->posts->strField('post_title')),
+                App::frontend()->context()->posts->getURL(),
+                App::frontend()->context()->posts->strField('post_title'),
                 $settings->getStr('prefix', false),
                 $settings->getStr('twitter_account', false),
                 $settings->getStr('intro', false)
@@ -52,11 +50,9 @@ class FrontendBehaviors
                 || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
             && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('after_content'))
         ) {
-            $_Str = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
             echo FrontendHelper::socialShare(
-                $_Str(App::frontend()->context()->posts->getURL() ?? ''),
-                $_Str(App::frontend()->context()->posts->strField('post_title')),
+                App::frontend()->context()->posts->getURL(),
+                App::frontend()->context()->posts->strField('post_title'),
                 $settings->getStr('prefix', false),
                 $settings->getStr('twitter_account', false),
                 $settings->getStr('intro', false)
