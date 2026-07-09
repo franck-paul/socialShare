@@ -48,15 +48,15 @@ class FrontendHelper
             $tag_list = [];
             if ($settings->getBool('tags')
                 && App::frontend()->context()->posts instanceof MetaRecord
-                && isset(App::frontend()->context()->posts->post_meta)
+                && App::frontend()->context()->posts->strField('post_meta') !== ''
             ) {
                 $post_meta = App::frontend()->context()->posts->strField('post_meta', true);
                 $meta      = App::meta()->getMetaRecordset($post_meta, 'tag');
                 $meta->sort('meta_id_lower', 'asc');
                 while ($meta->fetch()) {
-                    if (is_string($meta->meta_id)) {
-                        $tag_list[] = $meta->meta_id;
-                        $tags .= '%20%23' . $meta->meta_id; // space + # + tag
+                    if ($meta->strField('meta_id') !== '') {
+                        $tag_list[] = $meta->strField('meta_id');
+                        $tags .= '%20%23' . $meta->strField('meta_id'); // space + # + tag
                     }
                 }
             }
