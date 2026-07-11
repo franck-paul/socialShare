@@ -27,7 +27,8 @@ class FrontendBehaviors
             && App::frontend()->context()->posts instanceof MetaRecord
             && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
                 || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
-            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('before_content'))
+            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only')
+                || !$settings->getBool('on_single_only')) && $settings->getBool('before_content'))
         ) {
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
@@ -48,7 +49,8 @@ class FrontendBehaviors
             && App::frontend()->context()->posts instanceof MetaRecord
             && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
                 || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
-            && (((App::url()->getType() === 'post' || App::url()->getType() === 'page') && $settings->getBool('on_single_only') || !$settings->getBool('on_single_only')) && $settings->getBool('after_content'))
+            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only')
+                || !$settings->getBool('on_single_only')) && $settings->getBool('after_content'))
         ) {
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
