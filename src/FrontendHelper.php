@@ -88,10 +88,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class(['share-twitter', 'share-popup'])
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
@@ -114,10 +112,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class(['share-fb', 'share-popup'])
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
@@ -140,10 +136,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class(['share-in', 'share-popup'])
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
@@ -166,10 +160,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class(['share-mastodon', 'share-popup'])
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
@@ -193,10 +185,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class(['share-bluesky', 'share-popup'])
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
@@ -219,10 +209,8 @@ class FrontendHelper
                         (new Link())
                             ->href($share_url)
                             ->class('share-mail')
-                            ->extra([
-                                'target="_blank"',
-                                'rel="nofollow noopener noreferrer"',
-                            ])
+                            ->target('_blank')
+                            ->rel('nofollow noopener noreferrer')
                             ->title($href_title . $a11y)
                             ->items([
                                 (new Span($href_text)),
