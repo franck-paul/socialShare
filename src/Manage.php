@@ -20,6 +20,7 @@ use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Form;
 use Dotclear\Helper\Html\Form\Input;
 use Dotclear\Helper\Html\Form\Label;
+use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Para;
 use Dotclear\Helper\Html\Form\Radio;
 use Dotclear\Helper\Html\Form\Submit;
@@ -232,147 +233,168 @@ class Manage
             ->action(App::backend()->getPageURL())
             ->method('post')
             ->fields([
-                (new Para())->items([
-                    (new Checkbox('ssb_active', $ssb_active))
-                        ->value(1)
-                        ->label((new Label(__('Activate socialShare plugin'), Label::INSIDE_TEXT_AFTER))),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_active', $ssb_active))
+                            ->value(1)
+                            ->label((new Label(__('Activate socialShare plugin'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
 
                 (new Text('h3', __('Buttons'))),
-                (new Para())->items([
-                    (new Checkbox('ssb_twitter', $ssb_twitter))
-                        ->value(1)
-                        ->label((new Label(__('Add Twitter/X sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Input('ssb_twitter_account'))
-                        ->size(30)
-                        ->maxlength(128)
-                        ->value(Html::escapeHTML($ssb_twitter_account))
-                        ->label((new Label(__('Twitter/X account:'), Label::INSIDE_TEXT_BEFORE))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('This will be used as "via" in tweet rather than the blog name (if not empty).'))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_facebook', $ssb_facebook))
-                        ->value(1)
-                        ->label((new Label(__('Add Facebook sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_linkedin', $ssb_linkedin))
-                        ->value(1)
-                        ->label((new Label(__('Add LinkedIn sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_mastodon', $ssb_mastodon))
-                        ->value(1)
-                        ->label((new Label(__('Add Mastodon sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_bluesky', $ssb_bluesky))
-                        ->value(1)
-                        ->label((new Label(__('Add Bluesky sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_mail', $ssb_mail))
-                        ->value(1)
-                        ->label((new Label(__('Add Mail sharing button'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_menu', $ssb_menu))
-                        ->value(1)
-                        ->label((new Label(__(' Add a button for the browser\'s share menu'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('This button may not be available depending on your browser capabilities and settings.'))),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_twitter', $ssb_twitter))
+                            ->value(1)
+                            ->label((new Label(__('Add Twitter/X sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Input('ssb_twitter_account'))
+                            ->size(30)
+                            ->maxlength(128)
+                            ->value(Html::escapeHTML($ssb_twitter_account))
+                            ->label((new Label(__('Twitter/X account:'), Label::INSIDE_TEXT_BEFORE))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('This will be used as "via" in tweet rather than the blog name (if not empty).')),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_facebook', $ssb_facebook))
+                            ->value(1)
+                            ->label((new Label(__('Add Facebook sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_linkedin', $ssb_linkedin))
+                            ->value(1)
+                            ->label((new Label(__('Add LinkedIn sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_mastodon', $ssb_mastodon))
+                            ->value(1)
+                            ->label((new Label(__('Add Mastodon sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_bluesky', $ssb_bluesky))
+                            ->value(1)
+                            ->label((new Label(__('Add Bluesky sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_mail', $ssb_mail))
+                            ->value(1)
+                            ->label((new Label(__('Add Mail sharing button'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_menu', $ssb_menu))
+                            ->value(1)
+                            ->label((new Label(__(' Add a button for the browser\'s share menu'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('This button may not be available depending on your browser capabilities and settings.')),
 
                 (new Text('h3', __('Options'))),
-                (new Para())->items([
-                    (new Checkbox('ssb_on_post', $ssb_on_post))
-                        ->value(1)
-                        ->label((new Label(__('Add social sharing buttons on posts'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_on_page', $ssb_on_page))
-                        ->value(1)
-                        ->label((new Label(__('Add social sharing buttons on pages'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_on_single_only', $ssb_on_single_only))
-                        ->value(1)
-                        ->label((new Label(__('Add social sharing buttons only on single display (post or page)'), Label::INSIDE_TEXT_AFTER))),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_on_post', $ssb_on_post))
+                            ->value(1)
+                            ->label((new Label(__('Add social sharing buttons on posts'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_on_page', $ssb_on_page))
+                            ->value(1)
+                            ->label((new Label(__('Add social sharing buttons on pages'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_on_single_only', $ssb_on_single_only))
+                            ->value(1)
+                            ->label((new Label(__('Add social sharing buttons only on single display (post or page)'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
 
                 (new Text('h3', __('Position'))),
-                (new Para())->items([
-                    (new Checkbox('ssb_before_content', $ssb_before_content))
-                        ->value(1)
-                        ->label((new Label(__('Automatically add social sharing buttons before content'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_after_content', $ssb_after_content))
-                        ->value(1)
-                        ->label((new Label(__('Automatically add social sharing buttons after content'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_template_tag', $ssb_template_tag))
-                        ->value(1)
-                        ->label((new Label(__('Add social sharing buttons using template tag'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('The {{tpl:SocialShare}} template tag must be present in your template\'s file(s).'))),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_before_content', $ssb_before_content))
+                            ->value(1)
+                            ->label((new Label(__('Automatically add social sharing buttons before content'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_after_content', $ssb_after_content))
+                            ->value(1)
+                            ->label((new Label(__('Automatically add social sharing buttons after content'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_template_tag', $ssb_template_tag))
+                            ->value(1)
+                            ->label((new Label(__('Add social sharing buttons using template tag'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('The {{tpl:SocialShare}} template tag must be present in your template\'s file(s).')),
 
                 (new Text('h3', __('Advanced options'))),
-                (new Para())->items([
-                    (new Input('ssb_prefix'))
-                        ->size(30)
-                        ->maxlength(128)
-                        ->value(Html::escapeHTML($ssb_prefix))
-                        ->label((new Label(__('Social sharing buttons text prefix:'), Label::OUTSIDE_TEXT_BEFORE))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('This will be inserted before buttons (if not empty).'))),
-                ]),
-                (new Para())->items([
-                    (new Input('ssb_intro'))
-                        ->size(30)
-                        ->maxlength(128)
-                        ->value(Html::escapeHTML($ssb_intro))
-                        ->label((new Label(__('Title introduction text:'), Label::OUTSIDE_TEXT_BEFORE))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('This will be inserted before title (if not empty).'))),
-                ]),
-                (new Para())->items([
-                    (new Checkbox('ssb_tags', $ssb_tags))
-                        ->value(1)
-                        ->label((new Label(__('Use tags if any'), Label::INSIDE_TEXT_AFTER))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('Only for Twitter/X, Bluesky and Mastodon buttons.'))),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Input('ssb_prefix'))
+                            ->size(30)
+                            ->maxlength(128)
+                            ->value(Html::escapeHTML($ssb_prefix))
+                            ->label((new Label(__('Social sharing buttons text prefix:'), Label::OUTSIDE_TEXT_BEFORE))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('This will be inserted before buttons (if not empty).')),
+                (new Para())
+                    ->items([
+                        (new Input('ssb_intro'))
+                            ->size(30)
+                            ->maxlength(128)
+                            ->value(Html::escapeHTML($ssb_intro))
+                            ->label((new Label(__('Title introduction text:'), Label::OUTSIDE_TEXT_BEFORE))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('This will be inserted before title (if not empty).')),
+                (new Para())
+                    ->items([
+                        (new Checkbox('ssb_tags', $ssb_tags))
+                            ->value(1)
+                            ->label((new Label(__('Use tags if any'), Label::INSIDE_TEXT_AFTER))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('Only for Twitter/X, Bluesky and Mastodon buttons.')),
 
                 (new Text('h3', __('Social sharing buttons CSS styles'))),
                 ...$radio_styles,
-                (new Para())->class('area')->items([
-                    (new Textarea('ssb_style'))
-                        ->cols(30)
-                        ->rows(8)
-                        ->value(Html::escapeHTML($ssb_style))
-                        ->label((new Label(__('User defined CSS styles:'), Label::OUTSIDE_TEXT_BEFORE))),
-                ]),
-                (new Para())->class('form-note')->items([
-                    (new Text(null, __('See the README.md file for HTML markup and example of CSS styles.'))),
-                ]),
+                (new Para())
+                    ->class('area')
+                    ->items([
+                        (new Textarea('ssb_style'))
+                            ->cols(30)
+                            ->rows(8)
+                            ->value(Html::escapeHTML($ssb_style))
+                            ->label((new Label(__('User defined CSS styles:'), Label::OUTSIDE_TEXT_BEFORE))),
+                    ]),
+                (new Note())
+                    ->class('form-note')
+                    ->text(__('See the README.md file for HTML markup and example of CSS styles.')),
 
-                (new Para())->items([
-                    (new Submit(['frmsubmit']))
-                        ->value(__('Save')),
-                    ... My::hiddenFields(),
-                ]),
+                (new Para())
+                    ->items([
+                        (new Submit(['frmsubmit']))
+                            ->value(__('Save')),
+                        ... My::hiddenFields(),
+                    ]),
             ])
         ->render();
 
