@@ -39,7 +39,10 @@ Twitter, Facebook, Google+, LinkedIn, Mastodon, Bluesky social networks, mail an
 }
 
 .share a {
-  padding: 0.25em 0.5em 0.25em 2em;
+  padding-block-start: 0.25em;
+  padding-block-end: 0.25em;
+  padding-inline-start: 2em;
+  padding-inline-end: 0.5em;
   background-position: 0.25em center;
   background-repeat: no-repeat;
   background-size: 1.5em auto;

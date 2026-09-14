@@ -1,7 +1,7 @@
 .share {
   font-size: 0.875em;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  margin-block-start: 1.5em;
+  margin-block-end: 1.5em;
   padding: 0.5em 0;
   clear: both;
 }
@@ -23,12 +23,19 @@
 }
 
 .share a {
-  padding: 0.25em 0.5em 0.25em 2em;
+  padding-block-start: 0.25em;
+  padding-block-end: 0.25em;
+  padding-inline-start: 2em;
+  padding-inline-end: 0.5em;
   background-position: 0.25em center;
   background-repeat: no-repeat;
   background-size: 1.5em auto;
   text-decoration: none;
-  border-bottom: none;
+  border-block-end: none;
+
+  [dir='rtl'] & {
+    background-position-x: calc(100% - 0.25em);
+  }
 }
 
 .share a:hover {
