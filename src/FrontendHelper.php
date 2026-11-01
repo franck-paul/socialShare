@@ -32,12 +32,12 @@ class FrontendHelper
         $filter = static fn (string $text): string => str_replace(['|'], ['-'], $text);
 
         $settings = My::settings();
-        if ($settings->getBool('twitter')
-            || $settings->getBool('facebook')
-            || $settings->getBool('linkedin')
-            || $settings->getBool('mastodon')
-            || $settings->getBool('mail')
-            || $settings->getBool('menu')
+        if ($settings->getBool('twitter', false)
+            || $settings->getBool('facebook', false)
+            || $settings->getBool('linkedin', false)
+            || $settings->getBool('mastodon', false)
+            || $settings->getBool('mail', false)
+            || $settings->getBool('menu', false)
         ) {
             // Compose text
             $text = ($intro !== '' ? $intro . '%20' : '') . $title;
@@ -46,7 +46,7 @@ class FrontendHelper
             // Lookup for tags on entry
             $tags     = '';
             $tag_list = [];
-            if ($settings->getBool('tags')
+            if ($settings->getBool('tags', false)
                 && App::frontend()->context()->posts instanceof MetaRecord
                 && App::frontend()->context()->posts->strField('post_meta') !== ''
             ) {
@@ -70,7 +70,7 @@ class FrontendHelper
             }
 
             // Twitter link
-            if ($settings->getBool('twitter')) {
+            if ($settings->getBool('twitter', false)) {
                 $share_url = sprintf(
                     'https://x.com/share?url=%s&amp;text=%s',
                     Html::sanitizeURL($url),
@@ -98,7 +98,7 @@ class FrontendHelper
             }
 
             // Facebook link
-            if ($settings->getBool('facebook')) {
+            if ($settings->getBool('facebook', false)) {
                 $share_url = sprintf(
                     'https://www.facebook.com/sharer.php?u=%s&amp;t=%s',
                     Html::sanitizeURL($url),
@@ -122,7 +122,7 @@ class FrontendHelper
             }
 
             // LinkedIn link
-            if ($settings->getBool('linkedin')) {
+            if ($settings->getBool('linkedin', false)) {
                 $share_url = sprintf(
                     'https://www.linkedin.com/shareArticle?mini=true&url=%s&title=%s',
                     Html::sanitizeURL($url),
@@ -146,7 +146,7 @@ class FrontendHelper
             }
 
             // Mastodon link
-            if ($settings->getBool('mastodon')) {
+            if ($settings->getBool('mastodon', false)) {
                 $share_url = sprintf(
                     'https://mastodonshare.com/?text=%s+%s',    // was 'web+mastodon://share?text=%s+%s',
                     str_replace('&amp;', '%26', Html::escapeHTML($text . $tags)),
@@ -170,7 +170,7 @@ class FrontendHelper
             }
 
             // Bluesky link
-            if ($settings->getBool('bluesky')) {
+            if ($settings->getBool('bluesky', false)) {
                 $share_url = sprintf(
                     'https://bsky.app/intent/compose?text=%s (%s)',
                     Html::escapeHTML($filter($text) . $tags),
@@ -195,7 +195,7 @@ class FrontendHelper
             }
 
             // Mail link
-            if ($settings->getBool('mail')) {
+            if ($settings->getBool('mail', false)) {
                 $share_url = sprintf(
                     'mailto:?subject=%s&amp;body=%s',
                     Html::escapeHTML($text),
@@ -219,7 +219,7 @@ class FrontendHelper
             }
 
             // Share menu link
-            if ($settings->getBool('menu')) {
+            if ($settings->getBool('menu', false)) {
                 $share_url  = '#';
                 $href_text  = __('Share menu');
                 $href_title = __('Share menu');

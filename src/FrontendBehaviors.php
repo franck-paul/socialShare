@@ -23,12 +23,13 @@ class FrontendBehaviors
     public static function publicEntryBeforeContent(): string
     {
         $settings = My::settings();
-        if ($settings->getBool('active')
+        if ($settings->getBool('active', false)
             && App::frontend()->context()->posts instanceof MetaRecord
-            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
-                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
-            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only')
-                || !$settings->getBool('on_single_only')) && $settings->getBool('before_content'))
+            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post', false)
+                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page', false))
+            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only', false)
+                || !$settings->getBool('on_single_only', false))
+            && $settings->getBool('before_content', false))
         ) {
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
@@ -45,12 +46,13 @@ class FrontendBehaviors
     public static function publicEntryAfterContent(): string
     {
         $settings = My::settings();
-        if ($settings->getBool('active')
+        if ($settings->getBool('active', false)
             && App::frontend()->context()->posts instanceof MetaRecord
-            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post')
-                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page'))
-            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only')
-                || !$settings->getBool('on_single_only')) && $settings->getBool('after_content'))
+            && (App::frontend()->context()->posts->strField('post_type')    === 'post' && $settings->getBool('on_post', false)
+                || App::frontend()->context()->posts->strField('post_type') === 'page' && $settings->getBool('on_page', false))
+            && ((App::url()->isType(['post', 'page']) && $settings->getBool('on_single_only', false)
+                || !$settings->getBool('on_single_only', false))
+            && $settings->getBool('after_content', false))
         ) {
             echo FrontendHelper::socialShare(
                 App::frontend()->context()->posts->getURL(),
@@ -67,7 +69,7 @@ class FrontendBehaviors
     public static function publicHeadContent(): string
     {
         $settings = My::settings();
-        if ($settings->getBool('active')) {
+        if ($settings->getBool('active', false)) {
             switch ($settings->getInt('use_style', false)) {
                 case 0: // Default CSS styles
                     echo My::cssLoad('default.css');
@@ -89,7 +91,7 @@ class FrontendBehaviors
     public static function publicFooterContent(): string
     {
         $settings = My::settings();
-        if ($settings->getBool('active')) {
+        if ($settings->getBool('active', false)) {
             echo My::jsLoad('popup.js');
         }
 

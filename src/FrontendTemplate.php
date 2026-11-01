@@ -26,7 +26,7 @@ class FrontendTemplate
     public static function SocialShare(array|ArrayObject $attr): string
     {
         $settings = My::settings();
-        if ($settings->getBool('active') && $settings->getBool('template_tag')) {
+        if ($settings->getBool('active', false) && $settings->getBool('template_tag', false)) {
             return Code::getPHPTemplateValueCode(
                 FrontendTemplateCode::SocialShare(...),
                 [
