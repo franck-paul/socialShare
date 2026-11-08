@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'socialShare',
         'Add social networks sharing buttons to your posts and pages',
         'Franck Paul, Kozlika',
-        '9.0',
+        '10.0',
         [
-            'date'     => '2026-08-03T10:11:14+0200',
+            'date'     => '2026-11-08T10:23:05+0100',
             'requires' => [
                 ['TemplateHelper'],
                 ['core', '2.40'],
